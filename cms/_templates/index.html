@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Landing CMS</title>
+	<meta charset="utf-8">
+	<meta name='HandheldFriendly' content='True'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/web/_cms/css/main.css">
+	<link rel="stylesheet" href="/web/_cms/css/magic-check.min.css">
+	<link rel="stylesheet" href="/web/_cms/css/bootstrap.min.css">
+	<script src="/web/_cms/js/main.js"></script>
+	<script src="/cms/_tinymce/js/tinymce/tinymce.min.js"></script>
+	<meta name='copyright' content='Landing CMS'>
+	<meta name="description" content="Free CMS for Landing">
+	<meta name="keywords" content="CMS, Landing, Free">
+	<meta name="author" content="Ilia Chernykh">
+	<meta name="generator" content="Landing CMS 0.0.1" />
+</head>
+<body>
+
+<!-- HEADER begin -->
+	<nav class="navbar navbar-default navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="collapsed navbar-toggle" onclick="collapseMenu();">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/cms/" class="navbar-brand">Landing CMS</a>
+			</div>
+			<div class="collapse navbar-collapse" id="js_collapse">
+				<ul class="right nav navbar-nav">
+				<?php if( defined('IS_LOGIN') ): ?>
+					<li>
+						<a href="/cms/">Edit content</a>
+					</li>
+					<li>
+						<a href="/cms/password/">Edit password</a>
+					</li>
+					<li>
+						<a href="/cms/add-field/">Add field</a>
+					</li>
+					<li>
+						<a href="/cms/login/?logout=true">Log out</a>
+					</li>
+				<?php endif; ?>
+					<li>
+						<a href="/" target="_blank">Website</a>
+					</li>
+					<li>
+						<a href="#">About CMS</a>
+					</li>
+				<?php if( defined('IS_LOGIN') ): ?>
+					<li>
+						<a href="#">Donate</a>
+					</li>
+				<?php endif; ?>
+				</ul>
+			</div>
+		</div>
+	</nav>
+<!-- HEADER end -->
+
+<!-- MAIN begin -->
+	<div class="container">
+		<div class="row">
+			<?php if($vars['error_message']): ?>
+				<p class="alert alert-danger"><?php echo $vars['error_message']; ?></p>
+			<?php endif; ?>
+
+			<?php if($vars['success_message']): ?>
+				<p class="alert alert-success"><?php echo $vars['success_message']; ?></p>
+			<?php endif; ?>
+
+			<?php echo $vars['content']; ?>
+		</div>
+	</div>
+<!-- MAIN end -->
+
+<!-- FOOTER begin -->
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+	  <div class="container">
+	    <div class="col-sm-12 text-center navbar-text">
+	        2017 &copy; Landing CMS
+	    </div>
+	  </div>
+	</nav>
+<!-- FOOTER end -->
+
+</body>
+</html>

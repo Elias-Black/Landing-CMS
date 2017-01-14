@@ -1,0 +1,56 @@
+<form method="POST" action="">
+
+	<h2>Content</h2>
+
+	<?php if( empty($vars['fields']) ): ?>
+
+		<div class="alert alert-info">No fields.</div>
+		<div class="buttons">
+			<?php echo Utils::render(
+				'elements/button_green.html',
+				 array('text' => 'Add field', 'title' => 'Go to adding a new field.', 'url' => '/cms/add-field/')
+			); ?>
+		</div>
+
+	<?php else: ?>
+
+		<div class="buttons">
+			<?php echo Utils::render(
+				'elements/button_blue.html',
+				 array('text' => 'Save', 'title' => 'Save all fields.')
+			); ?>
+			<?php echo Utils::render(
+				'elements/button_green.html',
+				 array('text' => 'Add field', 'title' => 'Go to adding a new field.', 'url' => '/cms/add-field/')
+			); ?>
+		</div>
+
+		<?php foreach($vars['fields'] as $field): ?>
+			<div class="form-group">
+				<a href="?delete=<?php echo $field['alias']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; field?')" class="close" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; field">
+					<span aria-hidden="true">&times;</span>
+				</a>
+				<?php echo Utils::render(
+					"fields/{$field['type']}.html",
+					$field);
+				?>
+				<?php if($field['description']): ?>
+					<p class="help-block"><?php echo $field['description']; ?></p>
+				<?php endif; ?>
+			</div>
+		<?php endforeach; ?>
+
+		<div class="buttons">
+			<?php echo Utils::render(
+				'elements/button_blue.html',
+				 array('text' => 'Save', 'title' => 'Save all fields.')
+			); ?>
+			<?php echo Utils::render(
+				'elements/button_green.html',
+				 array('text' => 'Add field', 'title' => 'Go to adding a new field.', 'url' => '/cms/add-field/')
+			); ?>
+		</div>
+
+	<?php endif; ?>
+
+</form>

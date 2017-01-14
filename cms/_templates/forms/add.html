@@ -1,0 +1,54 @@
+<form method="POST" action="">
+
+	<h2>Adding a new field</h2>
+
+	<div class="form-group">
+		<label for="type">Type</label>
+		<select name="type" id="type" class="form-control">
+			<option value="input_text">String</option>
+			<option value="textarea_html">HTML (WYSIWYG)</option>
+			<option value="textarea_text">Multiline text</option>
+			<option value="input_checkbox">Checkbox</option>
+		</select>
+
+		<?php if($vars['fields']['type']): ?>
+		<script type="text/javascript">
+
+			document.querySelector('#type option[value=<?php echo $vars['fields']['type']; ?>]').selected = 'selected';
+
+		</script>
+		<?php endif; ?>
+
+		<div class="help-block">Select the type of the new field.</div>
+	</div>
+
+	<div class="form-group<?php echo $vars['fields']['type'] ? ' has-error' : ''; ?>">
+		<label for="alias">Alias</label>
+		<input class="form-control" name="alias" id="alias" type="text" placeholder="Type here" required />
+		<div class="help-block">It is necessary for calling the new field in the backend.</div>
+	</div>
+
+	<div class="form-group">
+		<label for="title">Title</label>
+		<input class="form-control" name="title" id="title" type="text" placeholder="Type here" value="<?php echo $vars['fields']['title']; ?>" required />
+		<div class="help-block">The name of the new field in Admin panel.</div>
+	</div>
+
+	<div class="form-group">
+		<label for="description">Description</label>
+		<input class="form-control" name="description" id="description" type="text" placeholder="Type here" value="<?php echo $vars['fields']['description']; ?>" />
+		<div class="help-block">The description of the new field in admin panel.</div>
+	</div>
+
+	<div class="buttons">
+		<?php echo Utils::render(
+			'elements/button_blue.html',
+			 array('text' => 'Save', 'title' => 'Save and add the new field.')
+		); ?>
+		<?php echo Utils::render(
+			'elements/button_white.html',
+			 array('text' => 'Cancel', 'title' => 'Cancel adding the new field.', 'url' => '/cms/')
+		); ?>
+	</div>
+
+</form>

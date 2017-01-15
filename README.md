@@ -28,6 +28,12 @@ And close access to some pages by 403 response of your server:
 
 *-all contains files.
 
+If helper show that all is done you should going to Admin panel: your_site.com/cms/
+
+Now you need to create your password.
+
+**All is done!** You can create your first field and use it in your code.
+
 ### How to use
 In the Admin panel you can create fields with 4 formats: string, multiple line text, WYSIWYG field and checkbox. When you creating a field you need to enter an alias.
 
@@ -60,11 +66,43 @@ If you want to use checkboxes you need to check the values of equality 'on'.
 
 **Example:**
 ```php
-<?php if($get['maintenance_mode'] == 'on'): ?>
-  <h1>Try again later</h1>
-<?php else: ?>
-  <h1>Hello, World!</h1>
-<?php endif; ?>
+<body>
+
+...
+
+  <?php if($get['maintenance_mode'] == 'on'): ?>
+    <h1>Try again later</h1>
+  <?php else: ?>
+    <h1>Hello, World!</h1>
+  <?php endif; ?>
+
+...
+
+</body>
+```
+### Modules
+If you need use any modules you can creat these in `modules` directory. For using your fields in your modules you should connect DB before connected this modules.
+
+**Example:**
+```php
+<?php
+
+// Connecting the batabase
+require_once('cms/_db/public.php');
+
+// Connecting a module
+require_once('modules/rand_num.php');
+
+?>
+
+  <html>
+    <head>
+
+  ...
+
+  <b>Random number module:</b> <?php echo $rand_num; ?>
+
+  ...
 ```
 
 ### To do

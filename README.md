@@ -9,6 +9,7 @@ Landing CMS is a simple tool for management landing pages. It don't use any data
 In the Admin panel you can create fields with 4 formats: string, multiple line text, WYSIWYG field and checkbox. When you creating a field you need to enter an alias.
 
 Then, when you want to use your fields in your files you need to connect DB to your file.
+
 **Example:**
 ```php
 <?php
@@ -21,7 +22,7 @@ require_once('cms/_db/public.php');
 <html>
   ...
 ```
-#### Text
+### Text
 You can to call your fields by alias.
 
 **Example:**
@@ -31,7 +32,7 @@ You can to call your fields by alias.
     <title><?php echo $get['title']; ?></title>
     ...
 ```
-#### Checkbox
+### Checkbox
 If you want to use checkboxes you need to check the values of equality 'on'.
 
 **Example:**

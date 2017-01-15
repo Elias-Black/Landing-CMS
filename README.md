@@ -5,6 +5,29 @@ A simple CMS for landing pages.
 I wrote this CMS for myself and want to share it for everyone.
 Landing CMS is a simple tool for management landing pages. It don't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.3 and early!
 
+### Installation
+For using the CMS you should copy all files from this repository to root directory of your site. Now you need config permissions.
+
+For checking configs you can use helper: open your_site.com/install.php
+
+You should set 777 permissions for upload directories:
+- web/_cms/uploads/tinymce/source/
+- web/_cms/uploads/tinymce/thumbs/
+
+You should set 666 permissions for DB files:
+- cms/_db/password.php
+- cms/_db/private.php
+- cms/_db/public.php
+
+And close access to some pages by 403 response of your server:
+- cms/_db/password.php
+- cms/_db/private.php
+- cms/_db/public.php
+- cms/_templates/*
+- cms/_classes/*
+
+*-all contains files.
+
 ### How to use
 In the Admin panel you can create fields with 4 formats: string, multiple line text, WYSIWYG field and checkbox. When you creating a field you need to enter an alias.
 

@@ -11,7 +11,7 @@ class Content
 
 		return Utils::render(
 			'forms/main.html',
-			 array( 'fields' => self::getPrivateContent() )
+			 array( 'fields' => self::getPrivateContent(true) )
 		);
 
 	}
@@ -121,7 +121,7 @@ class Content
 
 	}
 
-	private static function getPrivateContent($safe_replace = true)
+	private static function getPrivateContent($safe_replace = false)
 	{
 
 		$content = unserialize( file_get_contents(DB_PRIVATE_PATH) );
@@ -137,7 +137,7 @@ class Content
 	private static function updatePublicContent()
 	{
 
-		$content = self::getPrivateContent(false);
+		$content = self::getPrivateContent();
 
 		$public_content = '<?php $get = array(';
 
@@ -167,7 +167,7 @@ class Content
 			if( is_array($value) )
 				$result[$key] = self::replaceQuotes($value);
 			else
-				$result[$key] = htmlentities( $value );
+				$result[$key] = str_replace( '"', '&quot;', $value );
 
 		}
 

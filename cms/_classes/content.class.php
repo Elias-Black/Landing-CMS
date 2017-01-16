@@ -121,9 +121,12 @@ class Content
 
 	}
 
-	private static function getPrivateContent()
+	private static function getPrivateContent($safe_replace = true)
 	{
-		return unserialize( file_get_contents(DB_PRIVATE_PATH) );
+
+		$content = unserialize( file_get_contents(DB_PRIVATE_PATH) );
+
+		return $safe_replace ? self::replaceQuotes($content) : $content;
 	}
 
 	private static function updatePrivateContent($content)
@@ -134,20 +137,41 @@ class Content
 	private static function updatePublicContent()
 	{
 
-		$content = self::getPrivateContent();
+		$content = self::getPrivateContent(false);
 
 		$public_content = '<?php $get = array(';
 
 		foreach ($content as $field)
 		{
 
-			$public_content .= "'{$field['alias']}' => '{$field['output']}', ";
+			$output = str_replace( array("\\", "'"), array("\\\\", "\'"), $field['output'] );
+
+			$public_content .= "'{$field['alias']}' => '$output', ";
 
 		}
 
 		$public_content .= '); ?>'; 
 
 		file_put_contents( DB_PUBLIC_PATH, $public_content );
+
+	}
+
+	private static function replaceQuotes($array)
+	{
+
+		$result = array();
+
+		foreach ($array as $key => $value)
+		{
+
+			if( is_array($value) )
+				$result[$key] = self::replaceQuotes($value);
+			else
+				$result[$key] = htmlentities( $value );
+
+		}
+
+		return $result;
 
 	}
 

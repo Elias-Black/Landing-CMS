@@ -1,6 +1,7 @@
 /* The function for mobile menu dropdown */
 
-function collapseMenu() {
+function collapseMenu()
+{
 
 	var element = document.getElementById('js_collapse');
 
@@ -12,39 +13,44 @@ function collapseMenu() {
 
 /* The function for notification about unsaved changed forms */
 
-function confirmLeave(change) {
+function confirmLeave(change)
+{
 
 	var form_state = false;
 
 	if(change == 'on')
 		form_state = true;
 
-	function changeHandler(){
+	function changeHandler()
+	{
 		form_state = true;
 	}
 
-	function submitHandler(){
+	function submitHandler()
+	{
 		form_state = false;
 	}
 
 	var forms = document.getElementsByTagName('form');
 
-	for (i=0; i<forms.length; i++){
+	for (i=0; i<forms.length; i++)
+	{
 
 		forms[i].onchange = changeHandler;
+
 		forms[i].onsubmit = submitHandler;
 
 	}
 
-	window.onbeforeunload = function(e) {
+	function confirmMessage()
+	{
 
-		if(form_state == true) {
-
+		if(form_state == true)
 			return 'Do you want to leave this page with unsaved fields?';
 
-		}
-
 	}
+
+	window.onbeforeunload = confirmMessage;
 
 }
 

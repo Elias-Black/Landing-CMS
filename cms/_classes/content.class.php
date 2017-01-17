@@ -162,14 +162,7 @@ class Content
 		$result = array();
 
 		foreach ($array as $key => $value)
-		{
-
-			if( is_array($value) )
-				$result[$key] = self::replaceQuotes($value);
-			else
-				$result[$key] = str_replace( '"', '&quot;', $value );
-
-		}
+			$result[$key] = is_array($value) ? self::replaceQuotes($value) : str_replace( '"', '&quot;', $value );
 
 		return $result;
 

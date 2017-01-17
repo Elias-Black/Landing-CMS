@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 title: [Landing CMS]
 description: [A simple CMS for landing pages]
+show_downloads: true

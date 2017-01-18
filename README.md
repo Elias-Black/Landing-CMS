@@ -1,9 +1,13 @@
 # Landing CMS
 A simple CMS for landing pages.
 
+Be careful! While that is an alpha version.
+
 ### Hello guys!
 I wrote this CMS for myself and want to share it for everyone.
 Landing CMS is a simple tool for management landing pages. It don't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.3 and early!
+
+***
 
 ### Installation
 For using the CMS you should copy all files from this repository to root directory of your site. Now you need config permissions.
@@ -33,6 +37,8 @@ If helper show that all is done you should going to Admin panel: your_site.com/c
 Now you need to create your password.
 
 **All is done!** You can create your first field and use it in your code.
+
+***
 
 ### How to use
 In the Admin panel you can create fields with 4 formats: string, multiple line text, WYSIWYG field and checkbox. When you creating a field you need to enter an alias.
@@ -104,6 +110,9 @@ require_once('modules/rand_num.php');
 
   ...
 ```
+That so... In my opinion this functionality enough for all landing pages. If you
+ don't think so you can fork my project or suggest me some features ;)
+***
 
 ### To do
 v 1.0:
@@ -118,7 +127,7 @@ v 2.0:
 v 3.0:
 - Add Drag'n'Drop for Groups and Fields
 
-
+***
 
 ### Thanks
 - [TinyMCE](https://github.com/tinymce/tinymce) for the WYSUWYG;

@@ -126,7 +126,11 @@ class Content
 
 		$content = unserialize( file_get_contents(DB_PRIVATE_PATH) );
 
+		if(!$content)
+			$content = array();
+
 		return $safe_replace ? self::replaceQuotes($content) : $content;
+
 	}
 
 	private static function updatePrivateContent($content)
@@ -162,7 +166,14 @@ class Content
 		$result = array();
 
 		foreach ($array as $key => $value)
-			$result[$key] = is_array($value) ? self::replaceQuotes($value) : str_replace( '"', '&quot;', $value );
+		{
+
+			if( is_array($value) )
+				$result[$key] = self::replaceQuotes($value);
+			else
+				$result[$key] = str_replace( array('"', '\''), array('&quot;', '&apos;'), $value );
+
+		}
 
 		return $result;
 

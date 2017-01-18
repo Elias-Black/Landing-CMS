@@ -130,6 +130,6 @@ v 3.0:
 ***
 
 ### Thanks
-- [TinyMCE](https://github.com/tinymce/tinymce) for the WYSUWYG;
-- [Responsive File Manager](http://www.responsivefilemanager.com/) for TinyMCE external filemanager;
-- [Bootstrap](https://github.com/twbs/bootstrap) for Admin panel styles.
+- [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSUWYG;
+- [Responsive File Manager](http://www.responsivefilemanager.com/ "Responsive File Manager site.") for TinyMCE external filemanager;
+- [Bootstrap](https://github.com/twbs/bootstrap "Bootstrap project on GitHub.") for Admin panel styles.

@@ -72,6 +72,7 @@ You can to call your fields by alias.
     <title><?php echo $get['title']; ?></title>
     ...
 ```
+![Demo page](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/demo-page.png "Demo page")
 ### Checkbox
 If you want to use checkboxes you need to check the values of equality 'on'.
 

@@ -12,7 +12,7 @@ Landing CMS is a simple tool for management landing pages. It don't use any data
 ### Installation
 For using the CMS you should copy all files from this repository to root directory of your site. Now you need config permissions.
 
-For checking configs you can use helper: open **https://your_site.com/install.php**
+For checking configs you can use helper: open `https://your_site.com/install.php`
 ![Installation helper](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/installation.png "Installation helper")
 
 You should set 777 permissions for upload directories:
@@ -124,6 +124,7 @@ That so... In my opinion this functionality enough for all landing pages. If you
 v 1.0:
 - Add admin icon to frontend
 - Add dictionary array with all texts
+- Add `<?php die; ?>` code in DB files
 
 v 2.0:
 - Add Groups

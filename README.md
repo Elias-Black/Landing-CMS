@@ -140,4 +140,3 @@ v 3.0:
 - [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSUWYG;
 - [Responsive File Manager](http://www.responsivefilemanager.com/ "Responsive File Manager site.") for TinyMCE external filemanager;
 - [Bootstrap](https://github.com/twbs/bootstrap "Bootstrap project on GitHub.") for Admin panel styles.
->>>>>>> a8f763436e6d6ff1c271872c178d7a04fa74bc2e

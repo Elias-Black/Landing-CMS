@@ -12,7 +12,8 @@ Landing CMS is a simple tool for management landing pages. It don't use any data
 ### Installation
 For using the CMS you should copy all files from this repository to root directory of your site. Now you need config permissions.
 
-For checking configs you can use helper: open your_site.com/install.php
+For checking configs you can use helper: open **https://your_site.com/install.php**
+![Installation helper](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/installation.png "Installation helper")
 
 You should set 777 permissions for upload directories:
 - web/_cms/uploads/tinymce/source/
@@ -35,13 +36,17 @@ And close access to some pages by 403 response of your server:
 If helper show that all is done you should going to Admin panel: your_site.com/cms/
 
 Now you need to create your password.
+![Creating password](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/creating-password.png "Creating password")
 
 **All is done!** You can create your first field and use it in your code.
+![Welcome to Landing CMS](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/clean-cms.png "Welcome to Landing CMS")
 
 ***
 
 ### How to use
 In the Admin panel you can create fields with 4 formats: string, multiple line text, WYSIWYG field and checkbox. When you creating a field you need to enter an alias.
+![Adding a new field](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/adding-field.png "Adding a new field")
+
 
 Then, when you want to use your fields in your files you need to connect DB to your file.
 

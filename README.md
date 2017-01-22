@@ -1,37 +1,143 @@
-## Welcome to GitHub Pages
+# Landing CMS
+A simple CMS for landing pages.
 
-You can use the [editor on GitHub](https://github.com/Elias-Black/Landing-CMS/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Be careful! While that is an alpha version.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Hello guys!
+I wrote this CMS for myself and want to share it for everyone.
+Landing CMS is a simple tool for management landing pages. It don't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.3 and early!
 
-### Markdown
+***
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Installation
+For using the CMS you should copy all files from this repository to root directory of your site. Now you need config permissions.
 
-```markdown
-Syntax highlighted code block
+For checking configs you can use helper: open `https://your_site.com/install.php`
+![Installation helper](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/installation.png "Installation helper")
 
-# Header 1
-## Header 2
-### Header 3
+You should set 777 permissions for upload directories:
+- web/_cms/uploads/tinymce/source/
+- web/_cms/uploads/tinymce/thumbs/
 
-- Bulleted
-- List
+You should set 666 permissions for DB files:
+- cms/_db/password.php
+- cms/_db/private.php
+- cms/_db/public.php
 
-1. Numbered
-2. List
+And close access to some pages by 403 response of your server:
+- cms/_db/password.php
+- cms/_db/private.php
+- cms/_db/public.php
+- cms/_templates/*
+- cms/_classes/*
 
-**Bold** and _Italic_ and `Code` text
+*-all contains files.
 
-[Link](url) and ![Image](src)
+If helper show that all is done you should going to Admin panel: your_site.com/cms/
+
+Now you need to create your password.
+![Creating password](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/creating-password.png "Creating password")
+
+**All is done!** You can create your first field and use it in your code.
+![Welcome to Landing CMS](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/clean-cms.png "Welcome to Landing CMS")
+
+***
+
+### How to use
+In the Admin panel you can create fields with 4 formats: string, multiple line text, WYSIWYG field and checkbox. When you creating a field you need to enter an alias.
+![Adding a new field](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/adding-field.png "Adding a new field")
+
+
+Then, when you want to use your fields in your files you need to connect DB to your file.
+
+**Example:**
+```php
+<?php
+
+// Connecting the database
+require_once('cms/_db/public.php');
+
+?>
+
+<html>
+  ...
 ```
+### Text
+You can to call your fields by alias.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+**Example:**
+```php
+<html>
+  <head>
+    <title><?php echo $get['title']; ?></title>
+    ...
+```
+![Demo page](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/demo-page.png "Demo page")
+### Checkbox
+If you want to use checkboxes you need to check the values of equality 'on'.
 
-### Jekyll Themes
+**Example:**
+```php
+<body>
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Elias-Black/Landing-CMS/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+...
 
-### Support or Contact
+  <?php if($get['maintenance_mode'] == 'on'): ?>
+    <h1>Try again later</h1>
+  <?php else: ?>
+    <h1>Hello, World!</h1>
+  <?php endif; ?>
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+...
+
+</body>
+```
+### Modules
+If you need use any modules you can creat these in `modules` directory. For using your fields in your modules you should connect DB before connected this modules.
+
+**Example:**
+```php
+<?php
+
+// Connecting the batabase
+require_once('cms/_db/public.php');
+
+// Connecting a module
+require_once('modules/rand_num.php');
+
+?>
+
+  <html>
+    <head>
+
+  ...
+
+  <b>Random number module:</b> <?php echo $rand_num; ?>
+
+  ...
+```
+That so... In my opinion this functionality enough for all landing pages. If you
+ don't think so you can fork my project or suggest me some features ;)
+***
+
+### To do
+v 1.0:
+- Add admin icon to frontend
+- Add dictionary array with all texts
+- Add `<?php die; ?>` code in DB files
+
+v 2.0:
+- Add Groups
+- Add editing Group's names
+- Add editing Fields
+
+v 3.0:
+- Add Drag'n'Drop for Groups and Fields
+
+***
+
+### Thanks
+- [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSUWYG;
+- [Responsive File Manager](http://www.responsivefilemanager.com/ "Responsive File Manager site.") for TinyMCE external filemanager;
+- [Bootstrap](https://github.com/twbs/bootstrap "Bootstrap project on GitHub.") for Admin panel styles.
+>>>>>>> a8f763436e6d6ff1c271872c178d7a04fa74bc2e

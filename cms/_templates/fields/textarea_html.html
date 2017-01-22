@@ -1,0 +1,31 @@
+<!-- TinyMCE 4.x -->
+<script type="text/javascript">
+ 
+  tinymce.init({
+    selector: ".js_wysiwyg_<?php echo $vars['alias']; ?>",
+    
+    plugins: [
+          "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+          "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+          "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+    ],
+    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code fontselect",
+    image_advtab: true ,
+
+    external_filemanager_path: "/cms/_tinymce/filemanager/",
+    filemanager_title: "Responsive Filemanager",
+    external_plugins: { "filemanager" : "/cms/_tinymce/filemanager/plugin.min.js"},
+    setup: function(ed) {
+      ed.on('change', function(ed) {
+        confirmLeave('on');
+      });
+    }
+  });
+ 
+</script>
+<!-- /TinyMCE -->
+
+<label for="<?php echo $vars['alias']; ?>"><?php echo $vars['title']; ?></label>
+
+<textarea rows="15" class="form-control js_wysiwyg_<?php echo $vars['alias']; ?>" name="<?php echo $vars['alias']; ?>" id="<?php echo $vars['alias']; ?>" rows="4" cols="50" placeholder="Type here"><?php echo $vars['output']; ?></textarea>

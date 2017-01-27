@@ -123,6 +123,7 @@ That so... In my opinion this functionality enough for all landing pages. If you
 ### To do
 v 1.0:
 - Add color picker type Field
+- Add upload files type Field
 - Add Admin icon to frontend
 - Add dictionary array with all texts
 - Add `<?php die; ?>` code in DB files

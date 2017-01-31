@@ -6,6 +6,14 @@
 
 
 
+/* Special styles for PayPay button */
+
+.donate-btn {
+    padding: 12px 15px 8px;
+}
+
+
+
 /* Layout configs */
 
 .buttons {
@@ -26,6 +34,14 @@ h2 {
 
 .close {
 	color: #f10!important;
+}
+
+
+
+/* Do non-sticky footer */
+
+footer {
+    position: relative!important;
 }
 
 

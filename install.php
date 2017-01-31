@@ -78,10 +78,14 @@ $closed = array(
 						<a href="/" target="_blank">Website</a>
 					</li>
 					<li>
-						<a href="#">About CMS</a>
+						<a href="https://github.com/Elias-Black/Landing-CMS" target="_blank">About CMS</a>
 					</li>
 					<li>
-						<a href="#">Donate</a>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="donate-btn">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="hosted_button_id" value="QGKZW29YXRDCL">
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online! | Press the button to donate for Landing CMS">
+						</form>
 					</li>
 				</ul>
 			</div>
@@ -137,13 +141,13 @@ foreach ($upload as $folder)
 <!-- MAIN end -->
 
 <!-- FOOTER begin -->
-	<nav class="navbar navbar-default navbar-fixed-bottom">
+	<footer class="navbar navbar-default navbar-fixed-bottom">
 	  <div class="container">
 	    <div class="col-sm-12 text-center navbar-text">
 	        2017 &copy; Landing CMS
 	    </div>
 	  </div>
-	</nav>
+	</footer>
 <!-- FOOTER end -->
 
 </body>

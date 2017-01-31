@@ -1,3 +1,17 @@
+/* Do non-sticky footer */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+footer {
+    position: absolute!important;
+    bottom: 0;
+}
+
+
+
 /* Floating desktop menu */
 
 .right.nav.navbar-nav {
@@ -34,14 +48,6 @@ h2 {
 
 .close {
 	color: #f10!important;
-}
-
-
-
-/* Do non-sticky footer */
-
-footer {
-    position: relative!important;
 }
 
 

@@ -7,6 +7,10 @@ Be careful! While that is an alpha version.
 I wrote this CMS for myself and want to share it for everyone.
 Landing CMS is a simple tool for management landing pages. It don't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.3 and early!
 
+For the rapid development of the project, you can make a donation.
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QGKZW29YXRDCL)
+
 ***
 
 ### Installation

@@ -68,11 +68,11 @@
 <!-- MAIN begin -->
 	<div class="container">
 		<div class="row">
-			<?php if($vars['error_message']): ?>
+			<?php if( isset($vars['error_message']) ): ?>
 				<p class="alert alert-danger"><?php echo $vars['error_message']; ?></p>
 			<?php endif; ?>
 
-			<?php if($vars['success_message']): ?>
+			<?php if( isset($vars['success_message']) ): ?>
 				<p class="alert alert-success"><?php echo $vars['success_message']; ?></p>
 			<?php endif; ?>
 

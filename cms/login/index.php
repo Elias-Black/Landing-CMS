@@ -3,7 +3,7 @@
 // Connecting main classes
 require_once('../_classes/index.php');
 
-if( $_GET['logout'] )
+if( isset($_GET['logout']) )
 	User::logout();
 
 // Render login form

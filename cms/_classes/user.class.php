@@ -18,7 +18,9 @@ class User
 
 		$sys_cookie_pwd = self::getPasswordForCookie();
 
-		$entered_pwd = self::preparePasswordForDb($_POST['password']);
+		$post_pwd = isset($_POST['password']) ? $_POST['password'] : false;
+
+		$entered_pwd = self::preparePasswordForDb($post_pwd);
 
 		if( $entered_pwd == $db_pwd || $usr_cookie_pwd == $sys_cookie_pwd )
 		{
@@ -80,7 +82,7 @@ class User
 
 	private static function getLoginCookie()
 	{
-		return $_COOKIE['login'];
+		return isset($_COOKIE['login']) ? $_COOKIE['login'] : false;
 	}
 
 	private static function preparePasswordForDb($password)

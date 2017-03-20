@@ -65,18 +65,18 @@ require_once('modules/rand_num.php');
 	<body>
 		<div id="header">
 			<div class="center">
-				<?php echo $get['title'] ? $get['title'] : 'Create field with \'title\' alias'; ?>
+				<?php echo isset($get['title']) ? $get['title'] : 'Create field with \'title\' alias'; ?>
 			</div>
 		</div>
 		<div id="main">
 			<div class="center">
-				<?php echo $get['main'] ? $get['main'] : 'Create field with \'main\' alias'; ?>
+				<?php echo isset($get['main']) ? $get['main'] : 'Create field with \'main\' alias'; ?>
 				<p>Random module: <?php echo $rand_num; ?></p>
 			</div>
 		</div>
 		<div id="footer">
 			<div class="center">
-				<?php echo $get['footer'] ? $get['footer'] : 'Create field with \'footer\' alias'; ?>
+				<?php echo isset($get['footer']) ? $get['footer'] : 'Create field with \'footer\' alias'; ?>
 			</div>
 		</div>
 	</body>

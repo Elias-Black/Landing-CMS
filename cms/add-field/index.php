@@ -14,9 +14,6 @@ $content = Utils::render(
 );
 
 // Printing page
-echo Utils::render(
-	'index.html',
-	 array('content' => $content, 'error_message' => $message['error'], 'success_message' => $message['success'])
-);
+echo Utils::renderIndex($content, $message);
 
 ?>

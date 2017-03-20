@@ -15,9 +15,6 @@ if( !empty($_POST) )
 $content = Content::getMainForm();
 
 // Printing page
-echo Utils::render(
-	'index.html',
-	 array('content' => $content)
-);
+echo Utils::renderIndex($content, $message);
 
 ?>

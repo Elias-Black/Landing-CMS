@@ -29,6 +29,18 @@ class Utils
 
 	}
 
+	public static function renderIndex($content, $message)
+	{
+		return self::render(
+			'index.html',
+			 array(
+			 	'content' => isset($content) ? $content : null,
+			 	'error_message' => isset($message['error']) ? $message['error'] : null,
+			 	'success_message' => isset($message['success']) ? $message['success'] : null
+			 )
+		);
+	}
+
 }
 
 ?>

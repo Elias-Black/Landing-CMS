@@ -62,3 +62,64 @@ function confirmLeave(change)
 */
 
 document.addEventListener( 'DOMContentLoaded', confirmLeave, false );
+
+
+
+/* The function for initialize Color Picker */
+
+function CPinit(cp_id, def_color)
+{
+
+	var picker_field = document.getElementById(cp_id);
+	var picker_el = picker_field.nextElementSibling;
+
+	var picker = new CP( picker_el, 'focus' );
+
+	if( def_color )
+	{
+		picker.set( CP.parse(def_color) );
+		onCP(picker);
+	}
+
+	function onCP(picker)
+	{
+
+		picker.on('change', function(color) {
+
+			var color_code = '#' + color;
+			var cp_input = this.target.previousElementSibling;
+
+			if(cp_input.value != color_code)
+				cp_input.form.onchange();
+
+			cp_input.value = color_code;
+			this.target.style.backgroundColor = color_code;
+
+		});
+
+	}
+
+	function updateCP() {
+
+		if( CP.parse(this.value).toString() != this.picker.set().toString() )
+			this.form.onchange();
+
+		this.picker.set( CP.parse(this.value) );
+		this.nextElementSibling.style.backgroundColor = this.value;
+
+	}
+
+	picker_field.picker = picker;
+	picker_el.picker 	= picker;
+
+	picker_field.onchange = updateCP;
+	picker_field.oncut	= updateCP;
+	picker_field.onpaste  = updateCP;
+	picker_field.onkeyup  = updateCP;
+	picker_field.oninput  = updateCP;
+
+	picker_el.onclick = function(){
+		onCP(this.picker);
+	};
+
+}

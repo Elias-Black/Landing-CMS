@@ -48,7 +48,7 @@ Now you need to create your password.
 ***
 
 ### How to use
-In the Admin panel you can create fields with 4 formats: string, multiple line text, WYSIWYG field and checkbox. When you creating a field you need to enter an alias.
+In the Admin panel you can create fields with 5 formats: string, multiple line text, WYSIWYG field, checkbox and Color Picker. When you creating a field you need to enter an alias.
 ![Adding a new field](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/adding-field.png "Adding a new field")
 
 
@@ -126,7 +126,6 @@ That so... In my opinion this functionality enough for all landing pages. If you
 
 ### To do
 v 1.0:
-- Add color picker type Field
 - Add upload files type Field
 - Add Admin icon to frontend
 - Add dictionary array with all texts
@@ -148,4 +147,5 @@ v 4.0
 ### Thanks
 - [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSUWYG;
 - [Responsive File Manager](http://www.responsivefilemanager.com/ "Responsive File Manager site.") for TinyMCE external filemanager;
+- [Tovic / color-picker](https://github.com/tovic/color-picker "A simple color picker plugin written in pure JavaScript, for modern browsers.") for the Color Picker;
 - [Bootstrap](https://github.com/twbs/bootstrap "Bootstrap project on GitHub.") for Admin panel styles.

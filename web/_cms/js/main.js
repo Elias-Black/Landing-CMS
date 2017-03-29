@@ -99,17 +99,36 @@ function CPinit(cp_id, def_color)
 
 	}
 
-	function updateCP() {
+	function getPickerByElement(element)
+	{
 
-		if( CP.parse(this.value).toString() != this.picker.set().toString() )
+		var i=0;
+
+		while(CP.__instance__[i])
+		{
+
+			if(CP.__instance__[i].target.previousElementSibling == element)
+				return CP.__instance__[i];
+
+			i++;
+
+		}
+
+	}
+
+	function updateCP()
+	{
+
+		var cpicker = getPickerByElement(this);
+
+		if( CP.parse(this.value).toString() != cpicker.set().toString() )
 			this.form.onchange();
 
-		this.picker.set( CP.parse(this.value) );
+		cpicker.set( CP.parse(this.value) );
 		this.nextElementSibling.style.backgroundColor = this.value;
 
 	}
 
-	picker_field.picker = picker;
 	picker_el.picker 	= picker;
 
 	picker_field.onchange = updateCP;
@@ -118,8 +137,11 @@ function CPinit(cp_id, def_color)
 	picker_field.onkeyup  = updateCP;
 	picker_field.oninput  = updateCP;
 
-	picker_el.onclick = function(){
-		onCP(this.picker);
+	picker_el.onclick = function() {
+
+		var cpicker = getPickerByElement(this.previousElementSibling);
+		onCP(cpicker);
+
 	};
 
 }

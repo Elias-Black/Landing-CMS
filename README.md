@@ -130,10 +130,12 @@ v 1.0:
 - Add Admin icon to frontend
 - Add dictionary array with all texts
 - Add `<?php die; ?>` code in DB files
+- Add the Salt for password
 
 v 2.0:
 - Add Groups
 - Add editing Group's names
+- Add Groups to public DB for enumerating Fields
 - Add editing Fields
 
 v 3.0:

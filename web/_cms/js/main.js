@@ -145,3 +145,60 @@ function CPinit(cp_id, def_color)
 	};
 
 }
+
+
+/* The function for initialize File Uploader */
+
+function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
+{
+
+	var file_inp_el = document.getElementById(inp_id);
+	var file_btn_el = document.getElementById(btn_id);
+	var file_cls_el = document.getElementById(cls_id);
+	var file_ifr_el	= document.getElementById(ifr_id);
+
+	file_btn_el.file_ifr_el = file_ifr_el;
+	file_inp_el.file_ifr_el = file_ifr_el;
+	file_cls_el.file_ifr_el = file_ifr_el;
+
+	function showElement(element)
+	{
+		if(!element.src)
+			element.src = element.dataset.src;
+		element.parentElement.classList.remove('hidden');
+	}
+
+	function hideElement(element)
+	{
+		element.parentElement.classList.add('hidden');
+	}
+
+	file_btn_el.onclick = function()
+	{
+		showElement(this.file_ifr_el);
+	}
+
+	file_btn_el.onkeypress = function(e)
+	{
+		if(e.keyCode == 13)
+			showElement(this.file_ifr_el);
+	}
+
+	file_cls_el.onclick = function()
+	{
+		hideElement(this.file_ifr_el);
+	}
+
+	file_cls_el.onkeypress = function(e)
+	{
+		if(e.keyCode == 13)
+			hideElement(this.file_ifr_el);
+	}
+
+	file_inp_el.onchange = function()
+	{
+		this.value = '/web/_cms/uploads/tinymce/source/' + this.value;
+		hideElement(this.file_ifr_el);
+	}
+
+}

@@ -130,7 +130,10 @@ v 1.0:
 - Add Admin icon to frontend
 - Add dictionary array with all texts
 - Add `<?php die; ?>` code in DB files
+- Add Security Key to Responsive File Manager
+- Set Transliteration to Responsive File Manager
 - Add the Salt for password
+- Add rulls for alias names
 
 v 2.0:
 - Add Groups

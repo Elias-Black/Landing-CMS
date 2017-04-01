@@ -1,28 +1,28 @@
 <!-- TinyMCE 4.x -->
 <script type="text/javascript">
- 
-  tinymce.init({
-    selector: ".js_wysiwyg_<?php echo $vars['alias']; ?>",
-    
-    plugins: [
-          "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-          "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
-          "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
-    ],
-    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code fontselect",
-    image_advtab: true ,
 
-    external_filemanager_path: "/cms/_tinymce/filemanager/",
-    filemanager_title: "Responsive Filemanager",
-    external_plugins: { "filemanager" : "/cms/_tinymce/filemanager/plugin.min.js"},
-    setup: function(ed) {
-      ed.on('change', function(ed) {
-        confirmLeave('on');
-      });
-    }
-  });
- 
+	tinymce.init({
+		selector: ".js_wysiwyg_<?php echo $vars['alias']; ?>",
+
+		plugins: [
+			"advlist autolink link image lists charmap print preview hr anchor pagebreak",
+			"searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+			"table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+		],
+		toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+		toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor	| print preview code fontselect",
+		image_advtab: true ,
+
+		external_filemanager_path: "/cms/_tinymce/filemanager/",
+		filemanager_title: "Responsive Filemanager",
+		external_plugins: { "filemanager" : "/cms/_tinymce/filemanager/plugin.min.js"},
+		setup: function(ed) {
+			ed.on('change', function(ed) {
+				confirmLeave('on');
+			});
+		}
+	});
+
 </script>
 <!-- /TinyMCE -->
 

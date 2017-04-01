@@ -1,13 +1,13 @@
 /* Do non-sticky footer */
 
 html {
-    position: relative;
-    min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
 
 footer {
-    position: absolute!important;
-    bottom: 0;
+	position: absolute!important;
+	bottom: 0;
 }
 
 
@@ -15,7 +15,7 @@ footer {
 /* Floating desktop menu */
 
 .right.nav.navbar-nav {
-    float: left;
+	float: left;
 }
 
 
@@ -23,7 +23,7 @@ footer {
 /* Special styles for PayPay button */
 
 .donate-btn {
-    padding: 12px 15px 8px;
+	padding: 12px 15px 8px;
 }
 
 
@@ -39,7 +39,7 @@ footer {
 }
 
 h2 {
-    margin-bottom: 20px!important;
+	margin-bottom: 20px!important;
 }
 
 
@@ -55,21 +55,21 @@ h2 {
 /* Drop down checkbox label under delete button */
 
 input[type="checkbox"] + label { 
-    display: inline-block;
-    margin-bottom: 0;
+	display: inline-block;
+	margin-bottom: 0;
 }
 
 
 
 @media (min-width: 768px) {
 
-    /* Floating mobile dropdown menu */
+	/* Floating mobile dropdown menu */
 
 	.right.nav.navbar-nav {
 		float: right;
 	}
 
-    /* Responsive layout */
+	/* Responsive layout */
 
 	.row {
 		padding: 0 20% 55px 20%;
@@ -82,80 +82,89 @@ input[type="checkbox"] + label {
 
 @media screen and (max-width: 515px) {
 
-    .mce-window {
-        max-width: 320px !important;
-        left: calc(50% - 160px) !important;
-    }
-    .mce-window-body {
-        max-width: 100% !important;
-        min-height: 230px !important;
-    }
-    .mce-container.mce-panel.mce-abs-layout-item,
-    .mce-container.mce-panel.mce-abs-layout-item .mce-container-body.mce-abs-layout {
-        max-width: 100% !important;
-        min-height: 190px !important;
-    }
-    .mce-flow-layout-item.mce-btn-group {
-        border-left: none !important;
-    }
-    .mce-panel,
-    .mce-panel > .mce-container-body,
-    .mce-foot,
-    .mce-foot > .mce-abs-layout {
-        max-width: 320px !important;
-    }
-    .mce-formitem {
-        width: 300px !important;
-        left: 10px !important;
-        display: block !important;
-    }
-    .mce-formitem:nth-child(2) {
-        top: 10px !important;
-    }
-    .mce-formitem:nth-child(3) {
-        top: 50px !important;
-    }
-    .mce-formitem:nth-child(4) {
-        top: 90px !important;
-    }
-    .mce-formitem:nth-child(5) {
-        top: 130px !important;
-    }
-    .mce-formitem:nth-child(6) {
-        top: 170px !important;
-    }
-    .mce-container.mce-form.mce-abs-layout-item .mce-container-body.mce-abs-layout .mce-container.mce-form.mce-abs-layout-item {
-        top: 40px !important;
-        left: 0 !important;
-        height: 160px !important;
-    }
-    .mce-formitem label {
-        width: 106px !important;
-        font-size: 13px !important;
-        left: 0px !important;
-    }
-    .mce-multiline {
-        max-width: 290px !important;
-    }
-    .mce-checkbox {
-        top: 40px !important;
-        left: 0 !important;
-    }
-    .mce-label {
-        font-size: 13px !important;
-    }
-    .mce-foot .mce-btn-has-text {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        display: inline-block !important;
-        margin: 10px 5px !important;
-    }
-    .mce-abs-layout-item input {
-        max-width: 150px !important;
-    }
-    .mce-abs-layout-item.mce-has-open input {
-        max-width: 118px !important;
-    }
+	.mce-window {
+		max-width: 320px !important;
+		left: calc(50% - 160px) !important;
+	}
+	.mce-window-body {
+		max-width: 100% !important;
+		min-height: 230px !important;
+	}
+	.mce-container.mce-panel.mce-abs-layout-item,
+	.mce-container.mce-panel.mce-abs-layout-item .mce-container-body.mce-abs-layout {
+		max-width: 100% !important;
+		min-height: 190px !important;
+	}
+	.mce-flow-layout-item.mce-btn-group {
+		border-left: none !important;
+	}
+	.mce-panel,
+	.mce-panel > .mce-container-body,
+	.mce-foot,
+	.mce-foot > .mce-abs-layout {
+		max-width: 320px !important;
+	}
+	.mce-formitem {
+		width: 300px !important;
+		left: 10px !important;
+		display: block !important;
+	}
+	.mce-formitem:nth-child(2) {
+		top: 10px !important;
+	}
+	.mce-formitem:nth-child(3) {
+		top: 50px !important;
+	}
+	.mce-formitem:nth-child(4) {
+		top: 90px !important;
+	}
+	.mce-formitem:nth-child(5) {
+		top: 130px !important;
+	}
+	.mce-formitem:nth-child(6) {
+		top: 170px !important;
+	}
+	.mce-container.mce-form.mce-abs-layout-item .mce-container-body.mce-abs-layout .mce-container.mce-form.mce-abs-layout-item {
+		top: 40px !important;
+		left: 0 !important;
+		height: 160px !important;
+	}
+	.mce-formitem label {
+		width: 106px !important;
+		font-size: 13px !important;
+		left: 0px !important;
+	}
+	.mce-multiline {
+		max-width: 290px !important;
+	}
+	.mce-checkbox {
+		top: 40px !important;
+		left: 0 !important;
+	}
+	.mce-label {
+		font-size: 13px !important;
+	}
+	.mce-foot .mce-btn-has-text {
+		position: relative !important;
+		top: 0 !important;
+		left: 0 !important;
+		display: inline-block !important;
+		margin: 10px 5px !important;
+	}
+	.mce-abs-layout-item input {
+		max-width: 150px !important;
+	}
+	.mce-abs-layout-item.mce-has-open input {
+		max-width: 118px !important;
+	}
 
+}
+
+
+
+/* Styles for File Uploader */
+
+.close-iframe {
+	float: right;
+	padding: 7px;
 }

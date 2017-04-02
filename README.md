@@ -28,16 +28,7 @@ You should set 666 permissions for DB files:
 - cms/_db/private.php
 - cms/_db/public.php
 
-And close access to some pages by 403 response of your server:
-- cms/_db/password.php
-- cms/_db/private.php
-- cms/_db/public.php
-- cms/_templates/*
-- cms/_classes/*
-
-*-all contains files.
-
-If helper show that all is done you should going to Admin panel: your_site.com/cms/
+If helper show that all is done you should going to Admin panel: `https://your_site.com/cms/`
 
 Now you need to create your password.
 ![Creating password](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/creating-password.png "Creating password")

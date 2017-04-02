@@ -67,7 +67,11 @@ class User
 
 	private static function getDbPassword()
 	{
-		return file_get_contents(DB_PASSWORD_PATH);
+
+		$content = file_get_contents(DB_PASSWORD_PATH);
+
+		return substr($content, SECURE_LENGTH);
+
 	}
 
 	private static function getPasswordForCookie()
@@ -93,7 +97,11 @@ class User
 	private static function savePassword($password)
 	{
 
-		file_put_contents( DB_PASSWORD_PATH, self::preparePasswordForDb($password) );
+		$password = self::preparePasswordForDb($password);
+
+		$content = SECURE_TEXT . $password;
+
+		file_put_contents( DB_PASSWORD_PATH, $content );
 
 		self::setLoginCookie();
 

@@ -124,7 +124,9 @@ class Content
 	private static function getPrivateContent($safe_replace = false)
 	{
 
-		$content = unserialize( file_get_contents(DB_PRIVATE_PATH) );
+		$content = file_get_contents(DB_PRIVATE_PATH);
+
+		$content = unserialize( substr($content, SECURE_LENGTH) );
 
 		if(!$content)
 			$content = array();
@@ -135,7 +137,11 @@ class Content
 
 	private static function updatePrivateContent($content)
 	{
-		file_put_contents( DB_PRIVATE_PATH, serialize($content) );
+
+		$content = SECURE_TEXT . serialize($content);
+
+		file_put_contents( DB_PRIVATE_PATH, $content );
+
 	}
 
 	private static function updatePublicContent()

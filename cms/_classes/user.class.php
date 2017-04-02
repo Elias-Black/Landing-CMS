@@ -74,6 +74,15 @@ class User
 
 	}
 
+	private static function getDbSalt()
+	{
+
+		$content = file_get_contents(DB_PASSWORD_PATH);
+
+		return substr($content, RANDOM_STR_LENGTH);
+
+	}
+
 	private static function getPasswordForCookie()
 	{
 		return md5( self::getDbPassword() );
@@ -91,7 +100,21 @@ class User
 
 	private static function preparePasswordForDb($password)
 	{
-		return $password ? sha1($password) : false;
+
+		if(!$password)
+			return false;
+
+		$salt = self::getDbSalt();
+
+		if(!$salt)
+			$salt = Utils::getRandomString(RANDOM_STR_LENGTH);
+
+		$password = sha1($password . $salt);
+
+		$result = $password . $salt;
+
+		return $result;
+
 	}
 
 	private static function savePassword($password)

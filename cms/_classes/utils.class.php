@@ -9,9 +9,9 @@ class Utils
 	public static function redirect($url)
 	{
 
-	    header("Location: $url", true);
+		header("Location: $url", true);
 
-	    exit();
+		exit();
 
 	}
 
@@ -39,6 +39,11 @@ class Utils
 			 	'success_message' => isset($message['success']) ? $message['success'] : null
 			 )
 		);
+	}
+
+	public static function getRandomString($length = 10)
+	{
+		return substr( sha1( rand() ), $length);
 	}
 
 }

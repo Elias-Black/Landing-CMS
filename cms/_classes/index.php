@@ -16,8 +16,10 @@ define('DB_PASSWORD_PATH',	ROOT_PATH. '/cms/_db/password.php');
 define('DB_PRIVATE_PATH',	ROOT_PATH. '/cms/_db/private.php');
 define('DB_PUBLIC_PATH',	ROOT_PATH. '/cms/_db/public.php');
 
-define('SECURE_TEXT',	'<?php die; ?>');
-define('SECURE_LENGTH',	13);
+define('SECURE_TEXT',		'<?php die; ?>');
+define('SECURE_LENGTH',		13);
+
+define('RANDOM_STR_LENGTH',	-10);
 
 require_once("utils.class.php");
 

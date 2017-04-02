@@ -197,8 +197,16 @@ function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
 
 	file_inp_el.onchange = function()
 	{
-		this.value = '/web/_cms/uploads/tinymce/source/' + this.value;
 		hideElement(this.file_ifr_el);
 	}
 
+}
+
+
+
+/* The callback function for File Uploader */
+
+function responsive_filemanager_callback(inp_id){
+	var file_inp_el = document.getElementById(inp_id);
+	file_inp_el.value = '/web/_cms/uploads/tinymce/source/' + file_inp_el.value;
 }

@@ -9,18 +9,6 @@ function getPerms($path)
 	return substr( sprintf( '%o', fileperms($path) ), -3 );
 }
 
-function getStatus($url)
-{
-
-	$HTTPheaders = @get_headers("http://{$_SERVER['SERVER_NAME']}/$url");
-
-	$HTTPSheaders = @get_headers("https://{$_SERVER['SERVER_NAME']}/$url");
-
-	if( $HTTPheaders && strpos($HTTPheaders[0], '403') || $HTTPSheaders && strpos($HTTPSheaders[0],'403') )
-		return true;
-
-}
-
 $db = array(
 	'cms/_db/password.php',
 	'cms/_db/private.php',
@@ -30,14 +18,6 @@ $db = array(
 $upload = array(
 	'web/_cms/uploads/tinymce/source',
 	'web/_cms/uploads/tinymce/thumbs'
-);
-
-$closed = array(
-	'cms/_db/password.php',
-	'cms/_db/private.php',
-	'cms/_db/public.php',
-	'cms/_templates/',
-	'cms/_classes/'
 );
 
 ?>
@@ -96,20 +76,6 @@ $closed = array(
 <!-- MAIN begin -->
 	<div class="container">
 		<div class="row">
-			<h2>Web-server config</h2>
-			<h5>Close user's access to:</h5>
-<?php
-
-foreach ($closed as $folder)
-{
-
-	$res = getStatus($folder) ? '<span class="label label-success">YES</span>' : '<span class="label label-danger">NO</span>';
-
-	echo "<h5>$res NECESSARY 403: $folder</h5>";
-
-}
-
-?>
 			<h2>Database permissions</h2>
 <?php
 
@@ -142,11 +108,11 @@ foreach ($upload as $folder)
 
 <!-- FOOTER begin -->
 	<footer class="navbar navbar-default navbar-fixed-bottom">
-	  <div class="container">
-	    <div class="col-sm-12 text-center navbar-text">
-	        2017 &copy; Landing CMS
-	    </div>
-	  </div>
+		<div class="container">
+			<div class="col-sm-12 text-center navbar-text">
+				2017 &copy; Landing CMS
+			</div>
+		</div>
 	</footer>
 <!-- FOOTER end -->
 

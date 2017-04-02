@@ -40,11 +40,11 @@ class Content
 
 		$new_content = array(
 			array(
-			    'output'		=> '',
-			    'title'			=> $_POST['title'],
-			    'alias'			=> $_POST['alias'],
-			    'description'	=> $_POST['description'],
-			    'type'			=> $_POST['type']
+				'output'		=> '',
+				'title'			=> $_POST['title'],
+				'alias'			=> $_POST['alias'],
+				'description'	=> $_POST['description'],
+				'type'			=> $_POST['type']
 			)
 		);
 

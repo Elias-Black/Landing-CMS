@@ -19,14 +19,14 @@ For using the CMS you should copy all files from this repository to root directo
 For checking configs you can use helper: open `https://your_site.com/install.php`
 ![Installation helper](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/installation.png "Installation helper")
 
-You should set 777 permissions for upload directories:
-- web/_cms/uploads/tinymce/source/
-- web/_cms/uploads/tinymce/thumbs/
-
 You should set 666 permissions for DB files:
 - cms/_db/password.php
 - cms/_db/private.php
 - cms/_db/public.php
+
+You should set 777 permissions for upload directories:
+- web/_cms/uploads/tinymce/source/
+- web/_cms/uploads/tinymce/thumbs/
 
 If helper show that all is done you should going to Admin panel: `https://your_site.com/cms/`
 
@@ -39,7 +39,15 @@ Now you need to create your password.
 ***
 
 ### How to use
-In the Admin panel you can create fields with 5 formats: string, multiple line text, WYSIWYG field, checkbox and Color Picker. When you creating a field you need to enter an alias.
+In the Admin panel you can create fields with 5 formats:
+- String
+- Multiple line text
+- WYSIWYG field
+- Checkbox
+- Color Picker
+- File Uploader
+
+When you creating a field you need to enter an alias.
 ![Adding a new field](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/adding-field.png "Adding a new field")
 
 

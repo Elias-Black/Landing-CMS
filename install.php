@@ -77,31 +77,53 @@ $upload = array(
 	<div class="container">
 		<div class="row">
 			<h2>Database permissions</h2>
-<?php
 
-foreach ($db as $file)
-{
+			<p>You need to set 666 permissions for this files:</p>
 
-	$res = getPerms($file) == 666 ? '<span class="label label-success">YES</span>' : '<span class="label label-danger">NO</span>';
+			<?php foreach ($db as $file): ?>
 
-	echo "<h5>$res NECESSARY 666: $file</h5>";
+				<h5>
 
-}
+					<?php if(getPerms($file) == 666): ?>
 
-?>
+						<span class="label label-success">YES</span>
+
+					<?php else: ?>
+
+						<span class="label label-danger">NO</span>
+
+					<?php endif; ?>
+
+					<?php echo $file; ?>
+
+				</h5>
+
+			<?php endforeach; ?>
+
 			<h2>Uploads permissions</h2>
-<?php
 
-foreach ($upload as $folder)
-{
+			<p>You need to set 777 permissions for this folders:</p>
 
-	$res = getPerms($folder) == 777 ? '<span class="label label-success">YES</span>' : '<span class="label label-danger">NO</span>';
+			<?php foreach ($upload as $folder): ?>
 
-	echo "<h5>$res NECESSARY 777: $folder</h5>";
+				<h5>
 
-}
+					<?php if(getPerms($folder) == 777): ?>
 
-?>
+						<span class="label label-success">YES</span>
+
+					<?php else: ?>
+
+						<span class="label label-danger">NO</span>
+
+					<?php endif; ?>
+
+					<?php echo $folder; ?>
+
+				</h5>
+
+			<?php endforeach; ?>
+
 		</div>
 	</div>
 <!-- MAIN end -->

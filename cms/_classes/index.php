@@ -21,6 +21,8 @@ define('SECURE_LENGTH',		13);
 
 define('RANDOM_STR_LENGTH',	-10);
 
+define('AUTH_EXPIRE',	31536000);
+
 require_once("utils.class.php");
 
 require_once("content.class.php");

@@ -90,7 +90,7 @@ class User
 
 	private static function setLoginCookie()
 	{
-		setcookie('login', self::getPasswordForCookie(), time() + (86400 * 365), '/');
+		setcookie('login', self::getPasswordForCookie(), time() + AUTH_EXPIRE, '/');
 	}
 
 	private static function getLoginCookie()

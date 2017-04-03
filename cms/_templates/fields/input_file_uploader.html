@@ -1,13 +1,13 @@
 <label for="<?php echo $vars['alias']; ?>"><?php echo $vars['title']; ?></label>
 
 <div class="input-group">
-	<input class="form-control" name="<?php echo $vars['alias']; ?>" id="<?php echo $vars['alias']; ?>" type="text" value="<?php echo $vars['output']; ?>" placeholder="Type here" />
-	<span role="button" tabindex="0" class="input-group-addon" id="js_<?php echo $vars['alias']; ?>_btn">Choose a file</span>
+	<input class="form-control" name="<?php echo $vars['alias']; ?>" data-iframe-id="js_<?php echo $vars['alias']; ?>_iframe" id="<?php echo $vars['alias']; ?>" type="text" value="<?php echo $vars['output']; ?>" placeholder="Type here" />
+	<span role="button" tabindex="0" class="input-group-addon" id="js_<?php echo $vars['alias']; ?>_btn" data-iframe-id="js_<?php echo $vars['alias']; ?>_iframe">Choose a file</span>
 </div>
 
 <div class="hidden">
-	<span role="button" tabindex="0" class="close-iframe" id="js_<?php echo $vars['alias']; ?>_close">Close</span>
-	<iframe id="iframe_<?php echo $vars['alias']; ?>" width="100%" height="550" frameborder="0"
+	<span role="button" tabindex="0" class="close-iframe" id="js_<?php echo $vars['alias']; ?>_close" data-iframe-id="js_<?php echo $vars['alias']; ?>_iframe">Close</span>
+	<iframe id="js_<?php echo $vars['alias']; ?>_iframe" width="100%" height="550" frameborder="0"
 		data-src="_tinymce/filemanager/dialog.php?type=2&field_id=<?php echo $vars['alias']; ?>&relative_url=1&lang=en_EN">
 	</iframe>
 </div>
@@ -16,9 +16,8 @@
 
 	var inp_id = '<?php echo $vars['alias']; ?>';
 	var btn_id = 'js_<?php echo $vars['alias']; ?>_btn';
-	var ifr_id = 'iframe_<?php echo $vars['alias']; ?>';
 	var cls_id = 'js_<?php echo $vars['alias']; ?>_close';
 
-	fileUpInit(inp_id, btn_id, cls_id, ifr_id);
+	fileUpInit(inp_id, btn_id, cls_id);
 
 </script>

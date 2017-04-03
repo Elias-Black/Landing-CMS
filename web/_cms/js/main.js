@@ -155,11 +155,9 @@ function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
 	var file_inp_el = document.getElementById(inp_id);
 	var file_btn_el = document.getElementById(btn_id);
 	var file_cls_el = document.getElementById(cls_id);
-	var file_ifr_el	= document.getElementById(ifr_id);
 
-	file_btn_el.file_ifr_el = file_ifr_el;
-	file_inp_el.file_ifr_el = file_ifr_el;
-	file_cls_el.file_ifr_el = file_ifr_el;
+
+	// Utils
 
 	function showElement(element)
 	{
@@ -173,31 +171,46 @@ function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
 		element.parentElement.classList.add('hidden');
 	}
 
+
+	// Open the iframe
+
 	file_btn_el.onclick = function()
 	{
-		showElement(this.file_ifr_el);
+		var element = document.getElementById(this.dataset.iframeId);
+		showElement(element);
 	}
 
 	file_btn_el.onkeypress = function(e)
 	{
 		if(e.keyCode == 13)
-			showElement(this.file_ifr_el);
+		{
+			var element = document.getElementById(this.dataset.iframeId);
+			showElement(element);
+		}
 	}
 
 	file_cls_el.onclick = function()
 	{
-		hideElement(this.file_ifr_el);
+		var element = document.getElementById(this.dataset.iframeId);
+		hideElement(element);
 	}
+
+
+	// Close the iframe
 
 	file_cls_el.onkeypress = function(e)
 	{
 		if(e.keyCode == 13)
-			hideElement(this.file_ifr_el);
+		{
+			var element = document.getElementById(this.dataset.iframeId);
+			hideElement(element);
+		}
 	}
 
 	file_inp_el.onchange = function()
 	{
-		hideElement(this.file_ifr_el);
+		var element = document.getElementById(this.dataset.iframeId);
+		hideElement(element);
 	}
 
 }
@@ -206,7 +219,11 @@ function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
 
 /* The callback function for File Uploader */
 
-function responsive_filemanager_callback(inp_id){
+function responsive_filemanager_callback(inp_id)
+{
+
 	var file_inp_el = document.getElementById(inp_id);
+
 	file_inp_el.value = '/web/_cms/uploads/tinymce/source/' + file_inp_el.value;
+
 }

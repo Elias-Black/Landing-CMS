@@ -39,7 +39,7 @@ Now you need to create your password.
 ***
 
 ### How to use
-In the Admin panel you can create fields with 5 formats:
+In the Admin panel you can create fields with 6 formats:
 - String
 - Multiple line text
 - WYSIWYG field

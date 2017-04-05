@@ -3,3 +3,10 @@
 .collapse.navbar-collapse {
 	display: block;
 }
+
+
+/* Close JS dependent Color Pickers */
+
+.no-js-color-picker {
+	display: none;
+}

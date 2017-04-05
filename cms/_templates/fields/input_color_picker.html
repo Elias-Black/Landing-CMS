@@ -1,9 +1,13 @@
 <label for="<?php echo $vars['alias']; ?>"><?php echo $vars['title']; ?></label>
 
-<div class="input-group">
+<div class="input-group no-js-color-picker">
 	<input class="form-control" name="<?php echo $vars['alias']; ?>" id="<?php echo $vars['alias']; ?>" type="text" value="<?php echo $vars['output']; ?>" placeholder="Type here" />
-	<span role="button" tabindex="0" class="input-group-addon" style="background-color: <?php echo $vars['output']; ?>;"></span>
+	<span role="button" tabindex="0" title="Click or Tap here" class="input-group-addon" style="background-color: <?php echo $vars['output']; ?>;"></span>
 </div>
+
+<noscript>
+	<input name="<?php echo $vars['alias']; ?>" type="color" value="<?php echo $vars['output']; ?>" class="form-control" title="Click or Tap here" />
+</noscript>
 
 <script>
 

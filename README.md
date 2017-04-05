@@ -149,4 +149,5 @@ v 4.0
 - [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSUWYG;
 - [Responsive File Manager](http://www.responsivefilemanager.com/ "Responsive File Manager site.") for TinyMCE external filemanager;
 - [Tovic / color-picker](https://github.com/tovic/color-picker "A simple color picker plugin written in pure JavaScript, for modern browsers.") for the Color Picker;
+- [Forsigner / magic-check](https://github.com/forsigner/magic-check "Beautify Radio and Checkbox with pure CSS.") for beautiful Checkboxes;
 - [Bootstrap](https://github.com/twbs/bootstrap "Bootstrap project on GitHub.") for Admin panel styles.

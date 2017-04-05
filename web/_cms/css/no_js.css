@@ -1,0 +1,5 @@
+/* Open mobile menu */
+
+.collapse.navbar-collapse {
+	display: block;
+}

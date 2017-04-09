@@ -5,21 +5,23 @@
 	<div class="form-group">
 		<label for="type">Type</label>
 		<select name="type" id="type" class="form-control">
-			<option value="input_text">String</option>
-			<option value="textarea_html">HTML (WYSIWYG)</option>
-			<option value="textarea_text">Multiline text</option>
-			<option value="input_checkbox">Checkbox</option>
-			<option value="input_color_picker">Color Picker</option>
-			<option value="input_file_uploader">File Uploader</option>
+			<?php foreach(unserialize(FIELD_TYPES) as $field_name => $field_value): ?>
+
+				<?php
+
+					$selected = '';
+
+					if( isset($vars['fields']['type']) && $vars['fields']['type'] == $field_value )
+					{
+						$selected = ' selected';
+					}
+
+				?>
+
+				<option value="<?php echo $field_value; ?>"<?php echo $selected; ?>><?php echo $field_name; ?></option>
+
+			<?php endforeach; ?>
 		</select>
-
-		<?php if($vars['fields']['type']): ?>
-		<script type="text/javascript">
-
-			document.querySelector('#type option[value=<?php echo $vars['fields']['type']; ?>]').selected = 'selected';
-
-		</script>
-		<?php endif; ?>
 
 		<div class="help-block">Select the type of the new field.</div>
 	</div>

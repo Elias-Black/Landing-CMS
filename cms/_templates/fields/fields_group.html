@@ -1,0 +1,40 @@
+<?php foreach($vars['fields'] as $field): ?>
+
+	<?php if( $field['type'] == 'fields_group' ): ?>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		 		<h3 class="panel-title" style="display: inline-block;"><?php echo $field['title']; ?></h3> <?php echo $field['description']; ?>
+		 		<div class="pull-right">
+			 		<a class="label label-default">&plusmn;</a>
+					<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; group?')" class="label label-danger" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; group">&times;</a>
+				</div>
+		 	</div>
+			<div class="panel-body">
+
+				<?php echo Utils::render(
+						"fields/{$field['type']}.html",
+						 array('fields' => $field['output'])
+					);
+				?>
+
+			</div>
+		</div>
+
+	<?php else: ?>
+
+		<div class="form-group">
+			<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; field?')" class="close" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; field">
+				<span aria-hidden="true">&times;</span>
+			</a>
+			<?php echo Utils::render(
+				"fields/{$field['type']}.html",
+				 $field);
+			?>
+			<?php if($field['description']): ?>
+				<p class="help-block"><?php echo $field['description']; ?></p>
+			<?php endif; ?>
+		</div>
+	<?php endif; ?>
+
+<?php endforeach; ?>

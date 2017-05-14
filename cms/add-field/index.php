@@ -10,7 +10,7 @@ if( !empty($_POST) )
 // Render form of adding new field
 $content = Utils::render(
 	'forms/add.html',
-	 array('fields' => $message['fields'])
+	 $message
 );
 
 // Printing page

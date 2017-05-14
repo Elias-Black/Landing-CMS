@@ -25,20 +25,10 @@
 			); ?>
 		</div>
 
-		<?php foreach($vars['fields'] as $field): ?>
-			<div class="form-group">
-				<a href="?delete=<?php echo $field['alias']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; field?')" class="close" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; field">
-					<span aria-hidden="true">&times;</span>
-				</a>
-				<?php echo Utils::render(
-					"fields/{$field['type']}.html",
-					$field);
-				?>
-				<?php if($field['description']): ?>
-					<p class="help-block"><?php echo $field['description']; ?></p>
-				<?php endif; ?>
-			</div>
-		<?php endforeach; ?>
+		<?php echo Utils::render(
+			"fields/fields_group.html",
+			$vars);
+		?>
 
 		<div class="buttons">
 			<?php echo Utils::render(

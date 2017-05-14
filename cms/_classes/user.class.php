@@ -38,7 +38,7 @@ class User
 			Utils::redirect('/cms/login/');
 
 		if( $entered_pwd && $entered_pwd != $db_pwd )
-			return array('error' => 'Invalid password.');
+			return array('error_message' => 'Invalid password.');
 
 	}
 
@@ -46,11 +46,11 @@ class User
 	{
 
 		if( $_POST['pass1'] != $_POST['pass2'] )
-			return array('error' => 'Password and confirm password doesn\'t match.');
+			return array('error_message' => 'Password and confirm password doesn\'t match.');
 
 		self::savePassword($_POST['pass1']);
 
-		return array('success' => 'Password successfully saved.');
+		return array('success_message' => 'Password successfully saved.');
 
 	}
 
@@ -140,14 +140,14 @@ class User
 		{
 			$message =  self::updatePassword();
 
-			if( !$message['error'] )
+			if( !$message['error_message'] )
 				Utils::redirect('/cms/');
 
 			return $message;
 
 		}
 
-		return array('error' => 'Create password.');
+		return array('error_message' => 'Create password.');
 
 	}
 

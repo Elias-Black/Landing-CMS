@@ -1,7 +1,7 @@
 <?php
 
-// Connecting the DataBase
-require_once('cms/_db/public.php');
+// Connecting the public controller
+require_once( realpath($_SERVER["DOCUMENT_ROOT"]) . '/web/index.php' );
 
 // Connecting a module
 require_once('modules/rand_num.php');
@@ -65,18 +65,48 @@ require_once('modules/rand_num.php');
 	<body>
 		<div id="header">
 			<div class="center">
-				<?php echo isset($get['title']) ? $get['title'] : 'Create field with \'title\' alias'; ?>
+				<?php if( isset($get['title']) ): ?>
+					<?=$get['title'];?>
+				<?php else: ?>
+					Create <i>String</i> field with 'title' alias
+				<?php endif; ?>
 			</div>
 		</div>
 		<div id="main">
 			<div class="center">
-				<?php echo isset($get['main']) ? $get['main'] : 'Create field with \'main\' alias'; ?>
+
+				<?php if( isset($get['main']) ): ?>
+					<?=$get['main'];?>
+				<?php else: ?>
+					Create <i>Multiline/WYSIWYG</i> field with 'main' alias
+				<?php endif; ?>
+
+				<p>
+					<?php if( isset($get['main_group']) && is_array($get['main_group']) ): ?>
+						<p>
+							<b>Items:</b>
+						</p>
+						<ul>
+							<?php foreach($get['main_group'] as $item): ?>
+								<li><?=$item;?></li>
+							<?php endforeach; ?>
+						</ul>
+					<?php else: ?>
+						Create <i>Group of fields</i> with 'main_group' alias and some <i>String</i> items
+					<?php endif; ?>
+				</p>
+
 				<p>Random module: <?php echo $rand_num; ?></p>
+
 			</div>
 		</div>
 		<div id="footer">
 			<div class="center">
-				<?php echo isset($get['footer']) ? $get['footer'] : 'Create field with \'footer\' alias'; ?>
+				<?php if( isset($get['footer']) ): ?>
+					<?=$get['footer'];?>
+				<?php else: ?>
+					Create <i>String</i> field with 'footer' alias
+				<?php endif; ?>
 			</div>
 		</div>
 	</body>

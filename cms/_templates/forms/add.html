@@ -2,45 +2,69 @@
 
 	<h2>Adding a new field</h2>
 
-	<div class="form-group">
-		<label for="type">Type</label>
-		<select name="type" id="type" class="form-control">
-			<?php foreach(unserialize(FIELD_TYPES) as $field_name => $field_value): ?>
+	<div class="form-group<?php echo isset($vars['invalid_fields']['parent']) ? ' has-error' : ''; ?>">
+		<label for="parent">Parent</label>
+		<select name="parent" id="parent" class="form-control">
+			<?php foreach(Content::getAllParents() as $parent): ?>
 
 				<?php
 
-					$selected = '';
+					$selected_parent = '';
 
-					if( isset($vars['fields']['type']) && $vars['fields']['type'] == $field_value )
+					if( isset($vars['sent_data']['parent']) && $vars['sent_data']['parent'] == $parent['path'] )
 					{
-						$selected = ' selected';
+						$selected_parent = ' selected';
 					}
 
 				?>
 
-				<option value="<?php echo $field_value; ?>"<?php echo $selected; ?>><?php echo $field_name; ?></option>
+				<option value="<?php echo $parent['path']; ?>"<?php echo $selected_parent; ?>><?php echo $parent['title']; ?></option>
 
 			<?php endforeach; ?>
 		</select>
 
-		<div class="help-block">Select the type of the new field.</div>
+		<div class="help-block">Select a parent of the new field.</div>
 	</div>
 
-	<div class="form-group<?php echo $vars['fields']['type'] ? ' has-error' : ''; ?>">
+	<div class="form-group<?php echo isset($vars['invalid_fields']['type']) ? ' has-error' : ''; ?>">
+		<label for="type">Type</label>
+		<select name="type" id="type" class="form-control" required>
+			<?php foreach(Content::getFieldsTypes() as $field_name => $field_value): ?>
+
+				<?php
+
+					$selected_type = '';
+
+					if( isset($vars['sent_data']['type']) && $vars['sent_data']['type'] == $field_value )
+					{
+						$selected_type = ' selected';
+					}
+
+				?>
+
+				<option value="<?php echo $field_value; ?>"<?php echo $selected_type; ?>><?php echo $field_name; ?></option>
+
+			<?php endforeach; ?>
+		</select>
+
+		<div class="help-block">Select a type of the new field.</div>
+	</div>
+
+	<div class="form-group<?php echo isset($vars['invalid_fields']['alias']) ? ' has-error' : ''; ?>">
 		<label for="alias">Alias</label>
-		<input class="form-control" name="alias" id="alias" type="text" placeholder="Type here" required />
+		<input class="form-control" name="alias" id="alias" type="text" value="<?php echo $vars['sent_data']['alias']; ?>" placeholder="Type here" required />
 		<div class="help-block">It is necessary for calling the new field in the backend.</div>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group<?php echo isset($vars['invalid_fields']['title']) ? ' has-error' : ''; ?>">
 		<label for="title">Title</label>
-		<input class="form-control" name="title" id="title" type="text" placeholder="Type here" value="<?php echo $vars['fields']['title']; ?>" required />
+		<input class="form-control" name="title" id="title" type="text" placeholder="Type here" value="<?php echo $vars['sent_data']['title']; ?>" required />
 		<div class="help-block">The name of the new field in Admin panel.</div>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group<?php echo isset($vars['invalid_fields']['description']) ? ' has-error' : ''; ?>">
 		<label for="description">Description</label>
-		<input class="form-control" name="description" id="description" type="text" placeholder="Type here" value="<?php echo $vars['fields']['description']; ?>" />
+		<input class="form-control" name="description" id="description" type="text" placeholder="Type here" value="<?php echo $vars['sent_data']['description']; ?>" />
 		<div class="help-block">The description of the new field in admin panel.</div>
 	</div>
 

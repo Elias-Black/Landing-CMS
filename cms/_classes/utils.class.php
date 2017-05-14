@@ -35,8 +35,8 @@ class Utils
 			'index.html',
 			 array(
 			 	'content' => isset($content) ? $content : null,
-			 	'error_message' => isset($message['error']) ? $message['error'] : null,
-			 	'success_message' => isset($message['success']) ? $message['success'] : null
+			 	'error_message' => isset($message['error_message']) ? $message['error_message'] : null,
+			 	'success_message' => isset($message['success_message']) ? $message['success_message'] : null
 			 )
 		);
 	}

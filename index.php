@@ -87,8 +87,8 @@ require_once('modules/rand_num.php');
 							<b>Items:</b>
 						</p>
 						<ul>
-							<?php foreach($get['main_group'] as $item): ?>
-								<li><?=$item;?></li>
+							<?php foreach($get['main_group'] as $name => $item): ?>
+								<li><i><?=$name;?></i>: <?=$item;?></li>
 							<?php endforeach; ?>
 						</ul>
 					<?php else: ?>

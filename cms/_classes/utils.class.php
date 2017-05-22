@@ -46,6 +46,11 @@ class Utils
 		return substr( sha1( rand() ), $length);
 	}
 
+	public static function pr(&$variable)
+	{
+		return isset($variable) ? $variable : '';
+	}
+
 }
 
 ?>

@@ -5,7 +5,7 @@ require_once('_classes/index.php');
 
 // Deleting the block
 if( isset($_GET['delete']) )
-	Content::deleteField($_GET['delete']);
+	Content::deleteFieldAction();
 
 // Catching form submit
 if( !empty($_POST) )

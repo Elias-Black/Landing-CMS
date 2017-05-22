@@ -22,63 +22,157 @@ class Content
 
 	}
 
-	public static function addNewField()
+	public static function addNewFieldAction()
 	{
 
-		$new_field_data = self::getNewFieldData();
+		$db_content = self::getPrivateContent();
 
+		$field_is_added = self::addNewField($db_content);
 
-		$data_is_not_empty = self::validateRequiredData($new_field_data);
-
-		if( $data_is_not_empty['error'] == true )
+		if( !isset($field_is_added['error']) && isset($field_is_added['db_content']) )
 		{
-			return $data_is_not_empty;
+			$db_content = $field_is_added['db_content'];
+		}
+		else
+		{
+			return $field_is_added;
 		}
 
+		self::updatePrivateContent($db_content);
 
-		$alias_is_valid = self::validateAlias($new_field_data['alias']['value']);
+		self::updatePublicContent();
 
-		if( $alias_is_valid['error'] == true )
+		Utils::redirect('/cms/');
+
+	}
+
+	public static function editField()
+	{
+
+		$result = array();
+
+		$field_name = isset($_GET['name']) ? $_GET['name'] : false;
+
+		if( !$field_name )
 		{
-			return $alias_is_valid;
+			Utils::redirect('/cms/');
+		}
+
+		$name_arr = self::getNameArray($field_name);
+
+		$db_content = self::getPrivateContent();
+
+		$field_data = self::getField($db_content, $field_name);
+
+		$field_exists = self::fieldExists($field_data);
+
+		if( $field_exists['error'] == true )
+		{
+			Utils::redirect('/cms/');
+		}
+
+		$result['sent_data'] = $field_data;
+
+		$result['sent_data']['parent'] = $name_arr['parents'];
+
+		$result['sent_data']['alias'] = $name_arr['alias'];
+
+		return $result;
+
+	}
+
+	public static function updateField()
+	{
+
+		$field_name = isset($_GET['name']) ? $_GET['name'] : false;
+
+		if( !$field_name )
+		{
+			Utils::redirect('/cms/');
 		}
 
 
 		$db_content = self::getPrivateContent();
 
-		$new_field_parent = &self::getField($db_content, $new_field_data['parent']['value']);
+		$new_field_data = self::getNewFieldData();
+
+		$old_name_arr = self::getNameArray($field_name);
+
+
+		$old_position = 0;
+
+		if( $old_name_arr['parents'] == $new_field_data['parent']['value'] )
+		{
+
+			$old_parent = self::getField($db_content, $old_name_arr['parents']);
+
+			$old_position = self::getFieldPosition($old_parent, $old_name_arr['alias']);
+
+		}
+
+
+		$old_field = self::getField($db_content, $field_name);
+
+		$field_exists = self::fieldExists($old_field);
+
+		if( $field_exists['error'] == true )
+		{
+			Utils::redirect('/cms/');
+		}
+
+		if( $old_field['type'] == 'fields_group' && $new_field_data['type']['value'] != 'fields_group' )
+		{
+			$old_field_output = '';
+		}
+		elseif( $old_field['type'] != 'fields_group' && $new_field_data['type']['value'] == 'fields_group' )
+		{
+			$old_field_output = array();
+		}
+		else
+		{
+			$old_field_output = $old_field['output'];
+		}
+
+
+		$field_is_deleted = self::deleteField($db_content, $field_name);
+
+		if( !isset($field_is_deleted['error']) && isset($field_is_deleted['db_content']) )
+		{
+			$db_content = $field_is_deleted['db_content'];
+		}
+		else
+		{
+			return $field_is_deleted;
+		}
+
+
+		$field_is_added = self::addNewField($db_content);
+
+		if( !isset($field_is_added['error']) && isset($field_is_added['db_content']) )
+		{
+			$db_content = $field_is_added['db_content'];
+		}
+		else
+		{
+			return $field_is_added;
+		}
+
+
+		$new_field = &self::getField($db_content, $new_field_data['name']['value']);
+
+		$new_field['output'] = $old_field_output;
+
+
+		$new_parent = &self::getField($db_content, $new_field_data['parent']['value']);
 
 		if( !empty($new_field_data['parent']['value']) )
 		{
-			$new_field_parent = &$new_field_parent['output'];
+			$new_parent = &$new_parent['output'];
 		}
 
+		$new_position = self::getFieldPosition($new_parent, $new_field_data['alias']['value']);
 
-		$parent_exists = self::parentExists($new_field_parent);
-
-		if( $parent_exists['error'] == true )
-		{
-			return $parent_exists;
-		}
-
-
-		$new_field_is_not_duplicate = self::validateFieldDuplicates($new_field_parent, $new_field_data['alias']['value']);
-
-		if( $new_field_is_not_duplicate['error'] == true )
-		{
-			return $new_field_is_not_duplicate;
-		}
-
-
-		$new_field_content = array(
-			'type'			=> $new_field_data['type']['value'],
-			'name'			=> $new_field_data['name']['value'],
-			'title'			=> $new_field_data['title']['value'],
-			'description'	=> $new_field_data['description']['value'],
-			'output'		=> $new_field_data['default_output']['value'],
-		);
-
-		$new_field_parent[$new_field_data['alias']['value']] = $new_field_content;
+		self::moveField($new_parent, $new_position, $old_position);
 
 
 		self::updatePrivateContent($db_content);
@@ -114,25 +208,28 @@ class Content
 
 	}
 
-	public static function deleteField($parents)
+	public static function deleteFieldAction()
 	{
 
-		$parents = explode(self::NAME_SEPARATOR, $parents);
+		$field_name = isset($_GET['delete']) ? $_GET['delete'] : false;
 
-		$field_name = array_pop($parents);
-
-		$parents = implode(self::NAME_SEPARATOR, $parents);
+		if( !$field_name )
+		{
+			Utils::redirect('/cms/');
+		}
 
 		$db_content = self::getPrivateContent();
 
-		$content = &self::getField($db_content, $parents);
+		$field_is_deleted = self::deleteField($db_content, $field_name);
 
-		if( !empty($parents) )
+		if( !isset($field_is_deleted['error']) && isset($field_is_deleted['db_content']) )
 		{
-			$content = &$content['output'];
+			$db_content = $field_is_deleted['db_content'];
 		}
-
-		unset($content[$field_name]);
+		else
+		{
+			return $field_is_deleted;
+		}
 
 		self::updatePrivateContent($db_content);
 
@@ -176,6 +273,114 @@ class Content
 
 
 	/* PRIVATE API */
+
+	private static function addNewField($db_content)
+	{
+
+		$result = array();
+
+		$new_field_data = self::getNewFieldData();
+
+
+		$data_is_not_empty = self::validateRequiredData($new_field_data);
+
+		if( $data_is_not_empty['error'] == true )
+		{
+			return $data_is_not_empty;
+		}
+
+
+		$alias_is_valid = self::validateAlias($new_field_data['alias']['value']);
+
+		if( $alias_is_valid['error'] == true )
+		{
+			return $alias_is_valid;
+		}
+
+
+		$new_field_parent = &self::getField($db_content, $new_field_data['parent']['value']);
+
+		if( !empty($new_field_data['parent']['value']) )
+		{
+			$new_field_parent = &$new_field_parent['output'];
+		}
+
+
+		$parent_exists = self::fieldExists($new_field_parent);
+
+		if( $parent_exists['error'] == true )
+		{
+			return $parent_exists;
+		}
+
+
+		$new_field_is_not_duplicate = self::validateFieldDuplicates($new_field_parent, $new_field_data['alias']['value']);
+
+		if( $new_field_is_not_duplicate['error'] == true )
+		{
+			return $new_field_is_not_duplicate;
+		}
+
+
+		$new_field_content = array(
+			'type'			=> $new_field_data['type']['value'],
+			'name'			=> $new_field_data['name']['value'],
+			'title'			=> $new_field_data['title']['value'],
+			'description'	=> $new_field_data['description']['value'],
+			'output'		=> $new_field_data['default_output']['value'],
+		);
+
+		$new_field_parent[$new_field_data['alias']['value']] = $new_field_content;
+
+
+		$result['db_content'] = $db_content;
+
+		return $result;
+
+	}
+
+	private static function getNameArray($name)
+	{
+
+		$result = array();
+
+		$field_parents = explode(self::NAME_SEPARATOR, $name);
+
+		$field_alias = array_pop($field_parents);
+
+		$field_parents = implode(self::NAME_SEPARATOR, $field_parents);
+
+		$result['alias'] = $field_alias;
+
+		$result['parents'] = $field_parents;
+
+		return $result;
+
+	}
+
+	private static function deleteField($db_content, $name)
+	{
+
+		$result = array();
+
+
+		$name_arr = self::getNameArray($name);
+
+		$content = &self::getField($db_content, $name_arr['parents']);
+
+		if( !empty($name_arr['parents']) )
+		{
+			$content = &$content['output'];
+		}
+
+		unset($content[$name_arr['alias']]);
+
+
+		$result['db_content'] = $db_content;
+
+		return $result;
+
+	}
 
 	private static function getForbiddenWords()
 	{
@@ -252,22 +457,22 @@ class Content
 		$data = array();
 
 		$data['parent']['required']			= false;
-		$data['parent']['value']			= isset($_POST['parent']) ? $_POST['parent'] : '';
+		$data['parent']['value']			= Utils::pr($_POST['parent']);
 
 		$data['type']['required']			= true;
-		$data['type']['value']				= isset($_POST['type']) ? $_POST['type'] : '';
+		$data['type']['value']				= Utils::pr($_POST['type']);
 
 		$data['alias']['required']			= true;
-		$data['alias']['value']				= isset($_POST['alias']) ? $_POST['alias'] : '';
+		$data['alias']['value']				= Utils::pr($_POST['alias']);
 
 		$data['name']['required']			= true;
 		$data['name']['value']				= empty($data['parent']['value']) ? $data['alias']['value'] : $data['parent']['value'].self::NAME_SEPARATOR.$data['alias']['value'];
 
 		$data['title']['required']			= true;
-		$data['title']['value']				= isset($_POST['title']) ? $_POST['title'] : '';
+		$data['title']['value']				= Utils::pr($_POST['title']);
 
 		$data['description']['required']	= false;
-		$data['description']['value']		= isset($_POST['description']) ? $_POST['description'] : '';
+		$data['description']['value']		= Utils::pr($_POST['description']);
 
 		$data['default_output']['required']	= false;
 		$data['default_output']['value']	= $data['type']['value'] == 'fields_group' ? array() : '';
@@ -399,7 +604,7 @@ class Content
 
 	}
 
-	private static function parentExists($field)
+	private static function fieldExists($field)
 	{
 
 		$result = array();
@@ -456,10 +661,27 @@ class Content
 
 		foreach($parents as $parent)
 		{
-		  @$ref_to_field = &$ref_to_field[$parent]['output'];
+
+			if( isset($ref_to_field[$parent]['output']) )
+			{
+				$ref_to_field = &$ref_to_field[$parent]['output'];
+			}
+			else
+			{
+				unset($ref_to_field);
+			}
+
 		}
 
-		@$ref_to_field = &$ref_to_field[$field_name];
+		if( isset($ref_to_field[$field_name]) )
+		{
+			$ref_to_field = &$ref_to_field[$field_name];
+		}
+		else
+		{
+			unset($ref_to_field);
+		}
+
 
 		return $ref_to_field;
 
@@ -543,6 +765,20 @@ class Content
 
 		return $result;
 
+	}
+
+	private function moveField(&$array, $from, $to)
+	{
+
+		$array = array_slice($array, 0, $to, true) +
+	             array_slice($array, $from, 1) +
+	             array_slice($array, $to, NULL, true);
+
+	}
+
+	private function getFieldPosition($parent, $alias)
+	{
+	    return array_search($alias, array_keys($parent));
 	}
 
 }

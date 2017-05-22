@@ -4,12 +4,13 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		 		<h3 class="panel-title" style="display: inline-block;"><?php echo $field['title']; ?></h3> <?php echo $field['description']; ?>
-		 		<div class="pull-right">
-			 		<a class="label label-default">&plusmn;</a>
+				<h3 class="panel-title" style="display: inline-block;"><?php echo $field['title']; ?></h3> <?php echo $field['description']; ?>
+				<div class="pull-right">
+					<a class="label label-default" href="/cms/edit-field/?name=<?php echo $field['name']; ?>" title="Edit &laquo;<?php echo $field['title']; ?>&raquo; field">&#9881;</a>
+					<a class="label label-default">&plusmn;</a>
 					<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; group?')" class="label label-danger" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; group">&times;</a>
 				</div>
-		 	</div>
+			</div>
 			<div class="panel-body">
 
 				<?php echo Utils::render(
@@ -26,6 +27,9 @@
 		<div class="form-group">
 			<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; field?')" class="close" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; field">
 				<span aria-hidden="true">&times;</span>
+			</a>
+			<a href="/cms/edit-field/?name=<?php echo $field['name']; ?>" style="color:initial!important;font-size:16px!important;line-height:1.5;" class="close" title="Edit &laquo;<?php echo $field['title']; ?>&raquo; field">
+				<span aria-hidden="true">&#9881;</span>
 			</a>
 			<?php echo Utils::render(
 				"fields/{$field['type']}.html",

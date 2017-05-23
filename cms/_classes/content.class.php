@@ -106,6 +106,11 @@ class Content
 
 			$old_parent = self::getField($db_content, $old_name_arr['parents']);
 
+			if( !empty($old_name_arr['parents']) )
+			{
+				$old_parent = &$old_parent['output'];
+			}
+
 			$old_position = self::getFieldPosition($old_parent, $old_name_arr['alias']);
 
 		}
@@ -248,6 +253,18 @@ class Content
 		);
 
 		$fields = self::getPrivateContent();
+
+		if( isset($_GET['name']) )
+		{
+
+			$fields_without_yourself = self::deleteField($fields, $_GET['name']);
+
+			if( !isset($fields_without_yourself['error']) && isset($fields_without_yourself['db_content']) )
+			{
+				$fields = $fields_without_yourself['db_content'];
+			}
+
+		}
 
 		$parents = array_merge( $parents, self::getParents($fields) );
 
@@ -767,7 +784,7 @@ class Content
 
 	}
 
-	private function moveField(&$array, $from, $to)
+	private static function moveField(&$array, $from, $to)
 	{
 
 		$array = array_slice($array, 0, $to, true) +
@@ -776,7 +793,7 @@ class Content
 
 	}
 
-	private function getFieldPosition($parent, $alias)
+	private static function getFieldPosition($parent, $alias)
 	{
 	    return array_search($alias, array_keys($parent));
 	}

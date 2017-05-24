@@ -177,7 +177,7 @@ class Content
 
 		$new_position = self::getFieldPosition($new_parent, $new_field_data['alias']['value']);
 
-		self::moveField($new_parent, $new_position, $old_position);
+		self::moveFieldFromTo($new_parent, $new_position, $old_position);
 
 
 		self::updatePrivateContent($db_content);
@@ -213,15 +213,8 @@ class Content
 
 	}
 
-	public static function deleteFieldAction()
+	public static function deleteFieldAction($field_name)
 	{
-
-		$field_name = isset($_GET['delete']) ? $_GET['delete'] : false;
-
-		if( !$field_name )
-		{
-			Utils::redirect('/cms/');
-		}
 
 		$db_content = self::getPrivateContent();
 
@@ -284,6 +277,42 @@ class Content
 			'File Uploader'		=>	'input_file_uploader',
 			'Group of fields'	=>	'fields_group',
 		);
+
+	}
+
+	public static function moveFieldUpDown($name, $to)
+	{
+
+		$name_arr = self::getNameArray($name);
+
+		$db_content = self::getPrivateContent();
+
+		$field_parent = &self::getField($db_content, $name_arr['parents']);
+
+		if( !empty($name_arr['parents']) )
+		{
+			$field_parent = &$field_parent['output'];
+		}
+
+		$field_position = self::getFieldPosition($field_parent, $name_arr['alias']);
+
+		if( strtolower($to) == 'up' )
+		{
+			$new_field_position = $field_position - 1;
+		}
+		else
+		{
+			$new_field_position = $field_position + 1;
+		}
+
+		self::moveFieldFromTo($field_parent, $field_position, $new_field_position);
+
+
+		self::updatePrivateContent($db_content);
+
+		self::updatePublicContent();
+
+		Utils::redirect('/cms/');
 
 	}
 
@@ -784,12 +813,17 @@ class Content
 
 	}
 
-	private static function moveField(&$array, $from, $to)
+	private static function moveFieldFromTo(&$array, $from, $to)
 	{
 
-		$array = array_slice($array, 0, $to, true) +
-	             array_slice($array, $from, 1) +
-	             array_slice($array, $to, NULL, true);
+		$to = $to < 0 ? NULL : $to;
+
+		$new_array = array_slice($array, 0, $from, true) +
+					 array_slice($array, $to, NULL, true);
+
+		$array = array_slice($new_array, 0, $to, true) +
+				 array_slice($array, $from, 1) +
+				 array_slice($new_array, $to, NULL, true);
 
 	}
 

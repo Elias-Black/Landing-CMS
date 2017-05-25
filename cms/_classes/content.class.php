@@ -60,7 +60,7 @@ class Content
 
 		$name_arr = self::getNameArray($field_name);
 
-		$db_content = self::getPrivateContent();
+		$db_content = self::getPrivateContent(true);
 
 		$field_data = self::getField($db_content, $field_name);
 
@@ -540,9 +540,9 @@ class Content
 			{
 
 				$result['error'] = true;
-				$result['error_message'] = "Parent, Type, Alias and Title are required fields.";
+				$result['error_message'] = 'Parent, Type, Alias and Title are required fields.';
 				$result['invalid_fields'][$name] = 'It\' a required field.';
-				$result['sent_data'] = $_POST;
+				$result['sent_data'] = self::replaceQuotes($_POST);
 
 			}
 
@@ -566,9 +566,9 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = "Alias can't have this word. <a href=\"http://php.net/manual/en/reserved.variables.php\" target=\"_blank\">Here</a> are the majority forbidden words.";
+			$result['error_message'] = 'Alias can\'t have this word. <a href="http://php.net/manual/en/reserved.variables.php" target="_blank">Here</a> are the majority forbidden words.';
 			$result['invalid_fields']['alias'] = 'Alias have forbidden word.';
-			$result['sent_data'] = $_POST;
+			$result['sent_data'] = self::replaceQuotes($_POST);
 
 		}
 
@@ -586,9 +586,9 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = "Alias can't have this word.";
+			$result['error_message'] = 'Alias can\'t have this word.';
 			$result['invalid_fields']['alias'] = 'Alias have forbidden word.';
-			$result['sent_data'] = $_POST;
+			$result['sent_data'] = self::replaceQuotes($_POST);
 
 		}
 
@@ -607,9 +607,9 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = "Invalid Alias &laquo;{$_POST['alias']}&raquo;. Alias names follow the same <a href=\"http://php.net/manual/en/language.variables.basics.php\" target=\"_blank\">rules</a> as variable names in PHP.";
+			$result['error_message'] = 'Invalid Alias. Alias names follow the same <a href="http://php.net/manual/en/language.variables.basics.php" target="_blank">rules</a> as variable names in PHP.';
 			$result['invalid_fields']['alias'] = 'Invalid Alias.';
-			$result['sent_data'] = $_POST;
+			$result['sent_data'] = self::replaceQuotes($_POST);
 
 		}
 
@@ -660,9 +660,9 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = "This Parent is absent.";
+			$result['error_message'] = 'This Parent is absent.';
 			$result['invalid_fields']['parent'] = 'Invalid Parent.';
-			$result['sent_data'] = $_POST;
+			$result['sent_data'] = self::replaceQuotes($_POST);
 
 		}
 
@@ -680,9 +680,9 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = "This Parent already have a child with alias &laquo;$alias&raquo;.";
-			$result['invalid_fields']['alias'] = 'This Parent already have a chiled with alias.';
-			$result['sent_data'] = $_POST;
+			$result['error_message'] = 'The Parent already have a child with this Alias.';
+			$result['invalid_fields']['alias'] = 'The Parent already have a child with this Alias.';
+			$result['sent_data'] = self::replaceQuotes($_POST);
 
 		}
 
@@ -804,7 +804,7 @@ class Content
 			}
 			else
 			{
-				$result[$key] = str_replace( array('"', '\''), array('&quot;', '&apos;'), $value );
+				$result[$key] = str_replace( array('&', '"', '\'', '<', '>'), array('&amp;', '&quot;', '&apos;', '&lt;', '&gt;'), $value );
 			}
 
 		}

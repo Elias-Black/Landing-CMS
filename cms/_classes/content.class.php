@@ -316,6 +316,35 @@ class Content
 
 	}
 
+	public static function openCloseGroup($name, $state)
+	{
+
+		$db_content = self::getPrivateContent();
+
+		$field = &self::getField($db_content, $name);
+
+		if( isset($field['type']) && $field['type'] == 'fields_group' )
+		{
+
+			if($state == 'open')
+			{
+				$field['open'] = true;
+			}
+			else
+			{
+				$field['open'] = false;
+			}
+
+		}
+
+		self::updatePrivateContent($db_content);
+
+		self::updatePublicContent();
+
+		Utils::redirect('/cms/');
+
+	}
+
 
 
 	/* PRIVATE API */
@@ -462,7 +491,7 @@ class Content
 
 	}
 
-	private static function getParents($fields)
+	private static function getParents($fields, $parent_name = array())
 	{
 
 		$parents = array();
@@ -473,21 +502,17 @@ class Content
 			if( $field['type'] == 'fields_group' )
 			{
 
-				$c = count( explode(self::NAME_SEPARATOR, $field['name']) ) - 1;
+				$this_parent_name = $parent_name;
+				$this_parent_name[] = $alias;
 
-				$t = '';
-
-				for($i = 0; $i < $c; $i++)
-				{
-					$t .= '- ';
-				}
+				$prefix = str_repeat( '- ', count($parent_name) );
 
 				$parents[] = array(
-					'title' => $t.$field['title'],
-					'path' => $field['name']
+					'title' => $prefix.$field['title'],
+					'path' => implode(self::NAME_SEPARATOR, $this_parent_name)
 				);
 
-				$parents = array_merge( $parents, self::getParents($field['output']) );
+				$parents = array_merge( $parents, self::getParents($field['output'], $this_parent_name) );
 
 			}
 

@@ -15,6 +15,14 @@ if( isset($_GET['moveFieldUp']) )
 if( isset($_GET['moveFieldDown']) )
 	Content::moveFieldUpDown($_GET['moveFieldDown'], 'down');
 
+// Moving Field Down
+if( isset($_GET['openGroup']) )
+	Content::openCloseGroup($_GET['openGroup'], 'open');
+
+// Moving Field Down
+if( isset($_GET['closeGroup']) )
+	Content::openCloseGroup($_GET['closeGroup'], 'close');
+
 // Catching form submit
 if( !empty($_POST) )
 	Content::updateContent();

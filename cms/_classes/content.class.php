@@ -163,17 +163,18 @@ class Content
 		}
 
 
-		$new_field = &self::getField($db_content, $new_field_data['name']['value']);
-
-		$new_field['output'] = $old_field_output;
-
-
 		$new_parent = &self::getField($db_content, $new_field_data['parent']['value']);
 
 		if( !empty($new_field_data['parent']['value']) )
 		{
 			$new_parent = &$new_parent['output'];
 		}
+
+
+		$new_field = &$new_parent[$new_field_data['alias']['value']];
+
+		$new_field['output'] = $old_field_output;
+
 
 		$new_position = self::getFieldPosition($new_parent, $new_field_data['alias']['value']);
 
@@ -399,7 +400,6 @@ class Content
 
 		$new_field_content = array(
 			'type'			=> $new_field_data['type']['value'],
-			'name'			=> $new_field_data['name']['value'],
 			'title'			=> $new_field_data['title']['value'],
 			'description'	=> $new_field_data['description']['value'],
 			'output'		=> $new_field_data['default_output']['value'],
@@ -535,9 +535,6 @@ class Content
 
 		$data['alias']['required']			= true;
 		$data['alias']['value']				= Utils::pr($_POST['alias']);
-
-		$data['name']['required']			= true;
-		$data['name']['value']				= empty($data['parent']['value']) ? $data['alias']['value'] : $data['parent']['value'].self::NAME_SEPARATOR.$data['alias']['value'];
 
 		$data['title']['required']			= true;
 		$data['title']['value']				= Utils::pr($_POST['title']);

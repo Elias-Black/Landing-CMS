@@ -1,4 +1,10 @@
-<?php foreach($vars['fields'] as $field): ?>
+<?php foreach($vars['fields'] as $alias => $field): ?>
+
+	<?php
+		$field['parents'] = Utils::pr($vars['parents'], array());
+		$field['parents'][] = $alias;
+		$field['name'] = Utils::getNameAsString($field['parents']);
+	?>
 
 	<?php if( $field['type'] == 'fields_group' ): ?>
 
@@ -15,9 +21,13 @@
 			</div>
 			<div class="panel-body">
 
-				<?php echo Utils::render(
+				<?php
+					$info['parents'] = $field['parents'];
+					$info['fields'] = $field['output'];
+
+					echo Utils::render(
 						"fields/{$field['type']}.html",
-						 array('fields' => $field['output'])
+						 $info
 					);
 				?>
 

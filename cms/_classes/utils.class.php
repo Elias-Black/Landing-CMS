@@ -51,6 +51,11 @@ class Utils
 		return isset($variable) ? $variable : $default_value;
 	}
 
+	public static function getNameAsString($name_array)
+	{
+		return implode(Content::NAME_SEPARATOR, $name_array);
+	}
+
 }
 
 ?>

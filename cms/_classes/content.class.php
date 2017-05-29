@@ -346,6 +346,11 @@ class Content
 
 	}
 
+	public static function getNameAsString($name_array)
+	{
+		return implode(self::NAME_SEPARATOR, $name_array);
+	}
+
 
 
 	/* PRIVATE API */

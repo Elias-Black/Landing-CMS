@@ -3,35 +3,38 @@
 	<?php
 		$field['parents'] = Utils::pr($vars['parents'], array());
 		$field['parents'][] = $alias;
-		$field['name'] = Utils::getNameAsString($field['parents']);
+		$field['name'] = Content::getNameAsString($field['parents']);
 	?>
 
 	<?php if( $field['type'] == 'fields_group' ): ?>
 
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title" style="display: inline-block;"><?php echo $field['title']; ?></h3> <?php echo $field['description']; ?>
-				<div class="pull-right">
-					<a class="label label-default" href="/cms/?moveFieldUp=<?php echo $field['name']; ?>" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Up">&#9650;</a>
-					<a class="label label-default" href="/cms/?moveFieldDown=<?php echo $field['name']; ?>" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Down">&#9660;</a>
-					<a class="label label-default" href="/cms/edit-field/?name=<?php echo $field['name']; ?>" title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Group">&#9881;</a>
-					<a class="label label-default">&plusmn;</a>
-					<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; group?')" class="label label-danger" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; group">&times;</a>
+		<div class="form-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="pull-right panel-controls">
+						<a class="label label-default" href="/cms/?moveFieldUp=<?php echo $field['name']; ?>" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Up">&#9650;</a>
+						<a class="label label-default" href="/cms/?moveFieldDown=<?php echo $field['name']; ?>" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Down">&#9660;</a>
+						<a class="label label-default" href="/cms/edit-field/?name=<?php echo $field['name']; ?>" title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Group">&#9881;</a>
+						<a class="label label-default">&plusmn;</a>
+						<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; group?')" class="label label-danger" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; group">&times;</a>
+					</div>
+					<h3 class="panel-title"><?php echo $field['title']; ?></h3>
+				</div>
+				<div class="panel-body">
+
+					<?php
+						$info['parents'] = $field['parents'];
+						$info['fields'] = $field['output'];
+
+						echo Utils::render(
+							"fields/{$field['type']}.html",
+							 $info
+						);
+					?>
+
 				</div>
 			</div>
-			<div class="panel-body">
-
-				<?php
-					$info['parents'] = $field['parents'];
-					$info['fields'] = $field['output'];
-
-					echo Utils::render(
-						"fields/{$field['type']}.html",
-						 $info
-					);
-				?>
-
-			</div>
+			<p class="help-block"><?php echo $field['description']; ?></p>
 		</div>
 
 	<?php else: ?>
@@ -53,9 +56,7 @@
 				"fields/{$field['type']}.html",
 				 $field);
 			?>
-			<?php if($field['description']): ?>
-				<p class="help-block"><?php echo $field['description']; ?></p>
-			<?php endif; ?>
+			<p class="help-block"><?php echo $field['description']; ?></p>
 		</div>
 	<?php endif; ?>
 

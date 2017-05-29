@@ -5,7 +5,11 @@
 */
 class Utils
 {
-	
+
+	const TEMPLATE_FOLDER = "/cms/_templates/";
+
+
+
 	public static function redirect($url)
 	{
 
@@ -18,7 +22,7 @@ class Utils
 	public static function render($template, $vars)
 	{
 
-		$template = ROOT_PATH . "/cms/_templates/$template";
+		$template = ROOT_PATH . self::TEMPLATE_FOLDER . $template;
 
 		ob_start();
 			include($template);
@@ -49,11 +53,6 @@ class Utils
 	public static function pr(&$variable, $default_value = '')
 	{
 		return isset($variable) ? $variable : $default_value;
-	}
-
-	public static function getNameAsString($name_array)
-	{
-		return implode(Content::NAME_SEPARATOR, $name_array);
 	}
 
 }

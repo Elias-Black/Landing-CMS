@@ -44,6 +44,27 @@ h2 {
 
 
 
+/* Customs for */
+
+.panel.panel-default {
+	margin-bottom: 0px!important;
+}
+
+.panel-controls {
+	padding-bottom: 3px;
+}
+
+.panel-controls .label {
+	line-height: inherit;
+	vertical-align: text-top;
+}
+
+.panel-heading .panel-title {
+	display: inline-block;
+}
+
+
+
 /* Paint delete button */
 
 .close {
@@ -68,6 +89,8 @@ input[type="checkbox"] + label {
 	.right.nav.navbar-nav {
 		float: right;
 	}
+
+
 
 	/* Responsive layout */
 

@@ -129,24 +129,17 @@ v 1.0:
 - Add dictionary array with all texts
 - Add Security Key to Responsive File Manager
 - Set Transliteration to Responsive File Manager
-- Add rulls for alias names
 
 v 2.0:
-- Add Groups
-- Add editing Group's names
-- Add Groups to public DB for enumerating Fields
-- Add editing Fields
+- Add Drag'n'Drop for Groups and Fields sorting
 
-v 3.0:
-- Add Drag'n'Drop for Groups and Fields
-
-v 4.0
+v 3.0
 - Add Pages
 
 ***
 
 ### Thanks
-- [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSUWYG;
+- [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSIWYG;
 - [Responsive File Manager](http://www.responsivefilemanager.com/ "Responsive File Manager site.") for TinyMCE external filemanager;
 - [Tovic / color-picker](https://github.com/tovic/color-picker "A simple color picker plugin written in pure JavaScript, for modern browsers.") for the Color Picker;
 - [Forsigner / magic-check](https://github.com/forsigner/magic-check "Beautify Radio and Checkbox with pure CSS.") for beautiful Checkboxes;

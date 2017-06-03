@@ -28,4 +28,8 @@
 
 <label for="<?php echo $vars['name']; ?>"><?php echo $vars['title']; ?></label>
 
+<noscript>
+	<p>Your browser doesn't support JavaScript, so you do not see the visual editor here. But you can still use <a href="https://developer.mozilla.org/en/docs/Web/HTML" target="_blank">HTML</a> to manually edit the content in this Field.</p>
+</noscript>
+
 <textarea rows="15" class="form-control js_wysiwyg_<?php echo $vars['name']; ?>" name="<?php echo $vars['name']; ?>" id="<?php echo $vars['name']; ?>" rows="4" cols="50" placeholder="Type here"><?php echo $vars['output']; ?></textarea>

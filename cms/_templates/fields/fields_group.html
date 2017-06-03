@@ -15,12 +15,12 @@
 						<a class="label label-default" href="/cms/?moveFieldUp=<?php echo $field['name']; ?>" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Up">&#9650;</a>
 						<a class="label label-default" href="/cms/?moveFieldDown=<?php echo $field['name']; ?>" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Down">&#9660;</a>
 						<a class="label label-default" href="/cms/edit-field/?name=<?php echo $field['name']; ?>" title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Group">&#9881;</a>
-						<a class="label label-default">&plusmn;</a>
+						<a class="label label-default" href="/cms/?<?=Utils::pr($field['open'])?'closeGroup':'openGroup';?>=<?php echo $field['name']; ?>" onclick="openCloseGroup('<?php echo $field['name']; ?>')">&plusmn;</a>
 						<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; group?')" class="label label-danger" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; group">&times;</a>
 					</div>
 					<h3 class="panel-title"><?php echo $field['title']; ?></h3>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body<?=Utils::pr($field['open'])?'':' hidden';?>" id="js_group_body_<?php echo $field['name']; ?>">
 
 					<?php
 						$info['parents'] = $field['parents'];

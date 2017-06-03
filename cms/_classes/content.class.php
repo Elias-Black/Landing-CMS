@@ -407,6 +407,7 @@ class Content
 			'type'			=> $new_field_data['type']['value'],
 			'title'			=> $new_field_data['title']['value'],
 			'description'	=> $new_field_data['description']['value'],
+			'open'			=> true,
 			'output'		=> $new_field_data['default_output']['value'],
 		);
 

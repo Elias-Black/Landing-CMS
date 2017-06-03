@@ -147,6 +147,7 @@ function CPinit(cp_id, def_color)
 }
 
 
+
 /* The function for initialize File Uploader */
 
 function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
@@ -159,16 +160,16 @@ function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
 
 	// Utils
 
-	function showElement(element)
+	function showFileUploader(element)
 	{
 		if(!element.src)
 			element.src = element.dataset.src;
-		element.parentElement.classList.remove('hidden');
+		showElement(element.parentElement)
 	}
 
-	function hideElement(element)
+	function hideFileUploader(element)
 	{
-		element.parentElement.classList.add('hidden');
+		hideElement(element.parentElement)
 	}
 
 
@@ -177,7 +178,7 @@ function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
 	file_btn_el.onclick = function()
 	{
 		var element = document.getElementById(this.dataset.iframeId);
-		showElement(element);
+		showFileUploader(element);
 	}
 
 	file_btn_el.onkeypress = function(e)
@@ -185,14 +186,14 @@ function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
 		if(e.keyCode == 13)
 		{
 			var element = document.getElementById(this.dataset.iframeId);
-			showElement(element);
+			showFileUploader(element);
 		}
 	}
 
 	file_cls_el.onclick = function()
 	{
 		var element = document.getElementById(this.dataset.iframeId);
-		hideElement(element);
+		hideFileUploader(element);
 	}
 
 
@@ -203,14 +204,14 @@ function fileUpInit(inp_id, btn_id, cls_id, ifr_id)
 		if(e.keyCode == 13)
 		{
 			var element = document.getElementById(this.dataset.iframeId);
-			hideElement(element);
+			hideFileUploader(element);
 		}
 	}
 
 	file_inp_el.onchange = function()
 	{
 		var element = document.getElementById(this.dataset.iframeId);
-		hideElement(element);
+		hideFileUploader(element);
 	}
 
 }
@@ -225,5 +226,79 @@ function responsive_filemanager_callback(inp_id)
 	var file_inp_el = document.getElementById(inp_id);
 
 	file_inp_el.value = '/web/_cms/uploads/tinymce/source/' + file_inp_el.value;
+
+}
+
+
+
+/* Opening/Closing Group's body */
+
+function openCloseGroup(name)
+{
+
+	event.preventDefault();
+
+	var id = 'js_group_body_'+name;
+
+	var element = document.getElementById(id);
+
+	if( hasClass(element, 'hidden') )
+	{
+
+		AJAX( '/cms/?openGroup='+name, function(data){}, function(data){} );
+		showElement(element);
+
+	}
+	else
+	{
+
+		AJAX( '/cms/?closeGroup='+name, function(data){}, function(data){} );
+		hideElement(element);
+
+	}
+
+}
+
+
+
+/* Utils */
+
+function hasClass(element, cls) {
+	return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
+function showElement(element)
+{
+	element.classList.remove('hidden');
+}
+
+function hideElement(element)
+{
+	element.classList.add('hidden');
+}
+
+function AJAX(url, succes_callback, error_callback)
+{
+
+	var xhttp = new XMLHttpRequest();
+
+	xhttp.onreadystatechange = function()
+    {
+
+		if (xhttp.readyState == 4 && xhttp.status == 200)
+        {
+			succes_callback(xhttp.responseText);
+		}
+
+		if(xhttp.readyState == 4 && xhttp.status != 200)
+		{
+			error_callback(xhttp.responseText);
+		}
+
+	}
+
+	xhttp.open("GET", url, true);
+
+	xhttp.send();
 
 }

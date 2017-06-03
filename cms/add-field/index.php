@@ -13,7 +13,7 @@ $data['page_header'] = 'Adding a new field';
 
 // Render form of adding new field
 $content = Utils::render(
-	'forms/add.html',
+	'forms/add-edit_field.html',
 	 $data
 );
 

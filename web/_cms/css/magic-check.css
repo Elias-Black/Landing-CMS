@@ -45,6 +45,7 @@
 .magic-checkbox:focus + label:before {
 	outline: 1px solid #66afe9;
 	outline: -webkit-focus-ring-color auto 5px;
+	-moz-outline-radius: 5px;
 }
 
 .magic-radio[disabled],

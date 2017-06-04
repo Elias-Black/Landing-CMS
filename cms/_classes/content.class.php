@@ -309,6 +309,7 @@ class Content
 
 	public static function openCloseGroup($name, $state)
 	{
+		$result = array();
 
 		$db_content = DB::getPrivateContent();
 
@@ -326,11 +327,26 @@ class Content
 				$ref_field['open'] = false;
 			}
 
+			$result['success'] = true;
+
+		}
+		else
+		{
+			$result['success'] = false;
 		}
 
 		DB::updateContent($db_content);
 
-		Utils::redirect('/cms/');
+		$result = json_encode($result);
+
+		if( Utils::isAJAX() )
+		{
+			exit($result);
+		}
+		else
+		{
+			Utils::redirect('/cms/');
+		}
 
 	}
 

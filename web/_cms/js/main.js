@@ -245,14 +245,14 @@ function openCloseGroup(name)
 	if( hasClass(element, 'hidden') )
 	{
 
-		AJAX( '/cms/?openGroup='+name, function(data){}, function(data){} );
+		AJAX( '/cms/?ajax=true&openGroup='+name, function(data){}, function(data){} );
 		showElement(element);
 
 	}
 	else
 	{
 
-		AJAX( '/cms/?closeGroup='+name, function(data){}, function(data){} );
+		AJAX( '/cms/?ajax=true&closeGroup='+name, function(data){}, function(data){} );
 		hideElement(element);
 
 	}

@@ -78,6 +78,11 @@ class Utils
 
 	}
 
+	public static function isAJAX()
+	{
+		return ( self::pr($_POST['ajax']) == 'true' || self::pr($_GET['ajax']) == 'true' );
+	}
+
 }
 
 ?>

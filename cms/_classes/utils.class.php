@@ -50,9 +50,9 @@ class Utils
 		return substr( sha1( rand() ), $length);
 	}
 
-	public static function pr(&$variable, $default_value = '')
+	public static function pr(&$ref_variable, $default_value = '')
 	{
-		return isset($variable) ? $variable : $default_value;
+		return isset($ref_variable) ? $ref_variable : $default_value;
 	}
 
 	public static function replaceQuotes($array)

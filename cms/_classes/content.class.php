@@ -106,7 +106,7 @@ class Content
 
 			if( !empty($old_name_arr['parents']) )
 			{
-				$old_parent = &$old_parent['output'];
+				$old_parent = $old_parent['output'];
 			}
 
 			$old_position = self::getFieldPosition($old_parent, $old_name_arr['alias']);
@@ -161,22 +161,22 @@ class Content
 		}
 
 
-		$new_parent = &self::getField($db_content, $new_field_data['parent']['value']);
+		$ref_new_parent = &self::getField($db_content, $new_field_data['parent']['value']);
 
 		if( !empty($new_field_data['parent']['value']) )
 		{
-			$new_parent = &$new_parent['output'];
+			$ref_new_parent = &$ref_new_parent['output'];
 		}
 
 
-		$new_field = &$new_parent[$new_field_data['alias']['value']];
+		$ref_new_field = &$ref_new_parent[$new_field_data['alias']['value']];
 
-		$new_field['output'] = $old_field_output;
+		$ref_new_field['output'] = $old_field_output;
 
 
-		$new_position = self::getFieldPosition($new_parent, $new_field_data['alias']['value']);
+		$new_position = self::getFieldPosition($ref_new_parent, $new_field_data['alias']['value']);
 
-		self::moveFieldFromTo($new_parent, $new_position, $old_position);
+		self::moveFieldFromTo($ref_new_parent, $new_position, $old_position);
 
 
 		DB::updateContent($db_content);
@@ -193,11 +193,11 @@ class Content
 		foreach ($_POST as $name => $value)
 		{
 
-			$field = &self::getField($db_content, $name);
+			$ref_field = &self::getField($db_content, $name);
 
-			if( isset($field) )
+			if( isset($ref_field) )
 			{
-				$field['output'] = $value;
+				$ref_field['output'] = $value;
 			}
 
 		}
@@ -280,14 +280,14 @@ class Content
 
 		$db_content = DB::getPrivateContent();
 
-		$field_parent = &self::getField($db_content, $name_arr['parents']);
+		$ref_field_parent = &self::getField($db_content, $name_arr['parents']);
 
 		if( !empty($name_arr['parents']) )
 		{
-			$field_parent = &$field_parent['output'];
+			$ref_field_parent = &$ref_field_parent['output'];
 		}
 
-		$field_position = self::getFieldPosition($field_parent, $name_arr['alias']);
+		$field_position = self::getFieldPosition($ref_field_parent, $name_arr['alias']);
 
 		if( strtolower($to) == 'up' )
 		{
@@ -298,7 +298,7 @@ class Content
 			$new_field_position = $field_position + 1;
 		}
 
-		self::moveFieldFromTo($field_parent, $field_position, $new_field_position);
+		self::moveFieldFromTo($ref_field_parent, $field_position, $new_field_position);
 
 
 		DB::updateContent($db_content);
@@ -312,18 +312,18 @@ class Content
 
 		$db_content = DB::getPrivateContent();
 
-		$field = &self::getField($db_content, $name);
+		$ref_field = &self::getField($db_content, $name);
 
-		if( isset($field['type']) && $field['type'] == 'fields_group' )
+		if( isset($ref_field['type']) && $ref_field['type'] == 'fields_group' )
 		{
 
 			if($state == 'open')
 			{
-				$field['open'] = true;
+				$ref_field['open'] = true;
 			}
 			else
 			{
-				$field['open'] = false;
+				$ref_field['open'] = false;
 			}
 
 		}
@@ -367,15 +367,15 @@ class Content
 		}
 
 
-		$new_field_parent = &self::getField($db_content, $new_field_data['parent']['value']);
+		$ref_new_field_parent = &self::getField($db_content, $new_field_data['parent']['value']);
 
 		if( !empty($new_field_data['parent']['value']) )
 		{
-			$new_field_parent = &$new_field_parent['output'];
+			$ref_new_field_parent = &$ref_new_field_parent['output'];
 		}
 
 
-		$parent_exists = self::fieldExists($new_field_parent);
+		$parent_exists = self::fieldExists($ref_new_field_parent);
 
 		if( $parent_exists['error'] == true )
 		{
@@ -383,7 +383,7 @@ class Content
 		}
 
 
-		$new_field_is_not_duplicate = self::validateFieldDuplicates($new_field_parent, $new_field_data['alias']['value']);
+		$new_field_is_not_duplicate = self::validateFieldDuplicates($ref_new_field_parent, $new_field_data['alias']['value']);
 
 		if( $new_field_is_not_duplicate['error'] == true )
 		{
@@ -399,7 +399,7 @@ class Content
 			'output'		=> $new_field_data['default_output']['value'],
 		);
 
-		$new_field_parent[$new_field_data['alias']['value']] = $new_field_content;
+		$ref_new_field_parent[$new_field_data['alias']['value']] = $new_field_content;
 
 
 		$result['db_content'] = $db_content;
@@ -435,14 +435,14 @@ class Content
 
 		$name_arr = self::getNameArray($name);
 
-		$content = &self::getField($db_content, $name_arr['parents']);
+		$ref_field_parent = &self::getField($db_content, $name_arr['parents']);
 
 		if( !empty($name_arr['parents']) )
 		{
-			$content = &$content['output'];
+			$ref_field_parent = &$ref_field_parent['output'];
 		}
 
-		unset($content[$name_arr['alias']]);
+		unset($ref_field_parent[$name_arr['alias']]);
 
 
 		$result['db_content'] = $db_content;
@@ -476,9 +476,9 @@ class Content
 			'this',
 		);
 
-		foreach ($words as &$word)
+		foreach ($words as &$ref_word)
 		{
-			$word = strtolower($word);
+			$ref_word = strtolower($ref_word);
 		}
 
 		return $words;
@@ -706,19 +706,19 @@ class Content
 
 	}
 
-	private static function &getField(&$content, $parents)
+	private static function &getField(&$ref_content, $parents)
 	{
 
 		if($parents == '')
 		{
-			return $content;
+			return $ref_content;
 		}
 
 		$parents = explode(self::NAME_SEPARATOR, $parents);
 
 		$field_name = array_pop($parents);
 
-		$ref_to_field = &$content;
+		$ref_to_field = &$ref_content;
 
 
 		foreach($parents as $parent)
@@ -749,16 +749,16 @@ class Content
 
 	}
 
-	private static function moveFieldFromTo(&$array, $from, $to)
+	private static function moveFieldFromTo(&$ref_parent, $from, $to)
 	{
 
 		$to = $to < 0 ? NULL : $to;
 
-		$new_array = array_slice($array, 0, $from, true) +
-					 array_slice($array, $to, NULL, true);
+		$new_array = array_slice($ref_parent, 0, $from, true) +
+					 array_slice($ref_parent, $to, NULL, true);
 
-		$array = array_slice($new_array, 0, $to, true) +
-				 array_slice($array, $from, 1) +
+		$ref_parent = array_slice($new_array, 0, $to, true) +
+				 array_slice($ref_parent, $from, 1) +
 				 array_slice($new_array, $to, NULL, true);
 
 	}

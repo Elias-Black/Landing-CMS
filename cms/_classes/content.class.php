@@ -1,7 +1,7 @@
 <?php
 
 /**
-* The Class for working with DB and Content
+* The Class for working with Content
 */
 class Content
 {
@@ -17,7 +17,7 @@ class Content
 
 		return Utils::render(
 			'forms/main.html',
-			 array( 'fields' => self::getPrivateContent(true) )
+			 array( 'fields' => DB::getPrivateContent(true) )
 		);
 
 	}
@@ -25,7 +25,7 @@ class Content
 	public static function addNewFieldAction()
 	{
 
-		$db_content = self::getPrivateContent();
+		$db_content = DB::getPrivateContent();
 
 		$field_is_added = self::addNewField($db_content);
 
@@ -38,9 +38,7 @@ class Content
 			return $field_is_added;
 		}
 
-		self::updatePrivateContent($db_content);
-
-		self::updatePublicContent();
+		DB::updateContent($db_content);
 
 		Utils::redirect('/cms/');
 
@@ -60,7 +58,7 @@ class Content
 
 		$name_arr = self::getNameArray($field_name);
 
-		$db_content = self::getPrivateContent(true);
+		$db_content = DB::getPrivateContent(true);
 
 		$field_data = self::getField($db_content, $field_name);
 
@@ -92,7 +90,7 @@ class Content
 		}
 
 
-		$db_content = self::getPrivateContent();
+		$db_content = DB::getPrivateContent();
 
 		$new_field_data = self::getNewFieldData();
 
@@ -181,9 +179,7 @@ class Content
 		self::moveFieldFromTo($new_parent, $new_position, $old_position);
 
 
-		self::updatePrivateContent($db_content);
-
-		self::updatePublicContent();
+		DB::updateContent($db_content);
 
 		Utils::redirect('/cms/');
 
@@ -192,7 +188,7 @@ class Content
 	public static function updateContent()
 	{
 
-		$db_content = self::getPrivateContent();
+		$db_content = DB::getPrivateContent();
 
 		foreach ($_POST as $name => $value)
 		{
@@ -206,9 +202,7 @@ class Content
 
 		}
 
-		self::updatePrivateContent($db_content);
-
-		self::updatePublicContent();
+		DB::updateContent($db_content);
 
 		Utils::redirect('/cms/');
 
@@ -217,7 +211,7 @@ class Content
 	public static function deleteFieldAction($field_name)
 	{
 
-		$db_content = self::getPrivateContent();
+		$db_content = DB::getPrivateContent();
 
 		$field_is_deleted = self::deleteField($db_content, $field_name);
 
@@ -230,9 +224,7 @@ class Content
 			return $field_is_deleted;
 		}
 
-		self::updatePrivateContent($db_content);
-
-		self::updatePublicContent();
+		DB::updateContent($db_content);
 
 		Utils::redirect('/cms/');
 
@@ -246,7 +238,7 @@ class Content
 			'path' => ''
 		);
 
-		$fields = self::getPrivateContent();
+		$fields = DB::getPrivateContent();
 
 		if( isset($_GET['name']) )
 		{
@@ -286,7 +278,7 @@ class Content
 
 		$name_arr = self::getNameArray($name);
 
-		$db_content = self::getPrivateContent();
+		$db_content = DB::getPrivateContent();
 
 		$field_parent = &self::getField($db_content, $name_arr['parents']);
 
@@ -309,9 +301,7 @@ class Content
 		self::moveFieldFromTo($field_parent, $field_position, $new_field_position);
 
 
-		self::updatePrivateContent($db_content);
-
-		self::updatePublicContent();
+		DB::updateContent($db_content);
 
 		Utils::redirect('/cms/');
 
@@ -320,7 +310,7 @@ class Content
 	public static function openCloseGroup($name, $state)
 	{
 
-		$db_content = self::getPrivateContent();
+		$db_content = DB::getPrivateContent();
 
 		$field = &self::getField($db_content, $name);
 
@@ -338,9 +328,7 @@ class Content
 
 		}
 
-		self::updatePrivateContent($db_content);
-
-		self::updatePublicContent();
+		DB::updateContent($db_content);
 
 		Utils::redirect('/cms/');
 
@@ -570,7 +558,7 @@ class Content
 				$result['error'] = true;
 				$result['error_message'] = 'Parent, Type, Alias and Title are required fields.';
 				$result['invalid_fields'][$name] = 'It\' a required field.';
-				$result['sent_data'] = self::replaceQuotes($_POST);
+				$result['sent_data'] = Utils::replaceQuotes($_POST);
 
 			}
 
@@ -596,7 +584,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'Alias can\'t have this word. <a href="http://php.net/manual/en/reserved.variables.php" target="_blank">Here</a> are the majority forbidden words.';
 			$result['invalid_fields']['alias'] = 'Alias have forbidden word.';
-			$result['sent_data'] = self::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotes($_POST);
 
 		}
 
@@ -616,7 +604,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'Alias can\'t have this word.';
 			$result['invalid_fields']['alias'] = 'Alias have forbidden word.';
-			$result['sent_data'] = self::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotes($_POST);
 
 		}
 
@@ -637,7 +625,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'Invalid Alias. Alias names follow the same <a href="http://php.net/manual/en/language.variables.basics.php" target="_blank">rules</a> as variable names in PHP.';
 			$result['invalid_fields']['alias'] = 'Invalid Alias.';
-			$result['sent_data'] = self::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotes($_POST);
 
 		}
 
@@ -690,7 +678,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'This Parent is absent.';
 			$result['invalid_fields']['parent'] = 'Invalid Parent.';
-			$result['sent_data'] = self::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotes($_POST);
 
 		}
 
@@ -710,7 +698,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'The Parent already have a child with this Alias.';
 			$result['invalid_fields']['alias'] = 'The Parent already have a child with this Alias.';
-			$result['sent_data'] = self::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotes($_POST);
 
 		}
 
@@ -758,86 +746,6 @@ class Content
 
 
 		return $ref_to_field;
-
-	}
-
-	private static function getPrivateContent($safe_replace = false)
-	{
-
-		$content = file_get_contents(DB_PRIVATE_PATH);
-
-		$content = unserialize( substr($content, SECURE_LENGTH) );
-
-		if(!$content)
-		{
-			$content = array();
-		}
-
-		return $safe_replace ? self::replaceQuotes($content) : $content;
-
-	}
-
-	private static function updatePrivateContent($content)
-	{
-
-		$content = SECURE_TEXT . serialize($content);
-
-		file_put_contents( DB_PRIVATE_PATH, $content );
-
-	}
-
-	private static function getFieldsOutput($content)
-	{
-
-		$result = array();
-
-		foreach ($content as $alias => $value)
-		{
-
-			if( $value['type'] == 'fields_group' )
-			{
-				$value['output'] = self::getFieldsOutput($value['output']);
-			}
-
-			$result[$alias] = $value['output'];
-
-		}
-
-		return $result;
-
-	}
-
-	private static function updatePublicContent()
-	{
-
-		$db_content = self::getPrivateContent();
-
-		$result = self::getFieldsOutput($db_content);
-
-		file_put_contents( DB_PUBLIC_PATH, serialize($result) );
-
-	}
-
-	private static function replaceQuotes($array)
-	{
-
-		$result = array();
-
-		foreach ($array as $key => $value)
-		{
-
-			if( is_array($value) )
-			{
-				$result[$key] = self::replaceQuotes($value);
-			}
-			else
-			{
-				$result[$key] = str_replace( array('&', '"', '\'', '<', '>'), array('&amp;', '&quot;', '&apos;', '&lt;', '&gt;'), $value );
-			}
-
-		}
-
-		return $result;
 
 	}
 

@@ -55,6 +55,29 @@ class Utils
 		return isset($variable) ? $variable : $default_value;
 	}
 
+	public static function replaceQuotes($array)
+	{
+
+		$result = array();
+
+		foreach ($array as $key => $value)
+		{
+
+			if( is_array($value) )
+			{
+				$result[$key] = self::replaceQuotes($value);
+			}
+			else
+			{
+				$result[$key] = str_replace( array('&', '"', '\'', '<', '>'), array('&amp;', '&quot;', '&apos;', '&lt;', '&gt;'), $value );
+			}
+
+		}
+
+		return $result;
+
+	}
+
 }
 
 ?>

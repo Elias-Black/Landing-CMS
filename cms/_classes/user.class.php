@@ -6,10 +6,14 @@
 class User
 {
 
+
+
+	/* PUBLIC API */
+
 	public static function auth()
 	{
 
-		$db_pwd = self::getDbPassword();
+		$db_pwd = DB::getPassword();
 
 		if( empty($db_pwd) )
 			return self::createPassword();
@@ -48,7 +52,11 @@ class User
 		if( $_POST['pass1'] != $_POST['pass2'] )
 			return array('error_message' => 'Password and confirm password doesn\'t match.');
 
-		self::savePassword($_POST['pass1']);
+		$prepared_pwd = self::preparePasswordForDb($_POST['pass1']);
+
+		DB::updatePassword($prepared_pwd);
+
+		self::setLoginCookie();
 
 		return array('success_message' => 'Password successfully saved.');
 
@@ -65,27 +73,13 @@ class User
 
 	}
 
-	private static function getDbPassword()
-	{
 
-		$content = file_get_contents(DB_PASSWORD_PATH);
 
-		return substr($content, SECURE_LENGTH);
-
-	}
-
-	private static function getDbSalt()
-	{
-
-		$content = file_get_contents(DB_PASSWORD_PATH);
-
-		return substr($content, RANDOM_STR_LENGTH);
-
-	}
+	/* PRIVATE API */
 
 	private static function getPasswordForCookie()
 	{
-		return md5( self::getDbPassword() );
+		return md5( DB::getPassword() );
 	}
 
 	private static function setLoginCookie()
@@ -104,7 +98,7 @@ class User
 		if(!$password)
 			return false;
 
-		$salt = self::getDbSalt();
+		$salt = self::getSalt();
 
 		if(!$salt)
 			$salt = Utils::getRandomString(RANDOM_STR_LENGTH);
@@ -117,16 +111,12 @@ class User
 
 	}
 
-	private static function savePassword($password)
+	private static function getSalt()
 	{
 
-		$password = self::preparePasswordForDb($password);
+		$content = DB::getPassword();
 
-		$content = SECURE_TEXT . $password;
-
-		file_put_contents( DB_PASSWORD_PATH, $content );
-
-		self::setLoginCookie();
+		return substr($content, RANDOM_STR_LENGTH);
 
 	}
 
@@ -142,6 +132,8 @@ class User
 
 			if( !$message['error_message'] )
 				Utils::redirect('/cms/');
+
+			self::setLoginCookie();
 
 			return $message;
 

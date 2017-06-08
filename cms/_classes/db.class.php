@@ -76,7 +76,7 @@ class DB
 	private static function updatePublicContent($content)
 	{
 
-		$result = self::getFieldsOutput($db_content);
+		$result = self::getFieldsOutput($content);
 
 		file_put_contents( self::DB_PUBLIC_PATH, serialize($result) );
 

@@ -44,6 +44,76 @@ h2 {
 
 
 
+/* Styling Field's Controlls */
+
+.label.icon {
+	width: 1.7em;
+	height: 1.7em;
+	margin-left: 1px;
+	display: inline-block;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 70%;
+}
+
+.icon.edit-white {
+	background-image: url(/web/_cms/img/icon-edit-white.png);
+}
+
+.icon.collapse {
+	background-image: url(/web/_cms/img/icon-collapse.png);
+}
+
+.icon.increase {
+	background-image: url(/web/_cms/img/icon-increase.png);
+}
+
+.icon.up-white {
+	background-image: url(/web/_cms/img/icon-up-white.png);
+}
+
+.icon.down-white {
+	background-image: url(/web/_cms/img/icon-down-white.png);
+}
+
+.icon.delete-white {
+	background-image: url(/web/_cms/img/icon-delete-white.png);
+}
+
+span.icon {
+	width: 1.3em;
+	height: 1.3em;
+	float: right;
+	font-size: 15px;
+	margin-left: 1px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 70%;
+	opacity: .2;
+}
+
+span.icon:hover {
+	opacity: .5;
+}
+
+.icon.edit-black {
+	background-image: url(/web/_cms/img/icon-edit-black.png);
+}
+
+.icon.up-black {
+	background-image: url(/web/_cms/img/icon-up-black.png);
+}
+
+.icon.down-black {
+	background-image: url(/web/_cms/img/icon-down-black.png);
+}
+
+.icon.delete-red {
+	background-image: url(/web/_cms/img/icon-delete-red.png);
+}
+
+
+
 /* Customization for Fields Groups */
 
 .panel.panel-default {
@@ -51,7 +121,7 @@ h2 {
 }
 
 .panel-controls {
-	padding-bottom: 3px;
+	padding-bottom: 5px;
 }
 
 .panel-controls .label {
@@ -61,14 +131,6 @@ h2 {
 
 .panel-heading .panel-title {
 	display: inline-block;
-}
-
-
-
-/* Paint delete button */
-
-.close {
-	color: #f10!important;
 }
 
 

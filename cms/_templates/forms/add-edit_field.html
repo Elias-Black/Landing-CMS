@@ -71,11 +71,11 @@
 	<div class="buttons">
 		<?php echo Utils::render(
 			'elements/button_blue.html',
-			 array('text' => 'Save', 'title' => 'Save and add the new field.')
+			 array('text' => 'Save', 'title' => Utils::pr($vars['save_btn_text']))
 		); ?>
 		<?php echo Utils::render(
 			'elements/button_white.html',
-			 array('text' => 'Cancel', 'title' => 'Cancel adding the new field.', 'url' => '/cms/')
+			 array('text' => 'Cancel', 'title' => Utils::pr($vars['cancel_btn_text']), 'url' => '/cms/')
 		); ?>
 	</div>
 

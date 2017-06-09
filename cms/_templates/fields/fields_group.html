@@ -12,15 +12,35 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="pull-right panel-controls">
-						<a class="label label-default" href="/cms/?moveFieldUp=<?php echo $field['name']; ?>" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Up">&#9650;</a>
-						<a class="label label-default" href="/cms/?moveFieldDown=<?php echo $field['name']; ?>" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Down">&#9660;</a>
-						<a class="label label-default" href="/cms/edit-field/?name=<?php echo $field['name']; ?>" title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Group">&#9881;</a>
-						<a class="label label-default" href="/cms/?<?=Utils::pr($field['open'])?'closeGroup':'openGroup';?>=<?php echo $field['name']; ?>" onclick="openCloseGroup('<?php echo $field['name']; ?>')">&plusmn;</a>
-						<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; group?')" class="label label-danger" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; group">&times;</a>
+						<a
+						 class="icon up-white label label-default"
+						 href="/cms/?moveFieldUp=<?php echo $field['name']; ?>"
+						 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Up.">&nbsp;</a>
+						<a
+						 class="icon down-white label label-default"
+						 href="/cms/?moveFieldDown=<?php echo $field['name']; ?>"
+						 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Down.">&nbsp;</a>
+						<a
+						 class="icon edit-white label label-default"
+						 href="/cms/edit-field/?name=<?php echo $field['name']; ?>"
+						 title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Group.">&nbsp;</a>
+						<a
+						 class="icon <?=Utils::pr($field['open'])?'collapse':'increase';?> label label-default"
+						 href="/cms/?<?=Utils::pr($field['open'])?'closeGroup':'openGroup';?>=<?php echo $field['name']; ?>"
+						 title="Open/Close &laquo;<?php echo $field['title']; ?>&raquo; Group."
+						 onclick="openCloseGroup('<?php echo $field['name']; ?>'); return false;"
+						 id="js_group_toggle_<?php echo $field['name']; ?>">&nbsp;</a>
+						<a
+						 class="icon delete-white label label-danger"
+						 href="?delete=<?php echo $field['name']; ?>"
+						 title="Delete &laquo;<?php echo $field['title']; ?>&raquo; Group."
+						 onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; Group?')">&nbsp;</a>
 					</div>
 					<h3 class="panel-title"><?php echo $field['title']; ?></h3>
 				</div>
-				<div class="panel-body<?=Utils::pr($field['open'])?'':' hidden';?>" id="js_group_body_<?php echo $field['name']; ?>">
+				<div
+				 class="panel-body<?=Utils::pr($field['open'])?'':' hidden';?>"
+				 id="js_group_body_<?php echo $field['name']; ?>">
 
 					<?php
 						$info['parents'] = $field['parents'];
@@ -40,17 +60,26 @@
 	<?php else: ?>
 
 		<div class="form-group">
-			<a href="?delete=<?php echo $field['name']; ?>" onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; field?')" class="close" title="Delete &laquo;<?php echo $field['title']; ?>&raquo; field">
-				<span aria-hidden="true">&times;</span>
+			<a
+			 href="?delete=<?php echo $field['name']; ?>"
+			 title="Delete &laquo;<?php echo $field['title']; ?>&raquo; Field."
+			 onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; Field?')">
+				<span class="icon delete-red" aria-hidden="true">&nbsp;</span>
 			</a>
-			<a href="/cms/edit-field/?name=<?php echo $field['name']; ?>" style="color:initial!important;font-size:16px!important;line-height:1.5;" class="close" title="Edit &laquo;<?php echo $field['title']; ?>&raquo; field">
-				<span aria-hidden="true">&#9881;</span>
+			<a
+			 href="/cms/edit-field/?name=<?php echo $field['name']; ?>"
+			 title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Field.">
+				<span class="icon edit-black" aria-hidden="true">&nbsp;</span>
 			</a>
-			<a href="/cms/?moveFieldDown=<?php echo $field['name']; ?>" style="color:initial!important;font-size:16px!important;line-height:1.5;" class="close" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Down">
-				<span aria-hidden="true">&#9660;</span>
+			<a
+			 href="/cms/?moveFieldDown=<?php echo $field['name']; ?>"
+			 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Down.">
+				<span class="icon down-black" aria-hidden="true">&nbsp;</span>
 			</a>
-			<a href="/cms/?moveFieldUp=<?php echo $field['name']; ?>" style="color:initial!important;font-size:16px!important;line-height:1.5;" class="close" title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Up">
-				<span aria-hidden="true">&#9650;</span>
+			<a
+			 href="/cms/?moveFieldUp=<?php echo $field['name']; ?>"
+			 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Up.">
+				<span class="icon up-black" aria-hidden="true">&nbsp;</span>
 			</a>
 			<?php echo Utils::render(
 				"fields/{$field['type']}.html",

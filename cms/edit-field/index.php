@@ -12,6 +12,8 @@ else
 	$data = Content::editField();
 
 $data['page_header'] = 'Field editing';
+$data['save_btn_text'] = 'Save changes of the Field.';
+$data['cancel_btn_text'] = 'Cancel changes of the Field.';
 
 // Render form of adding new field
 $content = Utils::render(

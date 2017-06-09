@@ -236,24 +236,26 @@ function responsive_filemanager_callback(inp_id)
 function openCloseGroup(name)
 {
 
-	event.preventDefault();
+	var body_id = 'js_group_body_'+name;
+	var toggle_id = 'js_group_toggle_'+name;
 
-	var id = 'js_group_body_'+name;
+	var body_element = document.getElementById(body_id);
+	var toggle_element = document.getElementById(toggle_id);
 
-	var element = document.getElementById(id);
-
-	if( hasClass(element, 'hidden') )
+	if( hasClass(body_element, 'hidden') )
 	{
 
 		AJAX( '/cms/?ajax=true&openGroup='+name, function(data){}, function(data){} );
-		showElement(element);
+		changeClass(toggle_element, 'increase', 'collapse');
+		showElement(body_element);
 
 	}
 	else
 	{
 
 		AJAX( '/cms/?ajax=true&closeGroup='+name, function(data){}, function(data){} );
-		hideElement(element);
+		changeClass(toggle_element, 'collapse', 'increase');
+		hideElement(body_element);
 
 	}
 
@@ -275,6 +277,12 @@ function showElement(element)
 function hideElement(element)
 {
 	element.classList.add('hidden');
+}
+
+function changeClass(element, old_class, new_class)
+{
+	element.classList.remove(old_class);
+	element.classList.add(new_class);
 }
 
 function AJAX(url, succes_callback, error_callback)

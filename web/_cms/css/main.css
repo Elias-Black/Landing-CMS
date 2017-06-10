@@ -253,3 +253,14 @@ input[type="checkbox"] + label {
 	float: right;
 	padding: 7px;
 }
+
+
+/* Custom styles */
+
+.unstyle-link {
+	color: inherit;
+}
+
+.unstyle-link:hover {
+	color: inherit;
+}

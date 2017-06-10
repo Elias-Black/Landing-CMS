@@ -1,7 +1,7 @@
 <?php
 
 // Connecting the public controller
-require_once( realpath($_SERVER["DOCUMENT_ROOT"]) . '/web/index.php' );
+require_once( 'web/index.php' );
 
 // Connecting a module
 require_once('modules/rand_num.php');
@@ -68,7 +68,7 @@ require_once('modules/rand_num.php');
 				<?php if( isset($get['title']) ): ?>
 					<?=$get['title'];?>
 				<?php else: ?>
-					Create <i>String</i> field with 'title' alias
+					Create <i>String</i> Field with 'title' Alias.
 				<?php endif; ?>
 			</div>
 		</div>
@@ -78,7 +78,7 @@ require_once('modules/rand_num.php');
 				<?php if( isset($get['main']) ): ?>
 					<?=$get['main'];?>
 				<?php else: ?>
-					Create <i>Multiline/WYSIWYG</i> field with 'main' alias
+					Create <i>Multiline/WYSIWYG</i> Field with 'main' Alias.
 				<?php endif; ?>
 
 				<p>
@@ -92,7 +92,7 @@ require_once('modules/rand_num.php');
 							<?php endforeach; ?>
 						</ul>
 					<?php else: ?>
-						Create <i>Group of fields</i> with 'main_group' alias and some <i>String</i> items
+						Create <i>Group of Fields</i> with 'main_group' Alias and some <i>String</i> items.
 					<?php endif; ?>
 				</p>
 
@@ -105,7 +105,7 @@ require_once('modules/rand_num.php');
 				<?php if( isset($get['footer']) ): ?>
 					<?=$get['footer'];?>
 				<?php else: ?>
-					Create <i>String</i> field with 'footer' alias
+					Create <i>String</i> Field with 'footer' Alias.
 				<?php endif; ?>
 			</div>
 		</div>

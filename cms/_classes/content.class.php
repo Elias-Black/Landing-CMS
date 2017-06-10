@@ -40,7 +40,7 @@ class Content
 
 		DB::updateContent($db_content);
 
-		Utils::redirect('/cms/');
+		Utils::redirect( Utils::getLink('cms/') );
 
 	}
 
@@ -53,7 +53,7 @@ class Content
 
 		if( !$field_name )
 		{
-			Utils::redirect('/cms/');
+			Utils::redirect( Utils::getLink('cms/') );
 		}
 
 		$name_arr = self::getNameArray($field_name);
@@ -66,7 +66,7 @@ class Content
 
 		if( $field_exists['error'] == true )
 		{
-			Utils::redirect('/cms/');
+			Utils::redirect( Utils::getLink('cms/') );
 		}
 
 		$result['sent_data'] = $field_data;
@@ -86,7 +86,7 @@ class Content
 
 		if( !$field_name )
 		{
-			Utils::redirect('/cms/');
+			Utils::redirect( Utils::getLink('cms/') );
 		}
 
 
@@ -120,7 +120,7 @@ class Content
 
 		if( $field_exists['error'] == true )
 		{
-			Utils::redirect('/cms/');
+			Utils::redirect( Utils::getLink('cms/') );
 		}
 
 		if( $old_field['type'] == 'fields_group' && $new_field_data['type']['value'] != 'fields_group' )
@@ -181,7 +181,7 @@ class Content
 
 		DB::updateContent($db_content);
 
-		Utils::redirect('/cms/');
+		Utils::redirect( Utils::getLink('cms/') );
 
 	}
 
@@ -204,7 +204,7 @@ class Content
 
 		DB::updateContent($db_content);
 
-		Utils::redirect('/cms/');
+		Utils::redirect( Utils::getLink('cms/') );
 
 	}
 
@@ -226,7 +226,7 @@ class Content
 
 		DB::updateContent($db_content);
 
-		Utils::redirect('/cms/');
+		Utils::redirect( Utils::getLink('cms/') );
 
 	}
 
@@ -303,7 +303,7 @@ class Content
 
 		DB::updateContent($db_content);
 
-		Utils::redirect('/cms/');
+		Utils::redirect( Utils::getLink('cms/') );
 
 	}
 
@@ -345,7 +345,7 @@ class Content
 		}
 		else
 		{
-			Utils::redirect('/cms/');
+			Utils::redirect( Utils::getLink('cms/') );
 		}
 
 	}

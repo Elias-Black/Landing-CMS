@@ -5,13 +5,16 @@
 	<meta charset="utf-8">
 	<meta name='HandheldFriendly' content='True'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/web/_cms/css/main.css">
-	<link rel="stylesheet" href="/web/_cms/css/magic-check.min.css">
-	<link rel="stylesheet" href="/web/_cms/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/web/_cms/css/color-picker.min.css">
-	<script src="/web/_cms/js/color-picker.min.js"></script>
-	<script src="/web/_cms/js/main.js"></script>
-	<script src="/cms/_tinymce/js/tinymce/tinymce.min.js"></script>
+	<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/main.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/magic-check.min.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/bootstrap.min.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/color-picker.min.css');?>">
+	<script type="text/javascript">
+		var root_path = '<?=Utils::getLink();?>';
+	</script>
+	<script src="<?=Utils::getLink('web/_cms/js/color-picker.min.js');?>"></script>
+	<script src="<?=Utils::getLink('web/_cms/js/main.js');?>"></script>
+	<script src="<?=Utils::getLink('cms/_tinymce/js/tinymce/tinymce.min.js');?>"></script>
 	<meta name='copyright' content='Landing CMS'>
 	<meta name="description" content="Free CMS for Landing">
 	<meta name="keywords" content="CMS, Landing, Free">
@@ -19,7 +22,7 @@
 	<meta name="generator" content="Landing CMS 0.0.3" />
 
 	<noscript>
-		<link rel="stylesheet" href="/web/_cms/css/no_js.css">
+		<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/no_js.css');?>">
 	</noscript>
 </head>
 <body>
@@ -34,26 +37,26 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/cms/" class="navbar-brand">Landing CMS</a>
+				<a href="<?=Utils::getLink('cms/');?>" class="navbar-brand">Landing CMS</a>
 			</div>
 			<div class="collapse navbar-collapse" id="js_collapse">
 				<ul class="right nav navbar-nav">
 				<?php if( defined('IS_LOGIN') ): ?>
 					<li>
-						<a href="/cms/">Edit Content</a>
+						<a href="<?=Utils::getLink('cms/');?>">Edit Content</a>
 					</li>
 					<li>
-						<a href="/cms/password/">Edit Password</a>
+						<a href="<?=Utils::getLink('cms/password/');?>">Edit Password</a>
 					</li>
 					<li>
-						<a href="/cms/add-field/">Add Field</a>
+						<a href="<?=Utils::getLink('cms/add-field/');?>">Add Field</a>
 					</li>
 					<li>
-						<a href="/cms/login/?logout=true">Log Out</a>
+						<a href="<?=Utils::getLink('cms/login/?logout=true');?>">Log Out</a>
 					</li>
 				<?php endif; ?>
 					<li>
-						<a href="/" target="_blank">Website</a>
+						<a href="<?=Utils::getLink();?>" target="_blank">Website</a>
 					</li>
 					<li>
 						<a href="https://github.com/Elias-Black/Landing-CMS" target="_blank">About CMS</a>

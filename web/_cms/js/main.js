@@ -225,7 +225,7 @@ function responsive_filemanager_callback(inp_id)
 
 	var file_inp_el = document.getElementById(inp_id);
 
-	file_inp_el.value = '/web/_cms/uploads/tinymce/source/' + file_inp_el.value;
+	file_inp_el.value = root_path + 'web/_cms/uploads/tinymce/source/' + file_inp_el.value;
 
 }
 
@@ -245,7 +245,7 @@ function openCloseGroup(name)
 	if( hasClass(body_element, 'hidden') )
 	{
 
-		AJAX( '/cms/?ajax=true&openGroup='+name, function(data){}, function(data){} );
+		AJAX( root_path + 'cms/?ajax=true&openGroup='+name, function(data){}, function(data){} );
 		changeClass(toggle_element, 'increase', 'collapse');
 		showElement(body_element);
 
@@ -253,7 +253,7 @@ function openCloseGroup(name)
 	else
 	{
 
-		AJAX( '/cms/?ajax=true&closeGroup='+name, function(data){}, function(data){} );
+		AJAX( root_path + 'cms/?ajax=true&closeGroup='+name, function(data){}, function(data){} );
 		changeClass(toggle_element, 'collapse', 'increase');
 		hideElement(body_element);
 

@@ -38,8 +38,8 @@ class User
 
 		}
 
-		if( $_SERVER['REQUEST_URI'] != '/cms/login/' )
-			Utils::redirect('/cms/login/');
+		if( $_SERVER['REQUEST_URI'] != Utils::getLink('cms/login/') )
+			Utils::redirect( Utils::getLink('cms/login/') );
 
 		if( $entered_pwd && $entered_pwd != $db_pwd )
 			return array('error_message' => 'Invalid password.');
@@ -69,7 +69,7 @@ class User
 
 		setcookie('login','',time()-1, '/');
 
-		Utils::redirect('/');
+		Utils::redirect( Utils::getLink() );
 
 	}
 
@@ -123,15 +123,15 @@ class User
 	private static function createPassword()
 	{
 
-		if( $_SERVER['REQUEST_URI'] != '/cms/password/' )
-			Utils::redirect('/cms/password/');
+		if( $_SERVER['REQUEST_URI'] != Utils::getLink('cms/password/') )
+			Utils::redirect( Utils::getLink('cms/password/') );
 
 		if( !empty($_POST) )
 		{
 			$message =  self::updatePassword();
 
 			if( !$message['error_message'] )
-				Utils::redirect('/cms/');
+				Utils::redirect( Utils::getLink('cms/') );
 
 			self::setLoginCookie();
 
@@ -148,7 +148,7 @@ class User
 
 		self::setLoginCookie();
 
-		Utils::redirect('/cms/');
+		Utils::redirect( Utils::getLink('cms/') );
 
 	}
 

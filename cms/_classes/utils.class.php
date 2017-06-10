@@ -8,6 +8,8 @@ class Utils
 
 	const TEMPLATE_FOLDER = __DIR__ . '/../_templates/';
 
+	const SITE_FOLDER = '/';
+
 
 
 	public static function redirect($url)
@@ -81,6 +83,11 @@ class Utils
 	public static function isAJAX()
 	{
 		return ( self::pr($_POST['ajax']) == 'true' || self::pr($_GET['ajax']) == 'true' );
+	}
+
+	public static function getLink($relative_link = '')
+	{
+		return self::SITE_FOLDER . $relative_link;
 	}
 
 }

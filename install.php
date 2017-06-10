@@ -29,9 +29,9 @@ $upload = array(
 	<meta charset="utf-8">
 	<meta name='HandheldFriendly' content='True'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/web/_cms/css/main.css">
-	<link rel="stylesheet" href="/web/_cms/css/bootstrap.min.css">
-	<script src="/web/_cms/js/main.js"></script>
+	<link rel="stylesheet" href="web/_cms/css/main.css">
+	<link rel="stylesheet" href="web/_cms/css/bootstrap.min.css">
+	<script src="web/_cms/js/main.js"></script>
 	<meta name='copyright' content='Landing CMS'>
 	<meta name="description" content="Free CMS for Landing">
 	<meta name="keywords" content="CMS, Landing, Free">
@@ -39,7 +39,7 @@ $upload = array(
 	<meta name="generator" content="Landing CMS 0.0.3" />
 
 	<noscript>
-		<link rel="stylesheet" href="/web/_cms/css/no_js.css">
+		<link rel="stylesheet" href="web/_cms/css/no_js.css">
 	</noscript>
 </head>
 <body>
@@ -54,7 +54,7 @@ $upload = array(
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="/cms/" class="navbar-brand">Landing CMS</a>
+				<a href="cms/" class="navbar-brand">Landing CMS</a>
 			</div>
 			<div class="collapse navbar-collapse" id="js_collapse">
 				<ul class="right nav navbar-nav">
@@ -136,7 +136,7 @@ $upload = array(
 	<footer class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 			<div class="col-sm-12 text-center navbar-text">
-				2017 &copy; Landing CMS
+				2017 &copy; <a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" class="unstyle-link">Landing CMS</a>
 			</div>
 		</div>
 	</footer>

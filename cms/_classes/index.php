@@ -10,8 +10,6 @@ error_reporting(E_ALL);
 
 */
 
-define('ROOT_PATH',			realpath($_SERVER["DOCUMENT_ROOT"]) );
-
 define('RANDOM_STR_LENGTH',	-10);
 
 define('AUTH_EXPIRE',	31536000);

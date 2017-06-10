@@ -6,7 +6,7 @@
 class Utils
 {
 
-	const TEMPLATE_FOLDER = "/cms/_templates/";
+	const TEMPLATE_FOLDER = __DIR__ . '/../_templates/';
 
 
 
@@ -22,7 +22,7 @@ class Utils
 	public static function render($template, $vars)
 	{
 
-		$template = ROOT_PATH . self::TEMPLATE_FOLDER . $template;
+		$template = self::TEMPLATE_FOLDER . $template;
 
 		ob_start();
 			include($template);

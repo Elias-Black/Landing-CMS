@@ -6,9 +6,9 @@
 class DB
 {
 
-	const DB_PASSWORD_PATH = ROOT_PATH. '/cms/_db/password.php';
-	const DB_PRIVATE_PATH = ROOT_PATH. '/cms/_db/private.php';
-	const DB_PUBLIC_PATH = ROOT_PATH. '/cms/_db/public.php';
+	const DB_PASSWORD_PATH = __DIR__ . '/../_db/password.php';
+	const DB_PRIVATE_PATH = __DIR__ . '/../_db/private.php';
+	const DB_PUBLIC_PATH = __DIR__ . '/../_db/public.php';
 
 	const SECURE_TEXT = '<?php die; ?>';
 	const SECURE_LENGTH = 13;

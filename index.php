@@ -1,7 +1,7 @@
 <?php
 
 // Connecting the public controller
-require_once( 'web/index.php' );
+require_once('web/index.php');
 
 // Connecting a module
 require_once('modules/rand_num.php');
@@ -96,7 +96,7 @@ require_once('modules/rand_num.php');
 					<?php endif; ?>
 				</p>
 
-				<p>Random module: <?php echo $rand_num; ?></p>
+				<p>Random module: <?=$rand_num;?></p>
 
 			</div>
 		</div>

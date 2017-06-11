@@ -1,11 +1,11 @@
 # Landing CMS
-A simple CMS for landing pages.
+A simple CMS for Landing Pages.
 
 Be careful! While that is an alpha version.
 
 ### Hello guys!
 I wrote this CMS for myself and want to share it for everyone.
-Landing CMS is a simple tool for management landing pages. It don't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.3 and early!
+Landing CMS is a simple tool for management landing pages. It don't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.2 and early!
 
 *For the rapid development of the project, you can make a donation!*
 
@@ -39,26 +39,30 @@ Now you need to create your password.
 ***
 
 ### How to use
-In the Admin panel you can create Fields with 6 formats:
+In the Admin panel you can create Fields with 7 formats:
 - String
 - Multiple line text
 - WYSIWYG Field
 - Checkbox
 - Color Picker
 - File Uploader
+- Group of Fields
 
 When you creating a Field you need to enter an Alias.
 ![Adding a new Field](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/adding-field.png "Adding a new Field")
 
+Filled Admin panel will look something like this:
+![Filled CMS](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/filled-cms.png "Filled CMS")
 
-Then, when you want to use your Fields in your files you need to connect DB to your file.
+
+Then, when you want to use your Fields in your files you need to connect Controller to your file.
 
 **Example:**
 ```php
 <?php
 
-// Connecting the database
-require_once('cms/_db/public.php');
+// Connecting the public controller
+require_once('web/index.php');
 
 ?>
 
@@ -72,7 +76,7 @@ You can to call your Fields by Alias.
 ```php
 <html>
   <head>
-    <title><?php echo $get['title']; ?></title>
+    <title><?=$get['title'];?></title>
     ...
 ```
 ![Demo page](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/demo-page.png "Demo page")
@@ -95,6 +99,25 @@ If you want to use checkboxes you need to check the values of equality 'on'.
 
 </body>
 ```
+### Groups
+If you created a Group, you can call its specific element.
+
+**Example:**
+```php
+<p>
+   <?=$get['main_group']['item1'];?>
+</p>
+```
+You can also iterate through each of the Group's elmenets. (Subgroup or Field).
+
+**Example:**
+```php
+<?php foreach($get['main_group'] as $name => $item): ?>
+   <ul>
+      <li><b><?=$name;?>:</b> <?=$item;?>;</li>
+   </ul>
+<?php endforeach; ?>
+```
 ### Modules
 If you need use any modules you can creat these in `modules` directory. For using your Fields in your modules you should connect DB before connected this modules.
 
@@ -102,8 +125,8 @@ If you need use any modules you can creat these in `modules` directory. For usin
 ```php
 <?php
 
-// Connecting the batabase
-require_once('cms/_db/public.php');
+// Connecting the public controller
+require_once('web/index.php');
 
 // Connecting a module
 require_once('modules/rand_num.php');
@@ -115,7 +138,7 @@ require_once('modules/rand_num.php');
 
   ...
 
-  <b>Random number module:</b> <?php echo $rand_num; ?>
+  <b>Random number module:</b> <?=$rand_num;?>
 
   ...
 ```

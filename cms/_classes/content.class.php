@@ -82,9 +82,9 @@ class Content
 	public static function updateField()
 	{
 
-		$field_name = isset($_GET['name']) ? $_GET['name'] : false;
+		$old_field_name = isset($_GET['name']) ? $_GET['name'] : false;
 
-		if( !$field_name )
+		if( !$old_field_name )
 		{
 			Utils::redirect( Utils::getLink('cms/') );
 		}
@@ -94,7 +94,18 @@ class Content
 
 		$new_field_data = self::getNewFieldData();
 
-		$old_name_arr = self::getNameArray($field_name);
+		$old_name_arr = self::getNameArray($old_field_name);
+
+
+
+		$old_field = self::getField($db_content, $old_field_name);
+
+		$field_exists = self::fieldExists($old_field);
+
+		if( $field_exists['error'] == true )
+		{
+			Utils::redirect( Utils::getLink('cms/') );
+		}
 
 
 		$old_position = 0;
@@ -114,15 +125,6 @@ class Content
 		}
 
 
-		$old_field = self::getField($db_content, $field_name);
-
-		$field_exists = self::fieldExists($old_field);
-
-		if( $field_exists['error'] == true )
-		{
-			Utils::redirect( Utils::getLink('cms/') );
-		}
-
 		if( $old_field['type'] == 'fields_group' && $new_field_data['type']['value'] != 'fields_group' )
 		{
 			$old_field_output = '';
@@ -137,7 +139,7 @@ class Content
 		}
 
 
-		$field_is_deleted = self::deleteField($db_content, $field_name);
+		$field_is_deleted = self::deleteField($db_content, $old_field_name);
 
 		if( !isset($field_is_deleted['error']) && isset($field_is_deleted['db_content']) )
 		{

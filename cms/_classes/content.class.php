@@ -270,7 +270,7 @@ class Content
 			'Checkbox'			=>	'input_checkbox',
 			'Color Picker'		=>	'input_color_picker',
 			'File Uploader'		=>	'input_file_uploader',
-			'Group of fields'	=>	'fields_group',
+			'Group of Fields'	=>	'fields_group',
 		);
 
 	}

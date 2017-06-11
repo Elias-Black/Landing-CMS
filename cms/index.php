@@ -27,7 +27,7 @@ if( isset($_GET['closeGroup']) )
 if( !empty($_POST) )
 	Content::updateContent();
 
-// Render form of fields edit
+// Render form of Fields edit
 $content = Content::getMainForm();
 
 // Printing page

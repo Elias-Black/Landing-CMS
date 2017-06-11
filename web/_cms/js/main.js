@@ -46,7 +46,7 @@ function confirmLeave(change)
 	{
 
 		if(form_state == true)
-			return 'Do you want to leave this page with unsaved fields?';
+			return 'Do you want to leave this page with unsaved Fields?';
 
 	}
 
@@ -57,8 +57,8 @@ function confirmLeave(change)
 
 
 /**
-* Adding listner for changes of all form's fields except WYSIWYG field
-* WYSIWYG field itself calls -confirmLeave- function
+* Adding listner for changes of all form's Fields except WYSIWYG Field
+* WYSIWYG Field itself calls -confirmLeave- function
 */
 
 document.addEventListener( 'DOMContentLoaded', confirmLeave, false );

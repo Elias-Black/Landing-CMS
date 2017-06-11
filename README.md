@@ -33,25 +33,25 @@ If helper show that all is done you should going to Admin panel: `https://your_s
 Now you need to create your password.
 ![Creating password](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/creating-password.png "Creating password")
 
-**All is done!** You can create your first field and use it in your code.
+**All is done!** You can create your first Field and use it in your code.
 ![Welcome to Landing CMS](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/clean-cms.png "Welcome to Landing CMS")
 
 ***
 
 ### How to use
-In the Admin panel you can create fields with 6 formats:
+In the Admin panel you can create Fields with 6 formats:
 - String
 - Multiple line text
-- WYSIWYG field
+- WYSIWYG Field
 - Checkbox
 - Color Picker
 - File Uploader
 
-When you creating a field you need to enter an alias.
-![Adding a new field](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/adding-field.png "Adding a new field")
+When you creating a Field you need to enter an Alias.
+![Adding a new Field](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/adding-field.png "Adding a new Field")
 
 
-Then, when you want to use your fields in your files you need to connect DB to your file.
+Then, when you want to use your Fields in your files you need to connect DB to your file.
 
 **Example:**
 ```php
@@ -66,7 +66,7 @@ require_once('cms/_db/public.php');
   ...
 ```
 ### Text
-You can to call your fields by alias.
+You can to call your Fields by Alias.
 
 **Example:**
 ```php
@@ -96,7 +96,7 @@ If you want to use checkboxes you need to check the values of equality 'on'.
 </body>
 ```
 ### Modules
-If you need use any modules you can creat these in `modules` directory. For using your fields in your modules you should connect DB before connected this modules.
+If you need use any modules you can creat these in `modules` directory. For using your Fields in your modules you should connect DB before connected this modules.
 
 **Example:**
 ```php

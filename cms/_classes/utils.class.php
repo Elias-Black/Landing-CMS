@@ -6,8 +6,6 @@
 class Utils
 {
 
-	const TEMPLATE_FOLDER = __DIR__ . '/../_templates/';
-
 	const SITE_FOLDER = '/';
 
 
@@ -24,7 +22,7 @@ class Utils
 	public static function render($template, $vars)
 	{
 
-		$template = self::TEMPLATE_FOLDER . $template;
+		$template = self::getTemplateFolder() . $template;
 
 		ob_start();
 			include($template);
@@ -88,6 +86,11 @@ class Utils
 	public static function getLink($relative_link = '')
 	{
 		return self::SITE_FOLDER . $relative_link;
+	}
+
+	private static function getTemplateFolder()
+	{
+		return dirname(__FILE__) . '/../_templates/';
 	}
 
 }

@@ -56,12 +56,18 @@ function confirmLeave(change)
 
 
 
-/**
-* Adding listner for changes of all form's Fields except WYSIWYG Field
-* WYSIWYG Field itself calls -confirmLeave- function
-*/
+/* Called when the document is ready */
 
-document.addEventListener( 'DOMContentLoaded', confirmLeave, false );
+function init()
+{
+
+	/**
+	* Adding listner for changes of all form's Fields except WYSIWYG Field
+	* WYSIWYG Field itself calls -confirmLeave- function
+	*/
+
+	confirmLeave();
+}
 
 
 
@@ -242,11 +248,14 @@ function openCloseGroup(name)
 	var body_element = document.getElementById(body_id);
 	var toggle_element = document.getElementById(toggle_id);
 
+	var opened_img = toggle_element.getAttribute('data-opened');
+	var closed_img = toggle_element.getAttribute('data-closed');
+
 	if( hasClass(body_element, 'hidden') )
 	{
 
 		AJAX( root_path + 'cms/?ajax=true&openGroup='+name, function(data){}, function(data){} );
-		changeClass(toggle_element, 'increase', 'collapse');
+		toggle_element.setAttribute('src', opened_img);
 		showElement(body_element);
 
 	}
@@ -254,7 +263,7 @@ function openCloseGroup(name)
 	{
 
 		AJAX( root_path + 'cms/?ajax=true&closeGroup='+name, function(data){}, function(data){} );
-		changeClass(toggle_element, 'collapse', 'increase');
+		toggle_element.setAttribute('src', closed_img);
 		hideElement(body_element);
 
 	}
@@ -265,24 +274,47 @@ function openCloseGroup(name)
 
 /* Utils */
 
-function hasClass(element, cls) {
-	return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+function hasClass(ele, cls)
+{
+	return ele.getAttribute('class').indexOf(cls) > -1;
+}
+
+function addClass(ele, cls)
+{
+
+	if(ele.classList)
+	{
+		ele.classList.add(cls);
+	}
+	else if(!hasClass(ele, cls))
+	{
+		ele.setAttribute('class', ele.getAttribute('class') + ' ' + cls);
+	}
+
+}
+
+function removeClass(ele, cls)
+{
+
+	if(ele.classList)
+	{
+		ele.classList.remove(cls);
+	}
+	else if(hasClass(ele, cls))
+	{
+		ele.setAttribute('class', ele.getAttribute('class').replace(cls, ' '));
+	}
+
 }
 
 function showElement(element)
 {
-	element.classList.remove('hidden');
+	removeClass(element, 'hidden');
 }
 
 function hideElement(element)
 {
-	element.classList.add('hidden');
-}
-
-function changeClass(element, old_class, new_class)
-{
-	element.classList.remove(old_class);
-	element.classList.add(new_class);
+	addClass(element, 'hidden');
 }
 
 function AJAX(url, succes_callback, error_callback)
@@ -291,10 +323,10 @@ function AJAX(url, succes_callback, error_callback)
 	var xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function()
-    {
+	{
 
-		if (xhttp.readyState == 4 && xhttp.status == 200)
-        {
+		if(xhttp.readyState == 4 && xhttp.status == 200)
+		{
 			succes_callback(xhttp.responseText);
 		}
 

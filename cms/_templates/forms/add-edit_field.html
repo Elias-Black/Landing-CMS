@@ -4,7 +4,7 @@
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['parent']) ? ' has-error' : '';?>">
 		<label for="parent">Parent</label>
-		<select name="parent" id="parent" class="form-control">
+		<select name="parent" id="parent" class="form-control" onchange="confirmLeave('on');">
 			<?php foreach(Content::getAllParents() as $parent): ?>
 
 				<?php
@@ -28,7 +28,7 @@
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['type']) ? ' has-error' : '';?>">
 		<label for="type">Type</label>
-		<select name="type" id="type" class="form-control" required>
+		<select name="type" id="type" class="form-control" onchange="confirmLeave('on');" required>
 			<?php foreach(Content::getFieldsTypes() as $field_name => $field_value): ?>
 
 				<?php
@@ -52,19 +52,19 @@
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['alias']) ? ' has-error' : '';?>">
 		<label for="alias">Alias</label>
-		<input class="form-control" name="alias" id="alias" type="text" value="<?=Utils::pr($vars['sent_data']['alias']);?>" placeholder="Type here" required />
+		<input class="form-control" name="alias" id="alias" type="text" value="<?=Utils::pr($vars['sent_data']['alias']);?>" placeholder="Type here" onchange="confirmLeave('on');" required />
 		<div class="help-block">It is necessary for calling the new Field in the backend.</div>
 	</div>
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['title']) ? ' has-error' : '';?>">
 		<label for="title">Title</label>
-		<input class="form-control" name="title" id="title" type="text" placeholder="Type here" value="<?=Utils::pr($vars['sent_data']['title']);?>" required />
+		<input class="form-control" name="title" id="title" type="text" placeholder="Type here" value="<?=Utils::pr($vars['sent_data']['title']);?>" onchange="confirmLeave('on');" required />
 		<div class="help-block">The name of the new Field in Admin panel.</div>
 	</div>
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['description']) ? ' has-error' : '';?>">
 		<label for="description">Description</label>
-		<input class="form-control" name="description" id="description" type="text" placeholder="Type here" value="<?=Utils::pr($vars['sent_data']['description']);?>" />
+		<input class="form-control" name="description" id="description" type="text" placeholder="Type here" value="<?=Utils::pr($vars['sent_data']['description']);?>" onchange="confirmLeave('on');" />
 		<div class="help-block">The description of the new Field in admin panel.</div>
 	</div>
 

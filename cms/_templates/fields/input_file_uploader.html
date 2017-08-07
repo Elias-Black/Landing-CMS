@@ -1,7 +1,7 @@
 <label for="<?php echo $vars['name']; ?>"><?php echo $vars['title']; ?></label>
 
 <div class="input-group">
-	<input class="form-control" name="<?php echo $vars['name']; ?>" data-iframe-id="js_<?php echo $vars['name']; ?>_iframe" id="<?php echo $vars['name']; ?>" type="text" value="<?php echo $vars['output']; ?>" placeholder="Type here" />
+	<input class="form-control" name="<?php echo $vars['name']; ?>" data-iframe-id="js_<?php echo $vars['name']; ?>_iframe" id="<?php echo $vars['name']; ?>" type="text" value="<?php echo $vars['output']; ?>" placeholder="Type here" onchange="confirmLeave('on');" />
 	<span role="button" tabindex="0" class="input-group-addon" id="js_<?php echo $vars['name']; ?>_btn" data-iframe-id="js_<?php echo $vars['name']; ?>_iframe">Choose a file</span>
 </div>
 

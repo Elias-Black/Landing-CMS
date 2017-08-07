@@ -5,7 +5,7 @@ html {
 	min-height: 100%;
 }
 
-footer {
+.navbar-fixed-bottom {
 	position: absolute!important;
 	bottom: 0;
 }
@@ -46,70 +46,66 @@ h2 {
 
 /* Styling Field's Controlls */
 
-.label.icon {
-	width: 1.7em;
-	height: 1.7em;
+.group-controll {
+	width: 1.4em;
+	height: 1.4em;
 	margin-left: 1px;
-	display: inline-block;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 70%;
+	border-radius: .25em;
+	background-color: #777;
+	display: inline-block!important;
 }
 
-.icon.edit-white {
-	background-image: url(../img/icon-edit-white.png);
+.group-controll:hover {
+	background-color: #5e5e5e;
 }
 
-.icon.collapse {
-	background-image: url(../img/icon-collapse.png);
+.group-controll:focus {
+	background-color: #5e5e5e;
+	outline: 1px solid #66afe9;
+	outline: -webkit-focus-ring-color auto 5px;
+	-moz-outline-radius: 5px;
 }
 
-.icon.increase {
-	background-image: url(../img/icon-increase.png);
+.group-controll img {
+	height: .9em;
+	margin: .25em auto;
+	display: block;
 }
 
-.icon.up-white {
-	background-image: url(../img/icon-up-white.png);
+.danger {
+	background-color: #d9534f;
 }
 
-.icon.down-white {
-	background-image: url(../img/icon-down-white.png);
+.danger:hover {
+	background-color: #c9302c;
 }
 
-.icon.delete-white {
-	background-image: url(../img/icon-delete-white.png);
+.danger:focus {
+	background-color: #c9302c;
+	outline: 1px solid #66afe9;
+	outline: -webkit-focus-ring-color auto 5px;
+	-moz-outline-radius: 5px;
 }
 
-span.icon {
-	width: 1.3em;
-	height: 1.3em;
+.field-controll img {
+	height: 1em;
+	margin-left: 5px;
 	float: right;
-	font-size: 15px;
-	margin-left: 1px;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 70%;
 	opacity: .2;
+	filter: alpha(opacity=20);
 }
 
-span.icon:hover {
+.field-controll img:hover {
 	opacity: .5;
+	filter: alpha(opacity=50);
 }
 
-.icon.edit-black {
-	background-image: url(../img/icon-edit-black.png);
-}
-
-.icon.up-black {
-	background-image: url(../img/icon-up-black.png);
-}
-
-.icon.down-black {
-	background-image: url(../img/icon-down-black.png);
-}
-
-.icon.delete-red {
-	background-image: url(../img/icon-delete-red.png);
+.field-controll:focus img {
+	opacity: .5;
+	filter: alpha(opacity=50);
+	outline: 1px solid #66afe9;
+	outline: -webkit-focus-ring-color auto 5px;
+	-moz-outline-radius: 5px;
 }
 
 
@@ -118,15 +114,6 @@ span.icon:hover {
 
 .panel.panel-default {
 	margin-bottom: 0px!important;
-}
-
-.panel-controls {
-	padding-bottom: 5px;
-}
-
-.panel-controls .label {
-	line-height: inherit;
-	vertical-align: text-top;
 }
 
 .panel-heading .panel-title {

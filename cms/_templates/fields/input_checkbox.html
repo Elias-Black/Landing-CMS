@@ -1,5 +1,5 @@
 <input name="<?php echo $vars['name']; ?>" type="hidden" value="off" />
 
-<input class="magic-checkbox" name="<?php echo $vars['name']; ?>" id="<?php echo $vars['name']; ?>" type="checkbox" <?php echo ($vars['output'] == 'on') ? 'checked' : ''; ?> />
+<input class="magic-checkbox" name="<?php echo $vars['name']; ?>" id="<?php echo $vars['name']; ?>" type="checkbox" onchange="confirmLeave('on');" <?php echo ($vars['output'] == 'on') ? 'checked' : ''; ?> />
 
 <label for="<?php echo $vars['name']; ?>"><?php echo $vars['title']; ?></label>

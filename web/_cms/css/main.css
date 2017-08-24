@@ -90,7 +90,7 @@ h2 {
 .field-controll img {
 	height: 1em;
 	margin-left: 5px;
-	float: right;
+	float: left;
 	opacity: .2;
 	filter: alpha(opacity=20);
 }

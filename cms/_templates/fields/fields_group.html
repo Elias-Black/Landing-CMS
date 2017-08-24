@@ -74,31 +74,33 @@
 	<?php else: ?>
 
 		<div class="form-group">
-			<a
-			 href="?delete=<?php echo $field['name']; ?>"
-			 title="Delete &laquo;<?php echo $field['title']; ?>&raquo; Field."
-			 class="field-controll"
-			 onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; Field?')">
-				<img src="<?=Utils::getLink('web/_cms/img/icon-delete-red.png');?>">
-			</a>
-			<a
-			 href="<?=Utils::getLink('cms/edit-field/?name='.$field['name']);?>"
-			 title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Field."
-			 class="field-controll">
-				<img src="<?=Utils::getLink('web/_cms/img/icon-edit-black.png');?>">
-			</a>
-			<a
-			 href="?moveFieldDown=<?php echo $field['name']; ?>"
-			 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Down."
-			 class="field-controll">
-				<img src="<?=Utils::getLink('web/_cms/img/icon-down-black.png');?>">
-			</a>
-			<a
-			 href="?moveFieldUp=<?php echo $field['name']; ?>"
-			 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Up."
-			 class="field-controll">
-				<img src="<?=Utils::getLink('web/_cms/img/icon-up-black.png');?>">
-			</a>
+			<div class="pull-right panel-controls">
+				<a
+				 href="?moveFieldUp=<?php echo $field['name']; ?>"
+				 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Up."
+				 class="field-controll">
+					<img src="<?=Utils::getLink('web/_cms/img/icon-up-black.png');?>">
+				</a>
+				<a
+				 href="?moveFieldDown=<?php echo $field['name']; ?>"
+				 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Down."
+				 class="field-controll">
+					<img src="<?=Utils::getLink('web/_cms/img/icon-down-black.png');?>">
+				</a>
+				<a
+				 href="<?=Utils::getLink('cms/edit-field/?name='.$field['name']);?>"
+				 title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Field."
+				 class="field-controll">
+					<img src="<?=Utils::getLink('web/_cms/img/icon-edit-black.png');?>">
+				</a>
+				<a
+				 href="?delete=<?php echo $field['name']; ?>"
+				 title="Delete &laquo;<?php echo $field['title']; ?>&raquo; Field."
+				 class="field-controll"
+				 onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; Field?')">
+					<img src="<?=Utils::getLink('web/_cms/img/icon-delete-red.png');?>">
+				</a>
+			</div>
 			<?php echo Utils::render(
 				"fields/{$field['type']}.html",
 				 $field);

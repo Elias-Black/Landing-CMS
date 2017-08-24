@@ -6,6 +6,9 @@
 class User
 {
 
+	const HASHED_PASSWORD_LENGTH = 40;
+	const AUTH_EXPIRE = 31536000;
+
 
 
 	/* PUBLIC API */
@@ -52,7 +55,7 @@ class User
 		if( $_POST['pass1'] != $_POST['pass2'] )
 			return array('error_message' => 'Password and confirm password doesn\'t match.');
 
-		$prepared_pwd = self::preparePasswordForDb($_POST['pass1']);
+		$prepared_pwd = self::preparePasswordForDb($_POST['pass1'], true);
 
 		DB::updatePassword($prepared_pwd);
 
@@ -84,7 +87,7 @@ class User
 
 	private static function setLoginCookie()
 	{
-		setcookie('login', self::getPasswordForCookie(), time() + AUTH_EXPIRE, '/');
+		setcookie('login', self::getPasswordForCookie(), time() + self::AUTH_EXPIRE, '/');
 	}
 
 	private static function getLoginCookie()
@@ -92,16 +95,20 @@ class User
 		return isset($_COOKIE['login']) ? $_COOKIE['login'] : false;
 	}
 
-	private static function preparePasswordForDb($password)
+	private static function preparePasswordForDb($password, $is_new = false)
 	{
 
 		if(!$password)
 			return false;
 
-		$salt = self::getSalt();
-
-		if(!$salt)
-			$salt = Utils::getRandomString(RANDOM_STR_LENGTH);
+		if(!$is_new)
+		{
+			$salt = self::getSalt();
+		}
+		else
+		{
+			$salt = Utils::getRandomString();
+		}
 
 		$password = sha1($password . $salt);
 
@@ -116,7 +123,7 @@ class User
 
 		$content = DB::getPassword();
 
-		return substr($content, RANDOM_STR_LENGTH);
+		return substr($content, self::HASHED_PASSWORD_LENGTH);
 
 	}
 

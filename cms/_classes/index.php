@@ -10,11 +10,6 @@ error_reporting(E_ALL);
 
 */
 
-define('RANDOM_STR_LENGTH',	-10);
-
-define('AUTH_EXPIRE',	31536000);
-
-
 require_once("utils.class.php");
 
 require_once("db.class.php");

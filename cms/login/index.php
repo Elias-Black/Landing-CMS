@@ -7,7 +7,7 @@ require_once('../_classes/index.php');
 if( isset($_GET['logout']) )
 	User::logout();
 
-// Redirect to CMS if logged in
+// Redirect to the CMS if logged in
 if( defined('IS_LOGIN') )
 	Utils::redirect( Utils::getLink('cms/') );
 

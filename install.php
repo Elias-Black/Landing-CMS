@@ -54,24 +54,34 @@ $upload = array(
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="cms/" class="navbar-brand">Landing CMS</a>
+				<a href="cms/" class="navbar-brand" title="Go to the main CMS page.">Landing CMS</a>
 			</div>
 			<div class="collapse navbar-collapse" id="js_collapse">
 				<ul class="right nav navbar-nav">
 					<li>
-						<a href="cms/">CMS</a>
+						<a href="cms/" title="Go to the main CMS page.">CMS</a>
 					</li>
 					<li>
-						<a href="./" target="_blank">Website</a>
+						<a href="./" target="_blank" title="Go to the Landing Page.">Website</a>
 					</li>
 					<li>
-						<a href="https://github.com/Elias-Black/Landing-CMS" target="_blank">About CMS</a>
+						<a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" title="Go to the site about Landing CMS.">About CMS</a>
 					</li>
 					<li>
-						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="donate-btn">
+						<form
+						 action="https://www.paypal.com/cgi-bin/webscr"
+						 method="post"
+						 target="_blank"
+						 class="donate-btn">
 							<input type="hidden" name="cmd" value="_s-xclick">
 							<input type="hidden" name="hosted_button_id" value="QGKZW29YXRDCL">
-							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online! | Press the button to donate for Landing CMS">
+							<input
+							 type="image"
+							 src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+							 border="0"
+							 name="submit"
+							 alt="Press the button to donate for Landing CMS via PayPal"
+							 title="Press the button to donate for Landing CMS via PayPal">
 						</form>
 					</li>
 				</ul>
@@ -139,7 +149,7 @@ $upload = array(
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 			<div class="col-sm-12 text-center navbar-text">
-				2017 &copy; <a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" class="unstyle-link">Landing CMS</a>
+				2017 &copy; <a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" title="Go to the site about Landing CMS." class="unstyle-link">Landing CMS</a>
 			</div>
 		</div>
 	</div>

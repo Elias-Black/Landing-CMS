@@ -4,7 +4,12 @@
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['parent']) ? ' has-error' : '';?>">
 		<label for="parent">Parent</label>
-		<select name="parent" id="parent" class="form-control" onchange="confirmLeave('on');">
+		<select
+		 id="parent"
+		 class="form-control"
+		 name="parent"
+		 title="Select a Parent for the Field."
+		 onchange="confirmLeave('on');">
 			<?php foreach(Content::getAllParents() as $parent): ?>
 
 				<?php
@@ -28,7 +33,13 @@
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['type']) ? ' has-error' : '';?>">
 		<label for="type">Type</label>
-		<select name="type" id="type" class="form-control" onchange="confirmLeave('on');" required>
+		<select
+		 id="type"
+		 class="form-control"
+		 name="type"
+		 title="Select a Type of the Field."
+		 onchange="confirmLeave('on');"
+		 required>
 			<?php foreach(Content::getFieldsTypes() as $field_name => $field_value): ?>
 
 				<?php
@@ -52,19 +63,48 @@
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['alias']) ? ' has-error' : '';?>">
 		<label for="alias">Alias</label>
-		<input class="form-control" name="alias" id="alias" type="text" value="<?=Utils::pr($vars['sent_data']['alias']);?>" placeholder="Type here" onchange="confirmLeave('on');" required />
+		<input
+		 id="alias"
+		 class="form-control"
+		 name="alias"
+		 type="text"
+		 value="<?=Utils::pr($vars['sent_data']['alias']);?>"
+		 title="Enter an Alias for the Field here."
+		 placeholder="Enter an Alias here"
+		 onchange="confirmLeave('on');"
+		 required
+		 />
 		<div class="help-block">It is necessary for calling the new Field in the backend.</div>
 	</div>
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['title']) ? ' has-error' : '';?>">
 		<label for="title">Title</label>
-		<input class="form-control" name="title" id="title" type="text" placeholder="Type here" value="<?=Utils::pr($vars['sent_data']['title']);?>" onchange="confirmLeave('on');" required />
+		<input
+		 id="title"
+		 class="form-control"
+		 name="title"
+		 type="text"
+		 value="<?=Utils::pr($vars['sent_data']['title']);?>"
+		 title="Enter a Title for the Field here."
+		 placeholder="Enter a Title here"
+		 onchange="confirmLeave('on');"
+		 required
+		 />
 		<div class="help-block">The name of the new Field in Admin panel.</div>
 	</div>
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['description']) ? ' has-error' : '';?>">
 		<label for="description">Description</label>
-		<input class="form-control" name="description" id="description" type="text" placeholder="Type here" value="<?=Utils::pr($vars['sent_data']['description']);?>" onchange="confirmLeave('on');" />
+		<input
+		 id="description"
+		 class="form-control"
+		 name="description"
+		 type="text"
+		 value="<?=Utils::pr($vars['sent_data']['description']);?>"
+		 title="Enter a Description for the Field here."
+		 placeholder="Enter a Description here"
+		 onchange="confirmLeave('on');"
+		 />
 		<div class="help-block">The description of the new Field in admin panel.</div>
 	</div>
 

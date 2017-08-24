@@ -45,7 +45,7 @@ $upload = array(
 <body>
 
 <!-- HEADER begin -->
-	<nav class="navbar navbar-default navbar-static-top">
+	<div class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="collapsed navbar-toggle" onclick="collapseMenu();">
@@ -59,7 +59,10 @@ $upload = array(
 			<div class="collapse navbar-collapse" id="js_collapse">
 				<ul class="right nav navbar-nav">
 					<li>
-						<a href="/" target="_blank">Website</a>
+						<a href="cms/">CMS</a>
+					</li>
+					<li>
+						<a href="./" target="_blank">Website</a>
 					</li>
 					<li>
 						<a href="https://github.com/Elias-Black/Landing-CMS" target="_blank">About CMS</a>
@@ -74,7 +77,7 @@ $upload = array(
 				</ul>
 			</div>
 		</div>
-	</nav>
+	</div>
 <!-- HEADER end -->
 
 <!-- MAIN begin -->
@@ -133,14 +136,18 @@ $upload = array(
 <!-- MAIN end -->
 
 <!-- FOOTER begin -->
-	<footer class="navbar navbar-default navbar-fixed-bottom">
+	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 			<div class="col-sm-12 text-center navbar-text">
 				2017 &copy; <a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" class="unstyle-link">Landing CMS</a>
 			</div>
 		</div>
-	</footer>
+	</div>
 <!-- FOOTER end -->
+
+<script type="text/javascript">
+	init();
+</script>
 
 </body>
 </html>

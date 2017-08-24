@@ -9,6 +9,10 @@ class DB
 	const SECURE_TEXT = '<?php die; ?>';
 	const SECURE_LENGTH = 13;
 
+	const PASSWORD_DB_PATH = 'cms/_db/password.php';
+	const PRIVATE_DB_PATH = 'cms/_db/private.php';
+	const PUBLIC_DB_PATH = 'cms/_db/public.php';
+
 
 
 	/* PUBLIC API */
@@ -16,7 +20,7 @@ class DB
 	public static function getPrivateContent($safe_replace = false)
 	{
 
-		$content = file_get_contents(self::getPrivateDBPath());
+		$content = file_get_contents( Utils::getPath(self::PRIVATE_DB_PATH) );
 
 		$content = unserialize( substr($content, self::SECURE_LENGTH) );
 
@@ -41,7 +45,7 @@ class DB
 	public static function getPassword()
 	{
 
-		$content = file_get_contents(self::getPasswordDBPath());
+		$content = file_get_contents( Utils::getPath(self::PASSWORD_DB_PATH) );
 
 		return substr($content, self::SECURE_LENGTH);
 
@@ -52,7 +56,7 @@ class DB
 
 		$content = self::SECURE_TEXT . $password;
 
-		file_put_contents( self::getPasswordDBPath(), $content );
+		file_put_contents( Utils::getPath(self::PASSWORD_DB_PATH), $content );
 
 	}
 
@@ -60,27 +64,12 @@ class DB
 
 	/* PRIVATE API */
 
-	private static function getPasswordDBPath()
-	{
-		return dirname(__FILE__) . '/../_db/password.php';
-	}
-
-	private static function getPrivateDBPath()
-	{
-		return dirname(__FILE__) . '/../_db/private.php';
-	}
-
-	private static function getPublicDBPath()
-	{
-		return dirname(__FILE__) . '/../_db/public.php';
-	}
-
 	private static function updatePrivateContent($content)
 	{
 
 		$content = self::SECURE_TEXT . serialize($content);
 
-		file_put_contents( self::getPrivateDBPath(), $content );
+		file_put_contents( Utils::getPath(self::PRIVATE_DB_PATH), $content );
 
 	}
 
@@ -89,7 +78,7 @@ class DB
 
 		$result = self::getFieldsOutput($content);
 
-		file_put_contents( self::getPublicDBPath(), serialize($result) );
+		file_put_contents( Utils::getPath(self::PUBLIC_DB_PATH), serialize($result) );
 
 	}
 

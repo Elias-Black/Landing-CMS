@@ -8,6 +8,9 @@ class Utils
 
 	const SITE_FOLDER = '/';
 
+	const TEMPLATE_FOLDER = 'cms/_templates/';
+	const CURRENT_FILE_NESTING = 3;
+
 
 
 	public static function redirect($url)
@@ -22,7 +25,7 @@ class Utils
 	public static function render($template, $vars)
 	{
 
-		$template = self::getTemplateFolder() . $template;
+		$template = self::getPath(self::TEMPLATE_FOLDER) . $template;
 
 		ob_start();
 			include($template);
@@ -88,9 +91,14 @@ class Utils
 		return self::SITE_FOLDER . $relative_link;
 	}
 
-	private static function getTemplateFolder()
+	public static function getRootPath()
 	{
-		return dirname(__FILE__) . '/../_templates/';
+		return dirname(__FILE__, self::CURRENT_FILE_NESTING) . '/';
+	}
+
+	public static function getPath($path)
+	{
+		return self::getRootPath().$path;
 	}
 
 }

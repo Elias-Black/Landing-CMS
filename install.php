@@ -36,7 +36,7 @@ $upload = array(
 	<meta name="description" content="Free CMS for Landing">
 	<meta name="keywords" content="CMS, Landing, Free">
 	<meta name="author" content="Ilia Chernykh">
-	<meta name="generator" content="Landing CMS 0.0.3" />
+	<meta name="generator" content="Landing CMS 0.0.4" />
 
 	<noscript>
 		<link rel="stylesheet" href="web/_cms/css/no_js.css">

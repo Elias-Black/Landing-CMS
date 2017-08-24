@@ -320,6 +320,11 @@ function hideElement(element)
 function AJAX(url, succes_callback, error_callback)
 {
 
+	var cache_pref = url.indexOf('?') > -1 ? '&' : '?';
+	var cache_str = new Date().getTime();
+
+	url = url+cache_pref+'ie_cache='+cache_str;
+
 	var xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function()

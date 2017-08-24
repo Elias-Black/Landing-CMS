@@ -1,16 +1,35 @@
-<label for="<?php echo $vars['name']; ?>"><?php echo $vars['title']; ?></label>
+<label for="<?=$vars['name'];?>"><?=$vars['title'];?></label>
 
 <div class="input-group no-js-color-picker">
-	<input class="form-control" name="<?php echo $vars['name']; ?>" id="<?php echo $vars['name']; ?>" type="text" value="<?php echo $vars['output']; ?>" placeholder="Type here" onchange="confirmLeave('on');" />
-	<span role="button" tabindex="0" title="Click or Tap here" class="input-group-addon" style="background-color: <?php echo $vars['output']; ?>;"></span>
+	<input
+	 id="<?=$vars['name'];?>"
+	 class="form-control"
+	 name="<?=$vars['name'];?>"
+	 type="text"
+	 value="<?=$vars['output'];?>"
+	 title="Type here color-code (HEX, RGB, RGBA, HSL, HSLA) for &laquo;<?=$vars['title'];?>&raquo; Field."
+	 placeholder="Type here color-code (HEX, RGB, RGBA, HSL, HSLA)"
+	 onchange="confirmLeave('on');"
+	 />
+	<span
+	 class="input-group-addon"
+	 role="button"
+	 tabindex="0"
+	 title="Click or Tap here to open the color-picker."
+	 style="background-color: <?=$vars['output'];?>;"></span>
 </div>
 
 <noscript>
-	<input name="<?php echo $vars['name']; ?>" type="color" value="<?php echo $vars['output']; ?>" class="form-control" title="Click or Tap here" />
+	<input
+	 class="form-control"
+	 name="<?=$vars['name'];?>"
+	 type="color"
+	 value="<?=$vars['output'];?>"
+	 title="Click or Tap here to open the color-picker."
+	 placeholder="Type here color-code (HEX, RGB, RGBA, HSL, HSLA)"
+	 />
 </noscript>
 
 <script>
-
-	CPinit('<?php echo $vars['name']; ?>', '<?php echo $vars['output']; ?>');
-
+	CPinit('<?=$vars['name'];?>', '<?=$vars['output'];?>');
 </script>

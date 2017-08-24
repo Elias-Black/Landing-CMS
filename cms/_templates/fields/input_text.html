@@ -1,3 +1,12 @@
-<label for="<?php echo $vars['name']; ?>"><?php echo $vars['title']; ?></label>
+<label for="<?=$vars['name'];?>"><?=$vars['title'];?></label>
 
-<input class="form-control" name="<?php echo $vars['name']; ?>" id="<?php echo $vars['name']; ?>" type="text" value="<?php echo $vars['output']; ?>" placeholder="Type here" onchange="confirmLeave('on');" />
+<input
+ id="<?=$vars['name'];?>"
+ class="form-control"
+ name="<?=$vars['name'];?>"
+ type="text"
+ value="<?=$vars['output'];?>"
+ title="Type here text for &laquo;<?=$vars['title'];?>&raquo; Field."
+ placeholder="Type here"
+ onchange="confirmLeave('on');"
+ />

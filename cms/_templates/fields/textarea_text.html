@@ -1,3 +1,10 @@
-<label for="<?php echo $vars['name']; ?>"><?php echo $vars['title']; ?></label>
+<label for="<?=$vars['name'];?>"><?=$vars['title'];?></label>
 
-<textarea class="form-control" name="<?php echo $vars['name']; ?>" id="<?php echo $vars['name']; ?>" rows="4" cols="50" placeholder="Type here" onchange="confirmLeave('on');"><?php echo $vars['output']; ?></textarea>
+<textarea
+ id="<?=$vars['name'];?>"
+ class="form-control"
+ name="<?=$vars['name'];?>"
+ rows="7"
+ title="Type here text for &laquo;<?=$vars['title'];?>&raquo; Field."
+ placeholder="Type here"
+ onchange="confirmLeave('on');"><?=$vars['output'];?></textarea>

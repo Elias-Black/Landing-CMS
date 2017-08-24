@@ -1,5 +1,22 @@
-<input name="<?php echo $vars['name']; ?>" type="hidden" value="off" />
+<input
+ name="<?=$vars['name'];?>"
+ type="hidden"
+ value="off"
+ />
 
-<input class="magic-checkbox" name="<?php echo $vars['name']; ?>" id="<?php echo $vars['name']; ?>" type="checkbox" onchange="confirmLeave('on');" <?php echo ($vars['output'] == 'on') ? 'checked' : ''; ?> />
+<input
+ id="<?=$vars['name'];?>"
+ class="magic-checkbox"
+ name="<?=$vars['name'];?>"
+ type="checkbox"
+ title="Select a value for the &laquo;<?=$vars['title'];?>&raquo; Field."
+ onchange="confirmLeave('on');"
+ <?=($vars['output'] == 'on') ? 'checked' : '';?>
+ />
 
-<label for="<?php echo $vars['name']; ?>"><?php echo $vars['title']; ?></label>
+<label
+ for="<?=$vars['name'];?>"
+ title="Select a value for &laquo;<?=$vars['title'];?>&raquo; Field."
+>
+	<?=$vars['title'];?>
+</label>

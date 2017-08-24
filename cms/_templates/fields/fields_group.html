@@ -15,46 +15,46 @@
 						<a
 						 class="group-controll"
 						 href="?moveFieldUp=<?=$field['name'];?>"
-						 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Up.">
+						 title="Move &laquo;<?=$field['title'];?>&raquo; Group Up.">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-up-white.png');?>">
 						</a>
 						<a
 						 class="group-controll"
 						 href="?moveFieldDown=<?=$field['name'];?>"
-						 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Group Down.">
+						 title="Move &laquo;<?=$field['title'];?>&raquo; Group Down.">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-down-white.png');?>">
 						</a>
 						<a
 						 class="group-controll"
 						 href="<?=Utils::getLink('cms/edit-field/?name='.$field['name']);?>"
-						 title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Group.">
+						 title="Edit &laquo;<?=$field['title'];?>&raquo; Group.">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-edit-white.png');?>">
 						</a>
 						<a
 						 class="group-controll"
 						 href="?<?=Utils::pr($field['open'])?'closeGroup':'openGroup';?>=<?=$field['name'];?>"
-						 title="Open/Close &laquo;<?php echo $field['title']; ?>&raquo; Group."
-						 onclick="openCloseGroup('<?php echo $field['name']; ?>'); return false;">
-							<?php $src = Utils::pr($field['open']) ? Utils::getLink('web/_cms/img/icon-collapse.png') : Utils::getLink('web/_cms/img/icon-increase.png'); ?>
+						 title="Open/Close &laquo;<?=$field['title'];?>&raquo; Group."
+						 onclick="openCloseGroup('<?=$field['name'];?>'); return false;">
+							<?php $src = Utils::pr($field['open']) ? Utils::getLink('web/_cms/img/icon-collapse.png') : Utils::getLink('web/_cms/img/icon-increase.png');?>
 							<img
-							 src="<?=$src;?>"
+							 id="js_group_toggle_<?=$field['name'];?>"
 							 data-opened="<?=Utils::getLink('web/_cms/img/icon-collapse.png');?>"
 							 data-closed="<?=Utils::getLink('web/_cms/img/icon-increase.png');?>"
-							 id="js_group_toggle_<?php echo $field['name']; ?>">
+							 src="<?=$src;?>">
 						</a>
 						<a
 						 class="group-controll danger"
-						 href="?delete=<?php echo $field['name']; ?>"
-						 title="Delete &laquo;<?php echo $field['title']; ?>&raquo; Group."
-						 onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; Group?')">
+						 href="?delete=<?=$field['name'];?>"
+						 title="Delete &laquo;<?=$field['title'];?>&raquo; Group."
+						 onclick="return confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Group?')">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-delete-white.png');?>">
 						</a>
 					</div>
-					<h3 class="panel-title"><?php echo $field['title']; ?></h3>
+					<h3 class="panel-title"><?=$field['title'];?></h3>
 				</div>
 				<div
-				 class="panel-body<?=Utils::pr($field['open'])?'':' hidden';?>"
-				 id="js_group_body_<?php echo $field['name']; ?>">
+				 id="js_group_body_<?=$field['name'];?>"
+				 class="panel-body<?=Utils::pr($field['open'])?'':' hidden';?>">
 
 					<?php
 						$info['parents'] = $field['parents'];
@@ -68,7 +68,7 @@
 
 				</div>
 			</div>
-			<p class="help-block"><?php echo $field['description']; ?></p>
+			<p class="help-block"><?=$field['description'];?></p>
 		</div>
 
 	<?php else: ?>
@@ -76,28 +76,28 @@
 		<div class="form-group">
 			<div class="pull-right panel-controls">
 				<a
-				 href="?moveFieldUp=<?php echo $field['name']; ?>"
-				 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Up."
+				 href="?moveFieldUp=<?=$field['name'];?>"
+				 title="Move &laquo;<?=$field['title'];?>&raquo; Field Up."
 				 class="field-controll">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-up-black.png');?>">
 				</a>
 				<a
-				 href="?moveFieldDown=<?php echo $field['name']; ?>"
-				 title="Move &laquo;<?php echo $field['title']; ?>&raquo; Field Down."
+				 href="?moveFieldDown=<?=$field['name'];?>"
+				 title="Move &laquo;<?=$field['title'];?>&raquo; Field Down."
 				 class="field-controll">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-down-black.png');?>">
 				</a>
 				<a
 				 href="<?=Utils::getLink('cms/edit-field/?name='.$field['name']);?>"
-				 title="Edit &laquo;<?php echo $field['title']; ?>&raquo; Field."
+				 title="Edit &laquo;<?=$field['title'];?>&raquo; Field."
 				 class="field-controll">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-edit-black.png');?>">
 				</a>
 				<a
-				 href="?delete=<?php echo $field['name']; ?>"
-				 title="Delete &laquo;<?php echo $field['title']; ?>&raquo; Field."
+				 href="?delete=<?=$field['name'];?>"
+				 title="Delete &laquo;<?=$field['title'];?>&raquo; Field."
 				 class="field-controll"
-				 onclick="return confirm('Do you want to delete &laquo;<?php echo $field['title']; ?>&raquo; Field?')">
+				 onclick="return confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?')">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-delete-red.png');?>">
 				</a>
 			</div>
@@ -105,7 +105,7 @@
 				"fields/{$field['type']}.html",
 				 $field);
 			?>
-			<p class="help-block"><?php echo $field['description']; ?></p>
+			<p class="help-block"><?=$field['description'];?></p>
 		</div>
 	<?php endif; ?>
 

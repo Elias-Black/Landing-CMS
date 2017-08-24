@@ -783,7 +783,7 @@ class Content
 
 	private static function getFieldPosition($parent, $alias)
 	{
-	    return array_search($alias, array_keys($parent));
+		return array_search($alias, array_keys($parent));
 	}
 
 }

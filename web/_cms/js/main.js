@@ -138,10 +138,10 @@ function CPinit(cp_id, def_color)
 	picker_el.picker 	= picker;
 
 	picker_field.onchange = updateCP;
-	picker_field.oncut	= updateCP;
-	picker_field.onpaste  = updateCP;
-	picker_field.onkeyup  = updateCP;
-	picker_field.oninput  = updateCP;
+	picker_field.oncut = updateCP;
+	picker_field.onpaste = updateCP;
+	picker_field.onkeyup = updateCP;
+	picker_field.oninput = updateCP;
 
 	picker_el.onclick = function() {
 

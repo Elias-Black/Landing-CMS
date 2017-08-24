@@ -135,7 +135,7 @@ class User
 
 		if( !empty($_POST) )
 		{
-			$message =  self::updatePassword();
+			$message = self::updatePassword();
 
 			if( !$message['error_message'] )
 				Utils::redirect( Utils::getLink('cms/') );

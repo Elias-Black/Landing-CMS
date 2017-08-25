@@ -11,7 +11,7 @@ if( isset($_GET['logout']) )
 
 // Redirect to the CMS if logged in
 if( defined('IS_LOGIN') )
-	Utils::redirect( Utils::getLink('cms/') );
+	Utils::redirect('cms/');
 
 // Render login form
 $content = Utils::render(

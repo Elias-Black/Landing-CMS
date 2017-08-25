@@ -16,8 +16,10 @@ class Utils
 
 
 
-	public static function redirect($url)
+	public static function redirect($url = '')
 	{
+
+		$url = parse_url($url, PHP_URL_SCHEME) === NULL ? self::getLink($url) : $url;
 
 		header("Location: $url", true);
 

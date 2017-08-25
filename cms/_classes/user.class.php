@@ -45,7 +45,7 @@ class User
 		}
 
 		if( $_SERVER['REQUEST_URI'] != Utils::getLink('cms/login/') )
-			Utils::redirect( Utils::getLink('cms/login/') );
+			Utils::redirect('cms/login/');
 
 		if( $entered_pwd && $entered_pwd != $db_pwd )
 			return array('error_message' => 'Invalid password.');
@@ -75,7 +75,7 @@ class User
 
 		setcookie('login','',time()-1, '/');
 
-		Utils::redirect( Utils::getLink() );
+		Utils::redirect();
 
 	}
 
@@ -134,14 +134,14 @@ class User
 	{
 
 		if( $_SERVER['REQUEST_URI'] != Utils::getLink('cms/password/') )
-			Utils::redirect( Utils::getLink('cms/password/') );
+			Utils::redirect('cms/password/');
 
 		if( !empty($_POST) )
 		{
 			$message = self::updatePassword();
 
 			if( !$message['error_message'] )
-				Utils::redirect( Utils::getLink('cms/') );
+				Utils::redirect('cms/');
 
 			self::setLoginCookie();
 
@@ -158,7 +158,7 @@ class User
 
 		self::setLoginCookie();
 
-		Utils::redirect( Utils::getLink('cms/') );
+		Utils::redirect('cms/');
 
 	}
 

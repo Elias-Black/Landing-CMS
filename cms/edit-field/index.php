@@ -16,7 +16,7 @@
 // Connecting main classes
 require_once('../_classes/index.php');
 
-if( !defined('CORE') ) { die('403'); }
+defined('CORE') OR die('403');
 
 $data = array();
 

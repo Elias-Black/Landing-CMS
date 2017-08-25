@@ -1,4 +1,4 @@
-<?php if( !defined('CORE') ) { die('403'); } ?>
+<?php defined('CORE') OR die('403'); ?>
 
 <?php foreach($vars['fields'] as $alias => $field): ?>
 

@@ -1,4 +1,4 @@
-<?php if( !defined('CORE') ) { die('403'); } ?>
+<?php defined('CORE') OR die('403'); ?>
 
 <form method="POST" action="">
 

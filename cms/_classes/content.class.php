@@ -13,7 +13,7 @@
  * @link       https://github.com/Elias-Black/Landing-CMS
  */
 
-if( !defined('CORE') ) { die('403'); }
+defined('CORE') OR die('403');
 
 /**
 * The Class for working with Content

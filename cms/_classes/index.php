@@ -21,5 +21,3 @@ require_once("user.class.php");
 
 
 $message = User::auth();
-
-?>

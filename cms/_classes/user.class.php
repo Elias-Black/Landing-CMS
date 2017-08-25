@@ -3,6 +3,7 @@
 /**
 * The Class for working with User and Session
 */
+
 class User
 {
 
@@ -160,5 +161,3 @@ class User
 	}
 
 }
-
-?>

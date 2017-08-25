@@ -3,6 +3,7 @@
 /**
 * The Class for working with Content
 */
+
 class Content
 {
 
@@ -787,5 +788,3 @@ class Content
 	}
 
 }
-
-?>

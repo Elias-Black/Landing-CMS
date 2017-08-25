@@ -32,5 +32,3 @@ $content = Content::getMainForm();
 
 // Printing page
 echo Utils::renderIndex($content, $message);
-
-?>

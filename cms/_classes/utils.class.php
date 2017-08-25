@@ -3,6 +3,7 @@
 /**
 * The support Class
 */
+
 class Utils
 {
 
@@ -102,5 +103,3 @@ class Utils
 	}
 
 }
-
-?>

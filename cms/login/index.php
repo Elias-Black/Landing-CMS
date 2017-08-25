@@ -19,5 +19,3 @@ $content = Utils::render(
 
 // Printing page
 echo Utils::renderIndex($content, $message);
-
-?>

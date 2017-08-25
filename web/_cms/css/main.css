@@ -44,9 +44,9 @@ h2 {
 
 
 
-/* Go to top button */
+/* Scroll to Top button */
 
-.go-to-top {
+.scroll-to-top {
 	z-index: 99999;
 	position: fixed;
 	bottom: 0;
@@ -54,17 +54,19 @@ h2 {
 	width: 75%
 	height: 75%;
 	outline: none;
+	color: black;
 	opacity: .3;
 	filter: alpha(opacity=30);
-
 }
 
-.go-to-top:hover {
+.scroll-to-top:hover {
+	color: black;
+	text-decoration: none;
 	opacity: .5;
 	filter: alpha(opacity=50);
 }
 
-.go-to-top img {
+.scroll-to-top img {
 	margin: 15px;
 }
 
@@ -79,13 +81,17 @@ h2 {
 	border-radius: .25em;
 	background-color: #777;
 	display: inline-block!important;
+	color: white;
 }
 
 .group-controll:hover {
 	background-color: #5e5e5e;
+	color: white;
+	text-decoration: none;
 }
 
 .group-controll:focus {
+	color: white;
 	background-color: #5e5e5e;
 	outline: 1px solid #66afe9;
 	outline: -webkit-focus-ring-color auto 5px;
@@ -111,6 +117,20 @@ h2 {
 	outline: 1px solid #66afe9;
 	outline: -webkit-focus-ring-color auto 5px;
 	-moz-outline-radius: 5px;
+}
+
+.field-controll,
+.field-controll:hover {
+	color: black;
+	text-decoration: none;
+}
+
+.field-controll.danger {
+	color: #d9534f;
+}
+
+.field-controll.danger:hover {
+	color: #c9302c;
 }
 
 .field-controll img {

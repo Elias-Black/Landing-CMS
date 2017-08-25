@@ -1,3 +1,5 @@
+<?php if( !defined('CORE') ) { die('403'); } ?>
+
 <!-- TinyMCE 4.x -->
 <script type="text/javascript">
 

@@ -1,5 +1,7 @@
 <?php
 
+if( !defined('CORE') ) { die('403'); }
+
 /**
 * The support Class
 */
@@ -40,7 +42,7 @@ class Utils
 	public static function renderIndex($content, $message)
 	{
 		return self::render(
-			'index.html',
+			'index.php',
 			 array(
 			 	'content' => isset($content) ? $content : null,
 			 	'error_message' => isset($message['error_message']) ? $message['error_message'] : null,

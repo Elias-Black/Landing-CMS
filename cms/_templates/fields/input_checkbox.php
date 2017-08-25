@@ -1,3 +1,5 @@
+<?php if( !defined('CORE') ) { die('403'); } ?>
+
 <input
  name="<?=$vars['name'];?>"
  type="hidden"

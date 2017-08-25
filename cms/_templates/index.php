@@ -1,3 +1,5 @@
+<?php if( !defined('CORE') ) { die('403'); } ?>
+
 <!DOCTYPE html>
 <html>
 <head>

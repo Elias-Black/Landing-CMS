@@ -1,3 +1,5 @@
+<?php if( !defined('CORE') ) { die('403'); } ?>
+
 <label for="<?=$vars['name'];?>"><?=$vars['title'];?></label>
 
 <textarea

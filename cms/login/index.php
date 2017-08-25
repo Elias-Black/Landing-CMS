@@ -3,6 +3,8 @@
 // Connecting main classes
 require_once('../_classes/index.php');
 
+if( !defined('CORE') ) { die('403'); }
+
 // Logout
 if( isset($_GET['logout']) )
 	User::logout();
@@ -13,7 +15,7 @@ if( defined('IS_LOGIN') )
 
 // Render login form
 $content = Utils::render(
-	'forms/login.html',
+	'forms/login.php',
 	 array()
 );
 

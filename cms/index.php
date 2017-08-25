@@ -3,6 +3,8 @@
 // Connecting main classes
 require_once('_classes/index.php');
 
+if( !defined('CORE') ) { die('403'); }
+
 // Deleting the block
 if( isset($_GET['delete']) )
 	Content::deleteFieldAction($_GET['delete']);

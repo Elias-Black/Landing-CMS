@@ -10,6 +10,8 @@ error_reporting(E_ALL);
 
 */
 
+define('CORE', true);
+
 require_once("utils.class.php");
 
 require_once("db.class.php");

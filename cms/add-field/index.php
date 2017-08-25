@@ -3,6 +3,8 @@
 // Connecting main classes
 require_once('../_classes/index.php');
 
+if( !defined('CORE') ) { die('403'); }
+
 $data = array();
 
 // Catching form submit
@@ -15,7 +17,7 @@ $data['cancel_btn_text'] = 'Cancel adding the new Field.';
 
 // Render form of adding new field
 $content = Utils::render(
-	'forms/add-edit_field.html',
+	'forms/add-edit_field.php',
 	 $data
 );
 

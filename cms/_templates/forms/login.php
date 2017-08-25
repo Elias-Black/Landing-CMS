@@ -1,3 +1,5 @@
+<?php if( !defined('CORE') ) { die('403'); } ?>
+
 <form method="POST" action="">
 
 	<h2>Login</h2>
@@ -17,7 +19,7 @@
 
 	<div class="buttons">
 		<?php echo Utils::render(
-			'elements/button_blue.html',
+			'elements/button_blue.php',
 			 array('text' => 'Log in', 'title' => 'Log in and go to the CMS.')
 		); ?>
 	</div>

@@ -1,3 +1,5 @@
+<?php if( !defined('CORE') ) { die('403'); } ?>
+
 <?php foreach($vars['fields'] as $alias => $field): ?>
 
 	<?php
@@ -62,7 +64,7 @@
 						$info['fields'] = $field['output'];
 
 						echo Utils::render(
-							"fields/{$field['type']}.html",
+							"fields/{$field['type']}.php",
 							 $info
 						);
 					?>
@@ -103,7 +105,7 @@
 				</a>
 			</div>
 			<?php echo Utils::render(
-				"fields/{$field['type']}.html",
+				"fields/{$field['type']}.php",
 				 $field);
 			?>
 			<p class="help-block"><?=$field['description'];?></p>

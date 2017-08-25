@@ -1,5 +1,7 @@
 <?php
 
+if( !defined('CORE') ) { die('403'); }
+
 /**
 * The Class for working with Content
 */
@@ -17,7 +19,7 @@ class Content
 	{
 
 		return Utils::render(
-			'forms/main.html',
+			'forms/main.php',
 			 array( 'fields' => DB::getPrivateContent(true) )
 		);
 

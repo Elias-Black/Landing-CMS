@@ -1,5 +1,7 @@
 <?php
 
+if( !defined('CORE') ) { die('403'); }
+
 /**
 * The Class for working with DB
 */

@@ -1,3 +1,5 @@
+<?php if( !defined('CORE') ) { die('403'); } ?>
+
 <form method="POST" action="">
 
 	<h2><?=Utils::pr($vars['page_header']);?></h2>
@@ -110,14 +112,14 @@
 
 	<div class="buttons">
 		<?php echo Utils::render(
-			'elements/button_blue.html',
+			'elements/button_blue.php',
 			 array(
 			 	'text' => 'Save',
 			 	'title' => Utils::pr($vars['save_btn_text'])
 			 )
 		); ?>
 		<?php echo Utils::render(
-			'elements/button_white.html',
+			'elements/button_white.php',
 			 array(
 			 	'text' => 'Cancel',
 			 	'title' => Utils::pr($vars['cancel_btn_text']),

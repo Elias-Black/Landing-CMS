@@ -1,3 +1,5 @@
+<?php if( !defined('CORE') ) { die('403'); } ?>
+
 <a
  href="<?=$vars['url'];?>"
  class="btn btn-default"

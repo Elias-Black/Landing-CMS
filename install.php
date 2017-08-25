@@ -111,7 +111,7 @@ $upload = array(
 
 					<?php endif; ?>
 
-					<?php echo $file; ?>
+					<?=$file;?>
 
 				</h5>
 
@@ -135,7 +135,7 @@ $upload = array(
 
 					<?php endif; ?>
 
-					<?php echo $folder; ?>
+					<?=$folder;?>
 
 				</h5>
 

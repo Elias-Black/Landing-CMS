@@ -15,7 +15,13 @@ require_once('modules/rand_num.php');
 
 		<title>Demo</title>
 		<meta charset="utf-8">
+		<meta name="HandheldFriendly" content='True'>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="copyright" content="Landing CMS">
+		<meta name="description" content="Free CMS for Landing">
+		<meta name="keywords" content="CMS, Landing, Free">
+		<meta name="author" content="Ilia Chernykh">
+		<meta name="generator" content="Landing CMS 0.0.4" />
 
 		<style>
 

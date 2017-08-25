@@ -44,6 +44,32 @@ h2 {
 
 
 
+/* Go to top button */
+
+.go-to-top {
+	z-index: 99999;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 75%
+	height: 75%;
+	outline: none;
+	opacity: .3;
+	filter: alpha(opacity=30);
+
+}
+
+.go-to-top:hover {
+	opacity: .5;
+	filter: alpha(opacity=50);
+}
+
+.go-to-top img {
+	margin: 15px;
+}
+
+
+
 /* Styling Field's Controlls */
 
 .group-controll {

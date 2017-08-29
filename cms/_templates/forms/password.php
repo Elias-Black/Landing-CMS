@@ -38,6 +38,15 @@
 			'elements/button_blue.php',
 			 array('text' => 'Save', 'title' => 'Save new password.')
 		); ?>
+
+		<?php echo Utils::render(
+			'elements/button_white.php',
+			 array(
+			 	'text' => 'Cancel',
+			 	'title' => 'Cancel password changing.',
+			 	'url' => Utils::getLink('cms/')
+			 )
+		); ?>
 	</div>
 
 </form>

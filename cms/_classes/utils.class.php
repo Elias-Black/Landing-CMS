@@ -25,7 +25,7 @@ class Utils
 	const SITE_FOLDER = '/';
 
 	const TEMPLATE_FOLDER = 'cms/_templates/';
-	const CURRENT_FILE_NESTING = 3;
+	const CURRENT_FILE_NESTING = 2;
 
 
 
@@ -111,7 +111,7 @@ class Utils
 
 	public static function getRootPath()
 	{
-		return dirname(__FILE__, self::CURRENT_FILE_NESTING) . '/';
+		return realpath( dirname(__FILE__) . str_repeat('/..', self::CURRENT_FILE_NESTING) ) . '/';
 	}
 
 	public static function getPath($path)

@@ -1,10 +1,11 @@
 <?php defined('CORE') OR die('403'); ?>
 
-<form method="POST" action="">
+<form method="POST" action="" id="js_main_form">
 
 	<h2>Content</h2>
 
-	<?php if( empty($vars['fields']) ): ?>
+
+	<div id="js_empty_main_form" class="<?=empty($vars['fields']) ? '' : 'hidden';?>">
 
 		<div class="alert alert-info">No Fields.</div>
 		<div class="buttons">
@@ -18,7 +19,9 @@
 			); ?>
 		</div>
 
-	<?php else: ?>
+	</div>
+
+	<div id="js_filled_main_form" class="<?=empty($vars['fields']) ? 'hidden' : '';?>">
 
 		<div class="buttons">
 			<?php echo Utils::render(
@@ -55,7 +58,7 @@
 			); ?>
 		</div>
 
-	<?php endif; ?>
+	</div>
 
 </form>
 

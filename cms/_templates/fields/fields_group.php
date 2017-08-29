@@ -49,14 +49,14 @@
 						 class="group-controll danger"
 						 href="?delete=<?=$field['name'];?>"
 						 title="Delete &laquo;<?=$field['title'];?>&raquo; Group."
-						 onclick="return confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Group?')">
+						 onclick="confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Group?') && deleteField('<?=$field['name'];?>'); return false;">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-delete-white.png');?>" alt="Delete">
 						</a>
 					</div>
 					<h3 class="panel-title"><?=$field['title'];?></h3>
 				</div>
 				<div
-				 id="js_group_body_<?=$field['name'];?>"
+				 id="<?=$field['name'];?>"
 				 class="panel-body<?=Utils::pr($field['open'])?'':' hidden';?>">
 
 					<?php
@@ -100,7 +100,7 @@
 				 href="?delete=<?=$field['name'];?>"
 				 title="Delete &laquo;<?=$field['title'];?>&raquo; Field."
 				 class="field-controll danger"
-				 onclick="return confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?')">
+				  onclick="confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?') && deleteField('<?=$field['name'];?>'); return false;">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-delete-red.png');?>" alt="Delete">
 				</a>
 			</div>

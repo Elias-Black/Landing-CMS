@@ -196,6 +196,15 @@ input[type="checkbox"] + label {
 
 
 
+/* Custom styles */
+
+.faded {
+	opacity: .3;
+	filter: alpha(opacity=30);
+}
+
+
+
 /* Responsive TinyMCE */
 
 @media screen and (max-width: 515px) {

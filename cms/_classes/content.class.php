@@ -229,22 +229,39 @@ class Content
 	public static function deleteFieldAction($field_name)
 	{
 
+		$result = array();
+
 		$db_content = DB::getPrivateContent();
 
 		$field_is_deleted = self::deleteField($db_content, $field_name);
 
 		if( !isset($field_is_deleted['error']) && isset($field_is_deleted['db_content']) )
 		{
+
 			$db_content = $field_is_deleted['db_content'];
+
+			DB::updateContent($db_content);
+
+			$result['success'] = true;
+
 		}
 		else
 		{
-			return $field_is_deleted;
+			$result['success'] = false;
 		}
 
-		DB::updateContent($db_content);
+		if( Utils::isAJAX() )
+		{
 
-		Utils::redirect('cms/');
+			$result = json_encode($result);
+
+			exit($result);
+
+		}
+		else
+		{
+			Utils::redirect('cms/');
+		}
 
 	}
 

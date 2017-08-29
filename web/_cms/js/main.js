@@ -237,15 +237,14 @@ function responsive_filemanager_callback(inp_id)
 
 
 
-/* Opening/Closing Group's body */
+/* AJAX actions */
 
 function openCloseGroup(name)
 {
 
-	var body_id = 'js_group_body_'+name;
 	var toggle_id = 'js_group_toggle_'+name;
 
-	var body_element = document.getElementById(body_id);
+	var body_element = document.getElementById(name);
 	var toggle_element = document.getElementById(toggle_id);
 
 	var opened_img = toggle_element.getAttribute('data-opened');
@@ -267,6 +266,51 @@ function openCloseGroup(name)
 		hideElement(body_element);
 
 	}
+
+}
+
+function deleteField(name)
+{
+
+	var field = document.getElementById(name);
+	var field_wrapper = getParentWithClass(field, 'form-group');
+
+	addClass(field_wrapper, 'faded');
+
+	AJAX( root_path + 'cms/?ajax=true&delete='+name, function(data) {
+
+		data = isJson(data);
+
+		if( data && data.success === true )
+		{
+			field_wrapper.parentNode.removeChild(field_wrapper);
+
+			var main_form_elements_counter = document.getElementById('js_main_form').querySelectorAll('.form-group').length;
+
+			if(main_form_elements_counter < 1)
+			{
+
+				var empty_main_form = document.getElementById('js_empty_main_form');
+
+				var filled_main_form = document.getElementById('js_filled_main_form');
+
+				hideElement(filled_main_form);
+
+				showElement(empty_main_form);
+
+			}
+
+		}
+		else
+		{
+			removeClass(field_wrapper, 'faded');
+		}
+
+	}, function(data) {
+
+		removeClass(field_wrapper, 'faded');
+
+	} );
 
 }
 
@@ -320,10 +364,9 @@ function hideElement(element)
 function AJAX(url, succes_callback, error_callback)
 {
 
-	var cache_pref = url.indexOf('?') > -1 ? '&' : '?';
 	var cache_str = new Date().getTime();
 
-	url = url+cache_pref+'ie_cache='+cache_str;
+	url = addGETParams(url, 'ie_cache='+cache_str);
 
 	var xhttp = new XMLHttpRequest();
 
@@ -345,5 +388,37 @@ function AJAX(url, succes_callback, error_callback)
 	xhttp.open("GET", url, true);
 
 	xhttp.send();
+
+}
+
+function getParentWithClass(element, cls)
+{
+
+	while ((element = element.parentNode) && element.className.indexOf(cls) < 0);
+
+	return element;
+
+}
+
+function isJson(str)
+{
+
+	try
+	{
+		return JSON.parse(str);
+	}
+	catch(e)
+	{
+		return false;
+	}
+
+}
+
+function addGETParams(url, params_str)
+{
+
+	var url_prefix = url.indexOf('?') > -1 ? '&' : '?';
+
+	return url = url+url_prefix+params_str;
 
 }

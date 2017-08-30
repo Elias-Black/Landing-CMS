@@ -168,10 +168,10 @@ h2 {
 
 
 
-/* Drop down checkbox label under delete button */
+/* Drop down checkbox label under Field Controlls */
 
-input[type="checkbox"] + label { 
-	display: inline-block;
+.magic-checkbox + label {
+	display: inline-block!important;
 	margin-bottom: 0;
 }
 

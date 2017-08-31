@@ -77,28 +77,28 @@
 		<div class="form-group">
 			<div class="pull-right panel-controls">
 				<a
+				 class="field-controll js_move_field_up"
 				 href="?moveFieldUp=<?=$field['name'];?>"
-				 title="Move &laquo;<?=$field['title'];?>&raquo; Field Up."
-				 class="field-controll js_move_field_up">
+				 title="Move &laquo;<?=$field['title'];?>&raquo; Field Up.">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-up-black.png');?>" alt="Up">
 				</a>
 				<a
+				 class="field-controll js_move_field_down"
 				 href="?moveFieldDown=<?=$field['name'];?>"
-				 title="Move &laquo;<?=$field['title'];?>&raquo; Field Down."
-				 class="field-controll js_move_field_down">
+				 title="Move &laquo;<?=$field['title'];?>&raquo; Field Down.">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-down-black.png');?>" alt="Down">
 				</a>
 				<a
+				 class="field-controll"
 				 href="<?=Utils::getLink('cms/edit-field/?name='.$field['name']);?>"
-				 title="Edit &laquo;<?=$field['title'];?>&raquo; Field."
-				 class="field-controll">
+				 title="Edit &laquo;<?=$field['title'];?>&raquo; Field.">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-edit-black.png');?>" alt="Edit">
 				</a>
 				<a
+				 class="field-controll danger"
 				 href="?delete=<?=$field['name'];?>"
 				 title="Delete &laquo;<?=$field['title'];?>&raquo; Field."
-				 class="field-controll danger"
-				  onclick="confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?') && deleteField('<?=$field['name'];?>'); return false;">
+				 onclick="confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?') && deleteField('<?=$field['name'];?>'); return false;">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-delete-red.png');?>" alt="Delete">
 				</a>
 			</div>

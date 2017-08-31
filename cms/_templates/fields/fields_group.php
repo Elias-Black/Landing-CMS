@@ -33,13 +33,11 @@
 							<img src="<?=Utils::getLink('web/_cms/img/icon-edit-white.png');?>" alt="Edit">
 						</a>
 						<a
-						 class="group-controll"
+						 class="group-controll js_group_toggle"
 						 href="?<?=Utils::pr($field['open'])?'closeGroup':'openGroup';?>=<?=$field['name'];?>"
-						 title="Open/Close &laquo;<?=$field['title'];?>&raquo; Group."
-						 onclick="openCloseGroup('<?=$field['name'];?>'); return false;">
+						 title="Open/Close &laquo;<?=$field['title'];?>&raquo; Group.">
 							<?php $src = Utils::pr($field['open']) ? Utils::getLink('web/_cms/img/icon-collapse.png') : Utils::getLink('web/_cms/img/icon-increase.png');?>
 							<img
-							 id="js_group_toggle_<?=$field['name'];?>"
 							 data-opened="<?=Utils::getLink('web/_cms/img/icon-collapse.png');?>"
 							 data-closed="<?=Utils::getLink('web/_cms/img/icon-increase.png');?>"
 							 src="<?=$src;?>"

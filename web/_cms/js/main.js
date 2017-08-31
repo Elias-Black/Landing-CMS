@@ -68,8 +68,12 @@ function init()
 
 	confirmLeave();
 
-	var moveFieldControlls = document.querySelectorAll(".js_move_field_up, .js_move_field_down");
-	attachOnClickEvent(moveFieldControlls, swapFields);
+	var move_field_controlls = document.querySelectorAll(".js_move_field_up, .js_move_field_down");
+	attachOnClickEvent(move_field_controlls, swapFields);
+
+	var groups_toggles = document.querySelectorAll(".js_group_toggle");
+	attachOnClickEvent(groups_toggles, openCloseGroup);
+
 
 }
 
@@ -246,30 +250,82 @@ function responsive_filemanager_callback(inp_id)
 function openCloseGroup(name)
 {
 
-	var toggle_id = 'js_group_toggle_'+name;
+	var toggle_element = this;
+	var field_wrapper = getParentWithClass(toggle_element, 'form-group');
+	var groups_body = field_wrapper.querySelector('.panel-body');
+	var toggle_img = toggle_element.getElementsByTagName("img")[0];
 
-	var body_element = document.getElementById(name);
-	var toggle_element = document.getElementById(toggle_id);
+	var request_url = toggle_element.getAttribute('href');
+	request_url = addGETParams(request_url, 'ajax=true');
 
-	var opened_img = toggle_element.getAttribute('data-opened');
-	var closed_img = toggle_element.getAttribute('data-closed');
+	var opened_img = toggle_img.getAttribute('data-opened');
+	var closed_img = toggle_img.getAttribute('data-closed');
 
-	if( hasClass(body_element, 'hidden') )
+	addClass(field_wrapper, 'faded');
+
+	function error_callback(data)
+	{
+		window.location.reload();
+	}
+
+	if( hasClass(groups_body, 'hidden') )
 	{
 
-		AJAX( root_path + 'cms/?ajax=true&openGroup='+name, function(data){}, function(data){} );
-		toggle_element.setAttribute('src', opened_img);
-		showElement(body_element);
+		request_url = request_url.replace("closeGroup", "openGroup");
+
+		var succes_callback = function(data)
+		{
+
+			data = isJson(data);
+
+			if( data && data.success === true )
+			{
+
+				toggle_img.setAttribute('src', opened_img);
+				showElement(groups_body);
+
+				removeClass(field_wrapper, 'faded');
+
+			}
+			else
+			{
+				error_callback();
+			}
+
+		}
 
 	}
 	else
 	{
 
-		AJAX( root_path + 'cms/?ajax=true&closeGroup='+name, function(data){}, function(data){} );
-		toggle_element.setAttribute('src', closed_img);
-		hideElement(body_element);
+		request_url = request_url.replace("openGroup", "closeGroup");
+
+		var succes_callback = function(data)
+		{
+
+			data = isJson(data);
+
+			if( data && data.success === true )
+			{
+
+				toggle_img.setAttribute('src', closed_img);
+				hideElement(groups_body);
+
+				removeClass(field_wrapper, 'faded');
+
+			}
+			else
+			{
+				error_callback();
+			}
+
+		}
 
 	}
+
+	AJAX(request_url, succes_callback, error_callback);
+
+	return false;
 
 }
 

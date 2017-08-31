@@ -67,6 +67,10 @@ function init()
 	*/
 
 	confirmLeave();
+
+	var moveFieldControlls = document.querySelectorAll(".js_move_field_up, .js_move_field_down");
+	attachOnClickEvent(moveFieldControlls, swapFields);
+
 }
 
 
@@ -77,7 +81,7 @@ function CPinit(cp_id, def_color)
 {
 
 	var picker_field = document.getElementById(cp_id);
-	var picker_el = picker_field.nextElementSibling;
+	var picker_el = nextElementSibling(picker_field);
 
 	var picker = new CP( picker_el, 'focus' );
 
@@ -93,7 +97,7 @@ function CPinit(cp_id, def_color)
 		picker.on('change', function(color) {
 
 			var color_code = '#' + color;
-			var cp_input = this.target.previousElementSibling;
+			var cp_input = previousElementSibling(this.target);
 
 			if(cp_input.value != color_code)
 				cp_input.form.onchange();
@@ -113,7 +117,7 @@ function CPinit(cp_id, def_color)
 		while(CP.__instance__[i])
 		{
 
-			if(CP.__instance__[i].target.previousElementSibling == element)
+			if(previousElementSibling(CP.__instance__[i].target) == element)
 				return CP.__instance__[i];
 
 			i++;
@@ -131,7 +135,7 @@ function CPinit(cp_id, def_color)
 			this.form.onchange();
 
 		cpicker.set( CP.parse(this.value) );
-		this.nextElementSibling.style.backgroundColor = this.value;
+		nextElementSibling(this).style.backgroundColor = this.value;
 
 	}
 
@@ -145,7 +149,7 @@ function CPinit(cp_id, def_color)
 
 	picker_el.onclick = function() {
 
-		var cpicker = getPickerByElement(this.previousElementSibling);
+		var cpicker = getPickerByElement( previousElementSibling(this) );
 		onCP(cpicker);
 
 	};
@@ -314,6 +318,65 @@ function deleteField(name)
 
 }
 
+function swapFields(event)
+{
+
+	var _this = this;
+
+	var field_wrapper = getParentWithClass(_this, 'form-group');
+
+	if( hasClass(_this, 'js_move_field_up') )
+	{
+		var old_element = previousElementSibling(field_wrapper);
+		var new_element = previousElementSibling(field_wrapper);
+	}
+	else
+	{
+		var old_element = nextElementSibling(field_wrapper);
+		var new_element = nextElementSibling(old_element);
+	}
+
+	if( old_element && hasClass(old_element, 'form-group') )
+	{
+
+		var request_url = _this.getAttribute('href');
+		request_url = addGETParams(request_url, 'ajax=true');
+
+		addClass(field_wrapper, 'faded');
+
+		function succes_callback(data)
+		{
+
+			data = isJson(data);
+
+			if( data && data.success === true )
+			{
+
+				field_wrapper.parentElement.insertBefore(field_wrapper, new_element || null);
+
+				removeClass(field_wrapper, 'faded');
+
+			}
+			else
+			{
+				error_callback();
+			}
+
+		}
+
+		function error_callback(data)
+		{
+			window.location.reload();
+		}
+
+		AJAX(request_url, succes_callback, error_callback);
+
+	}
+
+	return false;
+
+}
+
 
 
 /* Utils */
@@ -420,5 +483,61 @@ function addGETParams(url, params_str)
 	var url_prefix = url.indexOf('?') > -1 ? '&' : '?';
 
 	return url = url+url_prefix+params_str;
+
+}
+
+function attachOnClickEvent(elements, callback)
+{
+
+	for(var i = 0; i < elements.length; i++)
+	{
+		elements[i].onclick = callback;
+	}
+
+}
+
+ function nextElementSibling(el)
+ {
+
+	if(!el) return false;
+
+	if(el.nextElementSibling)
+	{
+		return el.nextElementSibling;
+	}
+	else
+	{
+
+		while(el = el.nextSibling)
+		{
+			if( el.nodeType === 1 ) return el;
+		}
+
+	}
+
+	return false;
+
+}
+
+function previousElementSibling(el)
+{
+
+	if(!el) return false;
+
+	if(el.previousElementSibling)
+	{
+		return el.previousElementSibling;
+	}
+	else
+	{
+
+		while(el = el.previousSibling)
+		{
+			if( el.nodeType === 1 ) return el;
+		}
+
+	}
+
+	return false;
 
 }

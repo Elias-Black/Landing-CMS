@@ -15,13 +15,13 @@
 				<div class="panel-heading">
 					<div class="pull-right panel-controls">
 						<a
-						 class="group-controll"
+						 class="group-controll js_move_field_up"
 						 href="?moveFieldUp=<?=$field['name'];?>"
 						 title="Move &laquo;<?=$field['title'];?>&raquo; Group Up.">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-up-white.png');?>" alt="Up">
 						</a>
 						<a
-						 class="group-controll"
+						 class="group-controll js_move_field_down"
 						 href="?moveFieldDown=<?=$field['name'];?>"
 						 title="Move &laquo;<?=$field['title'];?>&raquo; Group Down.">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-down-white.png');?>" alt="Down">
@@ -81,13 +81,13 @@
 				<a
 				 href="?moveFieldUp=<?=$field['name'];?>"
 				 title="Move &laquo;<?=$field['title'];?>&raquo; Field Up."
-				 class="field-controll">
+				 class="field-controll js_move_field_up">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-up-black.png');?>" alt="Up">
 				</a>
 				<a
 				 href="?moveFieldDown=<?=$field['name'];?>"
 				 title="Move &laquo;<?=$field['title'];?>&raquo; Field Down."
-				 class="field-controll">
+				 class="field-controll js_move_field_down">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-down-black.png');?>" alt="Down">
 				</a>
 				<a

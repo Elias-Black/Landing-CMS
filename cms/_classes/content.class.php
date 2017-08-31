@@ -311,6 +311,9 @@ class Content
 	public static function moveFieldUpDown($name, $to)
 	{
 
+		$result = array();
+
+
 		$name_arr = self::getNameArray($name);
 
 		$db_content = DB::getPrivateContent();
@@ -338,7 +341,19 @@ class Content
 
 		DB::updateContent($db_content);
 
-		Utils::redirect('cms/');
+
+		$result['success'] = true;
+
+		$result = json_encode($result);
+
+		if( Utils::isAJAX() )
+		{
+			exit($result);
+		}
+		else
+		{
+			Utils::redirect('cms/');
+		}
 
 	}
 

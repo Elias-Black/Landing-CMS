@@ -261,7 +261,7 @@ function openCloseGroup(name)
 	var opened_img = toggle_img.getAttribute('data-opened');
 	var closed_img = toggle_img.getAttribute('data-closed');
 
-	addClass(field_wrapper, 'faded');
+	fade(field_wrapper);
 
 	function error_callback(data)
 	{
@@ -284,7 +284,7 @@ function openCloseGroup(name)
 				toggle_img.setAttribute('src', opened_img);
 				showElement(groups_body);
 
-				removeClass(field_wrapper, 'faded');
+				unfade(field_wrapper);
 
 			}
 			else
@@ -311,7 +311,7 @@ function openCloseGroup(name)
 				toggle_img.setAttribute('src', closed_img);
 				hideElement(groups_body);
 
-				removeClass(field_wrapper, 'faded');
+				unfade(field_wrapper);
 
 			}
 			else
@@ -335,7 +335,7 @@ function deleteField(name)
 	var field = document.getElementById(name);
 	var field_wrapper = getParentWithClass(field, 'form-group');
 
-	addClass(field_wrapper, 'faded');
+	fade(field_wrapper);
 
 	AJAX( root_path + 'cms/?ajax=true&delete='+name, function(data) {
 
@@ -363,12 +363,12 @@ function deleteField(name)
 		}
 		else
 		{
-			removeClass(field_wrapper, 'faded');
+			unfade(field_wrapper);
 		}
 
 	}, function(data) {
 
-		removeClass(field_wrapper, 'faded');
+		unfade(field_wrapper);
 
 	} );
 
@@ -398,7 +398,7 @@ function swapFields(event)
 		var request_url = _this.getAttribute('href');
 		request_url = addGETParams(request_url, 'ajax=true');
 
-		addClass(field_wrapper, 'faded');
+		fade(field_wrapper);
 
 		function succes_callback(data)
 		{
@@ -410,7 +410,7 @@ function swapFields(event)
 
 				field_wrapper.parentElement.insertBefore(field_wrapper, new_element || null);
 
-				removeClass(field_wrapper, 'faded');
+				unfade(field_wrapper);
 
 			}
 			else
@@ -596,4 +596,14 @@ function previousElementSibling(el)
 
 	return false;
 
+}
+
+function fade(el)
+{
+	addClass(el, 'faded');
+}
+
+function unfade(el)
+{
+	removeClass(el, 'faded');
 }

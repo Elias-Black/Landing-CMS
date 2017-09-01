@@ -5,11 +5,11 @@
 	<h2>Password</h2>
 
 	<div class="form-group">
-		<label for="pass1">New password</label>
+		<label for="pwd1">New password</label>
 		<input
-		 id="pass1"
+		 id="pwd1"
 		 class="form-control"
-		 name="pass1"
+		 name="pwd1"
 		 type="password"
 		 title="Enter new password here."
 		 placeholder="New password"
@@ -20,11 +20,11 @@
 	</div>
 
 	<div class="form-group">
-		<label for="pass2">Confirm new password</label>
+		<label for="pwd2">Confirm new password</label>
 		<input
-		 id="pass2"
+		 id="pwd2"
 		 class="form-control"
-		 name="pass2"
+		 name="pwd2"
 		 type="password"
 		 title="Enter new password here again."
 		 placeholder="New password again"

@@ -68,16 +68,29 @@ class User
 	public static function updatePassword()
 	{
 
-		if( $_POST['pass1'] != $_POST['pass2'] )
-			return array('error_message' => 'Password and confirm password doesn\'t match.');
+		$result = array();
 
-		$prepared_pwd = self::preparePasswordForDb($_POST['pass1'], true);
+		$pwd_is_valid = self::validateNewPassword();
 
-		DB::updatePassword($prepared_pwd);
+		if( $pwd_is_valid['error'] === false )
+		{
 
-		self::setLoginCookie();
+			$prepared_pwd = self::preparePasswordForDb($_POST['pwd1'], true);
 
-		return array('success_message' => 'Password successfully saved.');
+			DB::updatePassword($prepared_pwd);
+
+			self::setLoginCookie();
+
+			$result['error'] = false;
+			$result['success_message'] = 'Password successfully saved.';
+
+		}
+		else
+		{
+			$result = $pwd_is_valid;
+		}
+
+		return $result;
 
 	}
 
@@ -129,6 +142,41 @@ class User
 		$password = sha1($password . $salt);
 
 		$result = $password . $salt;
+
+		return $result;
+
+	}
+
+	private static function validateNewPassword()
+	{
+
+		$result = array();
+
+		if( !isset($_POST['pwd1']) || !isset($_POST['pwd2']) )
+		{
+			$result['error'] = true;
+			$result['error_message'] = 'Invalid data.';
+
+			return $result;
+		}
+
+		if( empty($_POST['pwd1']) || empty($_POST['pwd1']) )
+		{
+			$result['error'] = true;
+			$result['error_message'] = 'All fields are required.';
+
+			return $result;
+		}
+
+		if( $_POST['pwd1'] !== $_POST['pwd2'] )
+		{
+			$result['error'] = true;
+			$result['error_message'] = 'Password and Confirm Password doesn\'t match.';
+
+			return $result;
+		}
+
+		$result['error'] = false;
 
 		return $result;
 

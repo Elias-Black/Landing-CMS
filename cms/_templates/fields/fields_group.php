@@ -44,10 +44,11 @@
 							 alt="Switch">
 						</a>
 						<a
-						 class="group-controll danger"
+						 class="group-controll danger js_delete_field"
 						 href="?delete=<?=$field['name'];?>"
 						 title="Delete &laquo;<?=$field['title'];?>&raquo; Group."
-						 onclick="confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Group?') && deleteField('<?=$field['name'];?>'); return false;">
+						 data-confirm-title="Do you want to delete &laquo;<?=$field['title'];?>&raquo; Group?"
+						 onclick="deleteField();">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-delete-white.png');?>" alt="Delete">
 						</a>
 					</div>
@@ -95,10 +96,11 @@
 					<img src="<?=Utils::getLink('web/_cms/img/icon-edit-black.png');?>" alt="Edit">
 				</a>
 				<a
-				 class="field-controll danger"
+				 class="field-controll danger js_delete_field"
 				 href="?delete=<?=$field['name'];?>"
 				 title="Delete &laquo;<?=$field['title'];?>&raquo; Field."
-				 onclick="confirm('Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?') && deleteField('<?=$field['name'];?>'); return false;">
+				 data-confirm-title="Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?"
+				 onclick="deleteField();">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-delete-red.png');?>" alt="Delete">
 				</a>
 			</div>

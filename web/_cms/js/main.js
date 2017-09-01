@@ -1,3 +1,28 @@
+/* Called when the document is ready */
+
+function init()
+{
+
+	/**
+	* Adding listner for changes of all form's Fields except WYSIWYG Field
+	* WYSIWYG Field itself calls -confirmLeave- function
+	*/
+
+	confirmLeave();
+
+	var move_field_controlls = document.querySelectorAll(".js_move_field_up, .js_move_field_down");
+	attachOnClickEvent(move_field_controlls, swapFields);
+
+	var groups_toggles = document.querySelectorAll(".js_group_toggle");
+	attachOnClickEvent(groups_toggles, openCloseGroup);
+
+	var delete_field_buttons = document.querySelectorAll(".js_delete_field");
+	attachOnClickEvent(delete_field_buttons, deleteField);
+
+}
+
+
+
 /* The function for mobile menu dropdown */
 
 function collapseMenu()
@@ -51,29 +76,6 @@ function confirmLeave(change)
 	}
 
 	window.onbeforeunload = confirmMessage;
-
-}
-
-
-
-/* Called when the document is ready */
-
-function init()
-{
-
-	/**
-	* Adding listner for changes of all form's Fields except WYSIWYG Field
-	* WYSIWYG Field itself calls -confirmLeave- function
-	*/
-
-	confirmLeave();
-
-	var move_field_controlls = document.querySelectorAll(".js_move_field_up, .js_move_field_down");
-	attachOnClickEvent(move_field_controlls, swapFields);
-
-	var groups_toggles = document.querySelectorAll(".js_group_toggle");
-	attachOnClickEvent(groups_toggles, openCloseGroup);
-
 
 }
 
@@ -289,7 +291,7 @@ function openCloseGroup(name)
 			}
 			else
 			{
-				error_callback();
+				error_callback(data);
 			}
 
 		}
@@ -316,7 +318,7 @@ function openCloseGroup(name)
 			}
 			else
 			{
-				error_callback();
+				error_callback(data);
 			}
 
 		}
@@ -329,15 +331,23 @@ function openCloseGroup(name)
 
 }
 
-function deleteField(name)
+function deleteField()
 {
 
-	var field = document.getElementById(name);
-	var field_wrapper = getParentWithClass(field, 'form-group');
+	var delete_button = this;
+
+	var field_wrapper = getParentWithClass(delete_button, 'form-group');
+	var confirm_message = delete_button.getAttribute('data-confirm-title');
+
+	if( !confirm(confirm_message) ) return false;
+
+	var request_url = delete_button.getAttribute('href');
+	request_url = addGETParams(request_url, 'ajax=true');
 
 	fade(field_wrapper);
 
-	AJAX( root_path + 'cms/?ajax=true&delete='+name, function(data) {
+	function succes_callback(data)
+	{
 
 		data = isJson(data);
 
@@ -363,14 +373,19 @@ function deleteField(name)
 		}
 		else
 		{
-			unfade(field_wrapper);
+			error_callback(data)
 		}
 
-	}, function(data) {
+	}
 
-		unfade(field_wrapper);
+	function error_callback(data)
+	{
+		window.location.reload();
+	}
 
-	} );
+	AJAX(request_url, succes_callback, error_callback);
+
+	return false;
 
 }
 
@@ -415,7 +430,7 @@ function swapFields(event)
 			}
 			else
 			{
-				error_callback();
+				error_callback(data);
 			}
 
 		}

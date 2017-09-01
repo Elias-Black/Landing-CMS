@@ -273,7 +273,7 @@ class Content
 			'path' => ''
 		);
 
-		$fields = DB::getPrivateContent();
+		$fields = DB::getPrivateContent(true);
 
 		if( isset($_GET['name']) )
 		{

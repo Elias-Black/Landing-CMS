@@ -19,6 +19,9 @@ function init()
 	var delete_field_buttons = document.querySelectorAll(".js_delete_field");
 	attachOnClickEvent(delete_field_buttons, deleteField);
 
+	var sitemenu_toggles = document.querySelectorAll(".js_sitemenu_toggle");
+	attachOnClickEvent(sitemenu_toggles, collapseMenu);
+
 }
 
 
@@ -28,9 +31,23 @@ function init()
 function collapseMenu()
 {
 
+	var _this = this;
+
 	var element = document.getElementById('js_collapse');
 
-	element.style.display = (element.style.display == 'none' || element.style.display == '') ? 'block' : 'none';
+	var open_title = _this.getAttribute('data-open-title');
+	var close_title = _this.getAttribute('data-close-title');
+
+	if(element.style.display == 'none' || element.style.display == '')
+	{
+		element.style.display = 'block';
+		_this.setAttribute('title', close_title);
+	}
+	else
+	{
+		element.style.display ='none';
+		_this.setAttribute('title', open_title);
+	}
 
 }
 

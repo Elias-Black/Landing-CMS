@@ -33,7 +33,12 @@
 	<div class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="collapsed navbar-toggle" onclick="collapseMenu();">
+				<button
+				 class="collapsed navbar-toggle js_sitemenu_toggle"
+				 type="button"
+				 title="Open site menu."
+				 data-open-title="Open site menu."
+				 data-close-title="Close site menu.">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>

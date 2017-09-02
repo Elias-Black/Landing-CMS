@@ -59,9 +59,10 @@ class Utils
 		return self::render(
 			'index.php',
 			 array(
-			 	'content' => isset($content) ? $content : null,
-			 	'error_message' => isset($message['error_message']) ? $message['error_message'] : null,
-			 	'success_message' => isset($message['success_message']) ? $message['success_message'] : null
+			 	'content' => self::pr($content, null),
+			 	'info_message' => self::pr($message['info_message'], null),
+			 	'error_message' => self::pr($message['error_message'], null),
+			 	'success_message' => self::pr($message['success_message'], null),
 			 )
 		);
 	}

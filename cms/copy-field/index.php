@@ -20,15 +20,16 @@ defined('CORE') OR die('403');
 
 $data = array();
 
+
 // Catching form submit
 if( !empty($_POST) )
-	$data = Content::editOrCopyFieldAction('edit');
+	$data = Content::editOrCopyFieldAction('copy');
 else
-	$data = Content::editField();
+	$data = Content::copyField();
 
-$data['page_header'] = 'Field editing';
-$data['save_btn_text'] = 'Save changes of the Field.';
-$data['cancel_btn_text'] = 'Cancel changes of the Field.';
+$data['page_header'] = 'Copying a Field';
+$data['save_btn_text'] = 'Save and add the copied Field.';
+$data['cancel_btn_text'] = 'Cancel Copying the Field.';
 
 // Render form of adding new field
 $content = Utils::render(

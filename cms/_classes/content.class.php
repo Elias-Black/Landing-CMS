@@ -95,7 +95,20 @@ class Content
 
 	}
 
-	public static function updateField()
+	public static function copyField()
+	{
+
+		$result = array();
+
+		$result = self::editField();
+
+		$result['info_message'] = 'To continue copying the Field, specify another Parent or Alias, in order not to create a duplicate.';
+
+		return $result;
+
+	}
+
+	public static function editOrCopyFieldAction($what_to_do)
 	{
 
 		$old_field_name = isset($_GET['name']) ? $_GET['name'] : false;
@@ -126,7 +139,7 @@ class Content
 
 		$old_position = 0;
 
-		if( $old_name_arr['parents'] == $new_field_data['parent']['value'] )
+		if( $old_name_arr['parents'] == $new_field_data['parent']['value'] && $what_to_do == 'edit' )
 		{
 
 			$old_parent = self::getParent($db_content, $old_name_arr['parents']);
@@ -150,15 +163,20 @@ class Content
 		}
 
 
-		$field_is_deleted = self::deleteField($db_content, $old_field_name);
+		if($what_to_do == 'edit')
+		{
 
-		if( !isset($field_is_deleted['error']) && isset($field_is_deleted['db_content']) )
-		{
-			$db_content = $field_is_deleted['db_content'];
-		}
-		else
-		{
-			return $field_is_deleted;
+			$field_is_deleted = self::deleteField($db_content, $old_field_name);
+
+			if( !isset($field_is_deleted['error']) && isset($field_is_deleted['db_content']) )
+			{
+				$db_content = $field_is_deleted['db_content'];
+			}
+			else
+			{
+				return $field_is_deleted;
+			}
+
 		}
 
 
@@ -341,10 +359,10 @@ class Content
 		}
 
 
-		$result = json_encode($result);
-
 		if( Utils::isAJAX() )
 		{
+			$result = json_encode($result);
+
 			exit($result);
 		}
 		else

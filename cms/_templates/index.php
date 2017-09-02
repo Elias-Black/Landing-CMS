@@ -44,7 +44,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="<?=Utils::getLink('cms/');?>" class="navbar-brand" title="Go to the main CMS page.">Landing CMS</a>
+				<a
+				 href="<?=Utils::getLink('cms/');?>"
+				 class="navbar-brand"
+				 title="Go to the main CMS page.">
+					Landing CMS
+				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="js_collapse">
 				<ul class="right nav navbar-nav">
@@ -100,6 +105,10 @@
 
 			<?php if( isset($vars['success_message']) ): ?>
 				<p class="alert alert-success"><?=$vars['success_message'];?></p>
+			<?php endif; ?>
+
+			<?php if( isset($vars['info_message']) ): ?>
+				<p class="alert alert-warning"><?=$vars['info_message'];?></p>
 			<?php endif; ?>
 
 			<?=$vars['content'];?>

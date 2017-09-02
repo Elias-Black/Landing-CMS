@@ -48,13 +48,23 @@ $upload = array(
 	<div class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="collapsed navbar-toggle" onclick="collapseMenu();">
+				<button
+				 class="collapsed navbar-toggle js_sitemenu_toggle"
+				 type="button"
+				 title="Open site menu."
+				 data-open-title="Open site menu."
+				 data-close-title="Close site menu.">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="cms/" class="navbar-brand" title="Go to the main CMS page.">Landing CMS</a>
+				<a
+				 href="cms/"
+				 class="navbar-brand"
+				 title="Go to the main CMS page.">
+					Landing CMS
+				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="js_collapse">
 				<ul class="right nav navbar-nav">

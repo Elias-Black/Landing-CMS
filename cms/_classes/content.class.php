@@ -129,12 +129,7 @@ class Content
 		if( $old_name_arr['parents'] == $new_field_data['parent']['value'] )
 		{
 
-			$old_parent = self::getField($db_content, $old_name_arr['parents']);
-
-			if( !empty($old_name_arr['parents']) )
-			{
-				$old_parent = $old_parent['output'];
-			}
+			$old_parent = self::getField($db_content, $old_name_arr['parents'], true);
 
 			$old_position = self::getFieldPosition($old_parent, $old_name_arr['alias']);
 
@@ -179,13 +174,7 @@ class Content
 		}
 
 
-		$ref_new_parent = &self::getField($db_content, $new_field_data['parent']['value']);
-
-		if( !empty($new_field_data['parent']['value']) )
-		{
-			$ref_new_parent = &$ref_new_parent['output'];
-		}
-
+		$ref_new_parent = &self::getField($db_content, $new_field_data['parent']['value'], true);
 
 		$ref_new_field = &$ref_new_parent[$new_field_data['alias']['value']];
 
@@ -318,31 +307,39 @@ class Content
 
 		$db_content = DB::getPrivateContent();
 
-		$ref_field_parent = &self::getField($db_content, $name_arr['parents']);
+		$field = self::getField($db_content, $name);
 
-		if( !empty($name_arr['parents']) )
+		$field_exists = self::fieldExists($field);
+
+		if( $field_exists['error'] == false )
 		{
-			$ref_field_parent = &$ref_field_parent['output'];
-		}
 
-		$field_position = self::getFieldPosition($ref_field_parent, $name_arr['alias']);
+			$ref_field_parent = &self::getField($db_content, $name_arr['parents'], true);
 
-		if( strtolower($to) == 'up' )
-		{
-			$new_field_position = $field_position - 1;
+			$field_position = self::getFieldPosition($ref_field_parent, $name_arr['alias']);
+
+			if( strtolower($to) == 'up' )
+			{
+				$new_field_position = $field_position - 1;
+			}
+			else
+			{
+				$new_field_position = $field_position + 1;
+			}
+
+			self::moveFieldFromTo($ref_field_parent, $field_position, $new_field_position);
+
+
+			DB::updateContent($db_content);
+
+			$result['success'] = true;
+
 		}
 		else
 		{
-			$new_field_position = $field_position + 1;
+			$result['success'] = false;
 		}
 
-		self::moveFieldFromTo($ref_field_parent, $field_position, $new_field_position);
-
-
-		DB::updateContent($db_content);
-
-
-		$result['success'] = true;
 
 		$result = json_encode($result);
 
@@ -433,12 +430,7 @@ class Content
 		}
 
 
-		$ref_new_field_parent = &self::getField($db_content, $new_field_data['parent']['value']);
-
-		if( !empty($new_field_data['parent']['value']) )
-		{
-			$ref_new_field_parent = &$ref_new_field_parent['output'];
-		}
+		$ref_new_field_parent = &self::getField($db_content, $new_field_data['parent']['value'], true);
 
 
 		$parent_exists = self::fieldExists($ref_new_field_parent);
@@ -501,12 +493,7 @@ class Content
 
 		$name_arr = self::getNameArray($name);
 
-		$ref_field_parent = &self::getField($db_content, $name_arr['parents']);
-
-		if( !empty($name_arr['parents']) )
-		{
-			$ref_field_parent = &$ref_field_parent['output'];
-		}
+		$ref_field_parent = &self::getField($db_content, $name_arr['parents'], true);
 
 		unset($ref_field_parent[$name_arr['alias']]);
 
@@ -772,7 +759,7 @@ class Content
 
 	}
 
-	private static function &getField(&$ref_content, $parents)
+	private static function &getField(&$ref_content, $parents, $group_output = false)
 	{
 
 		if($parents == '')
@@ -808,6 +795,11 @@ class Content
 		else
 		{
 			unset($ref_to_field);
+		}
+
+		if($group_output)
+		{
+			$ref_to_field = &$ref_to_field['output'];
 		}
 
 

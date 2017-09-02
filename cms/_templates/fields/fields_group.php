@@ -47,8 +47,7 @@
 						 class="group-controll danger js_delete_field"
 						 href="?delete=<?=$field['name'];?>"
 						 title="Delete &laquo;<?=$field['title'];?>&raquo; Group."
-						 data-confirm-title="Do you want to delete &laquo;<?=$field['title'];?>&raquo; Group?"
-						 onclick="deleteField();">
+						 data-confirm-title="Do you want to delete &laquo;<?=$field['title'];?>&raquo; Group?">
 							<img src="<?=Utils::getLink('web/_cms/img/icon-delete-white.png');?>" alt="Delete">
 						</a>
 					</div>
@@ -99,8 +98,7 @@
 				 class="field-controll danger js_delete_field"
 				 href="?delete=<?=$field['name'];?>"
 				 title="Delete &laquo;<?=$field['title'];?>&raquo; Field."
-				 data-confirm-title="Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?"
-				 onclick="deleteField();">
+				 data-confirm-title="Do you want to delete &laquo;<?=$field['title'];?>&raquo; Field?">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-delete-red.png');?>" alt="Delete">
 				</a>
 			</div>

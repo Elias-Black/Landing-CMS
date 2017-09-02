@@ -33,6 +33,12 @@
 							<img src="<?=Utils::getLink('web/_cms/img/icon-edit-white.png');?>" alt="Edit">
 						</a>
 						<a
+						 class="group-controll"
+						 href="<?=Utils::getLink('cms/copy-field/?name='.$field['name']);?>"
+						 title="Copy &laquo;<?=$field['title'];?>&raquo; Group.">
+							<img src="<?=Utils::getLink('web/_cms/img/icon-copy-white.png');?>" alt="Copy">
+						</a>
+						<a
 						 class="group-controll js_group_toggle"
 						 href="?<?=Utils::pr($field['open'])?'closeGroup':'openGroup';?>=<?=$field['name'];?>"
 						 title="Open/Close &laquo;<?=$field['title'];?>&raquo; Group.">
@@ -93,6 +99,12 @@
 				 href="<?=Utils::getLink('cms/edit-field/?name='.$field['name']);?>"
 				 title="Edit &laquo;<?=$field['title'];?>&raquo; Field.">
 					<img src="<?=Utils::getLink('web/_cms/img/icon-edit-black.png');?>" alt="Edit">
+				</a>
+				<a
+				 class="field-controll"
+				 href="<?=Utils::getLink('cms/copy-field/?name='.$field['name']);?>"
+				 title="Copy &laquo;<?=$field['title'];?>&raquo; Field.">
+					<img src="<?=Utils::getLink('web/_cms/img/icon-copy-black.png');?>" alt="Copy">
 				</a>
 				<a
 				 class="field-controll danger js_delete_field"

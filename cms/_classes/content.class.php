@@ -129,7 +129,7 @@ class Content
 		if( $old_name_arr['parents'] == $new_field_data['parent']['value'] )
 		{
 
-			$old_parent = self::getField($db_content, $old_name_arr['parents'], true);
+			$old_parent = self::getParent($db_content, $old_name_arr['parents']);
 
 			$old_position = self::getFieldPosition($old_parent, $old_name_arr['alias']);
 
@@ -174,7 +174,7 @@ class Content
 		}
 
 
-		$ref_new_parent = &self::getField($db_content, $new_field_data['parent']['value'], true);
+		$ref_new_parent = &self::getParent($db_content, $new_field_data['parent']['value']);
 
 		$ref_new_field = &$ref_new_parent[$new_field_data['alias']['value']];
 
@@ -314,7 +314,7 @@ class Content
 		if( $field_exists['error'] == false )
 		{
 
-			$ref_field_parent = &self::getField($db_content, $name_arr['parents'], true);
+			$ref_field_parent = &self::getParent($db_content, $name_arr['parents']);
 
 			$field_position = self::getFieldPosition($ref_field_parent, $name_arr['alias']);
 
@@ -430,7 +430,7 @@ class Content
 		}
 
 
-		$ref_new_field_parent = &self::getField($db_content, $new_field_data['parent']['value'], true);
+		$ref_new_field_parent = &self::getParent($db_content, $new_field_data['parent']['value']);
 
 
 		$parent_exists = self::fieldExists($ref_new_field_parent);
@@ -493,7 +493,7 @@ class Content
 
 		$name_arr = self::getNameArray($name);
 
-		$ref_field_parent = &self::getField($db_content, $name_arr['parents'], true);
+		$ref_field_parent = &self::getParent($db_content, $name_arr['parents']);
 
 		unset($ref_field_parent[$name_arr['alias']]);
 
@@ -759,7 +759,7 @@ class Content
 
 	}
 
-	private static function &getField(&$ref_content, $parents, $group_output = false)
+	private static function &getField(&$ref_content, $parents)
 	{
 
 		if($parents == '')
@@ -797,13 +797,22 @@ class Content
 			unset($ref_to_field);
 		}
 
-		if($group_output)
-		{
-			$ref_to_field = &$ref_to_field['output'];
-		}
-
 
 		return $ref_to_field;
+
+	}
+
+	private static function &getParent(&$ref_content, $parents)
+	{
+
+		$field = &self::getField($ref_content, $parents);
+
+		if( isset($field['output']) && $field['type'] == 'fields_group' )
+		{
+			$field = &$field['output'];
+		}
+
+		return $field;
 
 	}
 

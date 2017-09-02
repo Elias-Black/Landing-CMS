@@ -85,9 +85,12 @@ class Content
 			Utils::redirect('cms/');
 		}
 
+		$parents = $field_data['type'] == 'fields_group' ? $field_name : $name_arr['parents'];
+
+
 		$result['sent_data'] = $field_data;
 
-		$result['sent_data']['parent'] = $name_arr['parents'];
+		$result['sent_data']['parent'] = $parents;
 
 		$result['sent_data']['alias'] = $name_arr['alias'];
 
@@ -272,7 +275,7 @@ class Content
 
 	}
 
-	public static function getAllParents()
+	public static function getAllParents($remove_yourself = false)
 	{
 
 		$parents[] = array(
@@ -282,7 +285,7 @@ class Content
 
 		$fields = DB::getPrivateContent(true);
 
-		if( isset($_GET['name']) )
+		if( isset($_GET['name']) && $remove_yourself )
 		{
 
 			$fields_without_yourself = self::deleteField($fields, $_GET['name']);

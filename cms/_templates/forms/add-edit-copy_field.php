@@ -12,7 +12,14 @@
 		 name="parent"
 		 title="Select a Parent for the Field."
 		 onchange="confirmLeave('on');">
-			<?php foreach(Content::getAllParents() as $parent): ?>
+			<?php
+
+				$rm_yourself = Utils::pr($vars['rm_yourself_from_parents'], false);
+				$parents = Content::getAllParents($rm_yourself);
+
+				foreach($parents as $parent):
+
+			?>
 
 				<?php
 

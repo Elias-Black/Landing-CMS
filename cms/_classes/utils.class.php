@@ -54,17 +54,13 @@ class Utils
 
 	}
 
-	public static function renderIndex($content, $message)
+	public static function renderIndex($content, $vars)
 	{
-		return self::render(
-			'index.php',
-			 array(
-			 	'content' => self::pr($content, null),
-			 	'info_message' => self::pr($message['info_message'], null),
-			 	'error_message' => self::pr($message['error_message'], null),
-			 	'success_message' => self::pr($message['success_message'], null),
-			 )
-		);
+
+		$vars['content'] = $content;
+
+		return self::render('index.php', $vars);
+
 	}
 
 	public static function getRandomString($length = 10)

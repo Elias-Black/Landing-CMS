@@ -77,12 +77,21 @@ class User
 
 			$prepared_pwd = self::preparePasswordForDb($_POST['pwd1'], true);
 
-			DB::updatePassword($prepared_pwd);
+			$updated = DB::updatePassword($prepared_pwd);
 
-			self::setLoginCookie();
+			if($updated['error'] == false)
+			{
 
-			$result['error'] = false;
-			$result['success_message'] = 'Password successfully saved.';
+				self::setLoginCookie();
+
+				$result['error'] = false;
+				$result['success_message'] = 'Password successfully saved.';
+
+			}
+			else
+			{
+				$result = $updated;
+			}
 
 		}
 		else
@@ -194,23 +203,34 @@ class User
 	private static function createPassword()
 	{
 
+		$result = array();
+
 		if( $_SERVER['REQUEST_URI'] != Utils::getLink('cms/password/') )
+		{
 			Utils::redirect('cms/password/');
+		}
 
 		if( !empty($_POST) )
 		{
-			$message = self::updatePassword();
+			$pwd_updated = self::updatePassword();
 
-			if( !$message['error_message'] )
+			if( $pwd_updated === true )
+			{
 				Utils::redirect('cms/');
-
-			self::setLoginCookie();
-
-			return $message;
+			}
+			else
+			{
+				$result = $pwd_updated;
+			}
 
 		}
+		else
+		{
+			$result['error'] = true;
+			$result['error_message'] = 'Create password.';
+		}
 
-		return array('error_message' => 'Create password.');
+		return $result;
 
 	}
 

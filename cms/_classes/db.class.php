@@ -70,9 +70,20 @@ class DB
 	public static function updatePassword($password)
 	{
 
+		$result = array();
+		$result['error'] = false;
+
 		$content = self::SECURE_TEXT . $password;
 
-		file_put_contents( Utils::getPath(self::PASSWORD_DB_PATH), $content );
+		$updated = file_put_contents( Utils::getPath(self::PASSWORD_DB_PATH), $content );
+
+		if($updated === false)
+		{
+			$result['error'] = true;
+			$result['error_message'] = 'Can not be written to the database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+		}
+
+		return $result;
 
 	}
 

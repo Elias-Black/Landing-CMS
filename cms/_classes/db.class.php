@@ -45,16 +45,43 @@ class DB
 			$content = array();
 		}
 
-		return $safe_replace ? Utils::replaceQuotes($content) : $content;
+		return $safe_replace ? Utils::replaceQuotesInArray($content) : $content;
 
 	}
 
 	public static function updateContent($content)
 	{
 
-		self::updatePrivateContent($content);
+		$result = array();
 
-		self::updatePublicContent($content);
+		$private_updated = self::updatePrivateContent($content);
+
+		if($private_updated['error'] === true)
+		{
+
+			$result['error'] = true;
+			$result['error_message'] = 'Can not be written to the Private database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+
+			return $result;
+
+		}
+
+		$public_updated = self::updatePublicContent($content);
+
+		if($public_updated['error'] === true)
+		{
+
+			$result['error'] = true;
+			$result['error_message'] = 'Can not be written to the Public database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+
+			return $result;
+
+		}
+
+		$result['error'] = false;
+		$result['success_message'] = 'Saved successfully.';
+
+		return $result;
 
 	}
 
@@ -80,7 +107,7 @@ class DB
 		if($updated === false)
 		{
 			$result['error'] = true;
-			$result['error_message'] = 'Can not be written to the database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+			$result['error_message'] = 'Can not be written to the Password database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
 		}
 
 		return $result;
@@ -94,18 +121,42 @@ class DB
 	private static function updatePrivateContent($content)
 	{
 
+		$result = array();
+		$result['error'] = false;
+
 		$content = self::SECURE_TEXT . serialize($content);
 
-		file_put_contents( Utils::getPath(self::PRIVATE_DB_PATH), $content );
+		$updated = file_put_contents( Utils::getPath(self::PRIVATE_DB_PATH), $content );
+
+		if($updated === false)
+		{
+			$result['error'] = true;
+			$result['error_message'] = 'Can not be written to the database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+		}
+
+		return $result;
+
 
 	}
 
 	private static function updatePublicContent($content)
 	{
 
-		$result = self::getFieldsOutput($content);
+		$result = array();
+		$result['error'] = false;
 
-		file_put_contents( Utils::getPath(self::PUBLIC_DB_PATH), serialize($result) );
+		$content = self::getFieldsOutput($content);
+
+		$updated = file_put_contents( Utils::getPath(self::PUBLIC_DB_PATH), serialize($content) );
+
+		if($updated === false)
+		{
+			$result['error'] = true;
+			$result['error_message'] = 'Can not be written to the database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+		}
+
+		return $result;
+
 
 	}
 

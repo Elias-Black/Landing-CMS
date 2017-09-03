@@ -230,9 +230,9 @@ class Content
 
 		}
 
-		DB::updateContent($db_content);
+		$updated = DB::updateContent($db_content);
 
-		Utils::redirect('cms/');
+		return $updated;
 
 	}
 
@@ -632,7 +632,7 @@ class Content
 				$result['error'] = true;
 				$result['error_message'] = 'Parent, Type, Alias and Title are required fields.';
 				$result['invalid_fields'][$name] = 'It\' a required field.';
-				$result['sent_data'] = Utils::replaceQuotes($_POST);
+				$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 			}
 
@@ -658,7 +658,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'Alias can\'t have this word. <a href="http://php.net/manual/en/reserved.variables.php" target="_blank">Here</a> are the majority forbidden words.';
 			$result['invalid_fields']['alias'] = 'Alias have forbidden word.';
-			$result['sent_data'] = Utils::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
 
@@ -678,7 +678,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'Alias can\'t have this word.';
 			$result['invalid_fields']['alias'] = 'Alias have forbidden word.';
-			$result['sent_data'] = Utils::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
 
@@ -699,7 +699,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'Invalid Alias. Alias names follow the same <a href="http://php.net/manual/en/language.variables.basics.php" target="_blank">rules</a> as variable names in PHP.';
 			$result['invalid_fields']['alias'] = 'Invalid Alias.';
-			$result['sent_data'] = Utils::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
 
@@ -752,7 +752,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'This Parent is absent.';
 			$result['invalid_fields']['parent'] = 'Invalid Parent.';
-			$result['sent_data'] = Utils::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
 
@@ -772,7 +772,7 @@ class Content
 			$result['error'] = true;
 			$result['error_message'] = 'The Parent already have a child with this Alias.';
 			$result['invalid_fields']['alias'] = 'The Parent already have a child with this Alias.';
-			$result['sent_data'] = Utils::replaceQuotes($_POST);
+			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
 

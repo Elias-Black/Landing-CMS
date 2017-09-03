@@ -73,7 +73,16 @@ class Utils
 		return isset($ref_variable) ? $ref_variable : $default_value;
 	}
 
-	public static function replaceQuotes($array)
+	public static function replaceQuotesInStr($str)
+	{
+		return str_replace(
+			array('&', '"', '\'', '<', '>'),
+			array('&amp;', '&quot;', '&apos;', '&lt;', '&gt;'),
+			$str
+		);
+	}
+
+	public static function replaceQuotesInArray($array)
 	{
 
 		$result = array();
@@ -83,11 +92,11 @@ class Utils
 
 			if( is_array($value) )
 			{
-				$result[$key] = self::replaceQuotes($value);
+				$result[$key] = self::replaceQuotesInArray($value);
 			}
 			else
 			{
-				$result[$key] = str_replace( array('&', '"', '\'', '<', '>'), array('&amp;', '&quot;', '&apos;', '&lt;', '&gt;'), $value );
+				$result[$key] = self::replaceQuotesInStr($value);
 			}
 
 		}

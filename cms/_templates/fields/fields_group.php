@@ -114,9 +114,13 @@
 					<img src="<?=Utils::getLink('web/_cms/img/icon-delete-red.png');?>" alt="Delete">
 				</a>
 			</div>
-			<?php echo Utils::render(
-				"fields/{$field['type']}.php",
-				 $field);
+			<?php
+				if( isset($_POST[$field['name']]) )
+				{
+					$field['output'] = Utils::replaceQuotesInStr($_POST[$field['name']]);
+				}
+
+				echo Utils::render("fields/{$field['type']}.php", $field);
 			?>
 			<p class="help-block"><?=$field['description'];?></p>
 		</div>

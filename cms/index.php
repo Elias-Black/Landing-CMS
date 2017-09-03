@@ -40,7 +40,7 @@ if( isset($_GET['closeGroup']) )
 
 // Catching form submit
 if( !empty($_POST) )
-	Content::updateContent();
+	$message = Content::updateContent();
 
 // Render form of Fields edit
 $content = Content::getMainForm();

@@ -284,7 +284,22 @@ function openCloseGroup(name)
 
 	function error_callback(data)
 	{
-		window.location.reload();
+
+		var error_message_element = document.getElementById('js_error_message');
+
+		data = isJson(data);
+
+		if(data && data.error_message)
+		{
+			window.scrollTo(0, 0);
+			unfade(field_wrapper);
+			showElement(error_message_element).innerHTML = data.error_message;
+		}
+		else
+		{
+			window.location.reload();
+		}
+
 	}
 
 	if( hasClass(groups_body, 'hidden') )
@@ -397,7 +412,22 @@ function deleteField()
 
 	function error_callback(data)
 	{
-		window.location.reload();
+
+		var error_message_element = document.getElementById('js_error_message');
+
+		data = isJson(data);
+
+		if(data && data.error_message)
+		{
+			window.scrollTo(0, 0);
+			unfade(field_wrapper);
+			showElement(error_message_element).innerHTML = data.error_message;
+		}
+		else
+		{
+			window.location.reload();
+		}
+
 	}
 
 	AJAX(request_url, succes_callback, error_callback);
@@ -454,7 +484,22 @@ function swapFields(event)
 
 		function error_callback(data)
 		{
-			window.location.reload();
+
+			var error_message_element = document.getElementById('js_error_message');
+
+			data = isJson(data);
+
+			if(data && data.error_message)
+			{
+				window.scrollTo(0, 0);
+				unfade(field_wrapper);
+				showElement(error_message_element).innerHTML = data.error_message;
+			}
+			else
+			{
+				window.location.reload();
+			}
+
 		}
 
 		AJAX(request_url, succes_callback, error_callback);
@@ -486,6 +531,8 @@ function addClass(ele, cls)
 		ele.setAttribute('class', ele.getAttribute('class') + ' ' + cls);
 	}
 
+	return ele;
+
 }
 
 function removeClass(ele, cls)
@@ -500,16 +547,20 @@ function removeClass(ele, cls)
 		ele.setAttribute('class', ele.getAttribute('class').replace(cls, ' '));
 	}
 
+	return ele;
+
 }
 
 function showElement(element)
 {
 	removeClass(element, 'hidden');
+	return element;
 }
 
 function hideElement(element)
 {
 	addClass(element, 'hidden');
+	return element;
 }
 
 function AJAX(url, succes_callback, error_callback)
@@ -553,6 +604,8 @@ function getParentWithClass(element, cls)
 
 function isJson(str)
 {
+
+	if(typeof str == 'object') return str;
 
 	try
 	{
@@ -633,9 +686,11 @@ function previousElementSibling(el)
 function fade(el)
 {
 	addClass(el, 'faded');
+	return el;
 }
 
 function unfade(el)
 {
 	removeClass(el, 'faded');
+	return el;
 }

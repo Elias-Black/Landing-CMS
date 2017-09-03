@@ -99,17 +99,17 @@
 <!-- MAIN begin -->
 	<div class="container">
 		<div class="row">
-			<?php if( isset($vars['error_message']) ): ?>
-				<p class="alert alert-danger"><?=$vars['error_message'];?></p>
-			<?php endif; ?>
+			<p id="js_error_message" class="alert alert-danger<?=isset($vars['error_message'])?'':' hidden';?>">
+				<?=Utils::pr($vars['error_message']);?>
+			</p>
 
-			<?php if( isset($vars['success_message']) ): ?>
-				<p class="alert alert-success"><?=$vars['success_message'];?></p>
-			<?php endif; ?>
+			<p id="js_success_message" class="alert alert-success<?=isset($vars['success_message'])?'':' hidden';?>">
+				<?=Utils::pr($vars['success_message']);?>
+			</p>
 
-			<?php if( isset($vars['info_message']) ): ?>
-				<p class="alert alert-warning"><?=$vars['info_message'];?></p>
-			<?php endif; ?>
+			<p id="js_info_message" class="alert alert-warning<?=isset($vars['info_message'])?'':' hidden';?>">
+				<?=Utils::pr($vars['info_message']);?>
+			</p>
 
 			<?=$vars['content'];?>
 		</div>

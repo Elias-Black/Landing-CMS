@@ -147,24 +147,23 @@ That so... In my opinion this functionality enough for all landing pages. If you
 ***
 
 ### To do
-v 0.0.4:
-- Add copying of the Fields
-- Field deleting through AJAX
-- Fields sorting through AJAX
-- Installing without setting each DB file (setting only DB folder)
-- Fix compatibility with old IE
-- Update password's salt of random length with each password change
-
+v 0.0.5:
+- Update vendor dependency injections;
+- Fix Color Picker and File Uploader for IE9;
+- Add Security Key to Responsive File Manager;
+- Add JS-less accessebility for File Uploader;
+- Fix Ghost Bug for Color Picker (sometimes just do not work);
+- Add supporting RGB/RGBA/HEX to Color Picker;
+- Set Transliteration to Responsive File Manager;
 
 v 1.0:
-- Add Admin icon to frontend
-- Add dictionary array with all texts
-- Add Security Key to Responsive File Manager
-- Set Transliteration to Responsive File Manager
-- Add Drag'n'Drop for Groups and Fields sorting
+- Add Admin icon to frontend;
+- Add dictionary array with all texts;
+- Add Plugins support
+- Add Drag'n'Drop for Groups and Fields sorting;
 
 v 2.0
-- Add Pages
+- Add Pages;
 
 ***
 

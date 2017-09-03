@@ -10,14 +10,12 @@ function getPerms($path)
 }
 
 $db = array(
-	'cms/_db/password.php',
-	'cms/_db/private.php',
-	'cms/_db/public.php'
+	'cms/_db',
 );
 
 $upload = array(
 	'web/_cms/uploads/tinymce/source',
-	'web/_cms/uploads/tinymce/thumbs'
+	'web/_cms/uploads/tinymce/thumbs',
 );
 
 ?>
@@ -105,13 +103,13 @@ $upload = array(
 		<div class="row">
 			<h2>Database permissions</h2>
 
-			<p>You need to set 666 permissions for this files:</p>
+			<p>You need to set 777 permissions for this folder:</p>
 
-			<?php foreach ($db as $file): ?>
+			<?php foreach ($db as $folder): ?>
 
 				<h5>
 
-					<?php if(getPerms($file) == 666): ?>
+					<?php if(getPerms($folder) == 777): ?>
 
 						<span class="label label-success">YES</span>
 
@@ -121,7 +119,7 @@ $upload = array(
 
 					<?php endif; ?>
 
-					<?=$file;?>
+					<?=$folder;?>
 
 				</h5>
 

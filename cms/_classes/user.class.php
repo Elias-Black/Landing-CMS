@@ -34,6 +34,20 @@ class User
 
 		$db_pwd = DB::getPassword();
 
+		if($db_pwd['error'] === false)
+		{
+			$db_pwd = $db_pwd['db_password'];
+		}
+		else
+		{
+
+			if( $_SERVER['REQUEST_URI'] != Utils::getLink('cms/login/') )
+				Utils::redirect('cms/login/');
+
+			return $db_pwd;
+
+		}
+
 		if( empty($db_pwd) )
 			return self::createPassword();
 
@@ -120,7 +134,23 @@ class User
 
 	private static function getPasswordForCookie()
 	{
-		return md5( DB::getPassword() );
+
+		$db_pwd = DB::getPassword();
+
+		if($db_pwd['error'] === false)
+		{
+			$db_pwd = $db_pwd['db_password'];
+		}
+		else
+		{
+
+			if( $_SERVER['REQUEST_URI'] != Utils::getLink('cms/login/') )
+				Utils::redirect('cms/login/');
+
+		}
+
+		return md5($db_pwd);
+
 	}
 
 	private static function setLoginCookie()
@@ -194,9 +224,21 @@ class User
 	private static function getSalt()
 	{
 
-		$content = DB::getPassword();
+		$db_pwd = DB::getPassword();
 
-		return substr($content, self::HASHED_PASSWORD_LENGTH);
+		if($db_pwd['error'] === false)
+		{
+			$db_pwd = $db_pwd['db_password'];
+		}
+		else
+		{
+
+			if( $_SERVER['REQUEST_URI'] != Utils::getLink('cms/login/') )
+				Utils::redirect('cms/login/');
+
+		}
+
+		return substr($db_pwd, self::HASHED_PASSWORD_LENGTH);
 
 	}
 

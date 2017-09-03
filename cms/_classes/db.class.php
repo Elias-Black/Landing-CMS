@@ -38,7 +38,6 @@ class DB
 
 		$result = array();
 
-
 		$content = file_get_contents( Utils::getPath(self::PRIVATE_DB_PATH) );
 
 		if($content === false)
@@ -104,9 +103,24 @@ class DB
 	public static function getPassword()
 	{
 
+		$result = array();
+
 		$content = file_get_contents( Utils::getPath(self::PASSWORD_DB_PATH) );
 
-		return substr($content, self::SECURE_LENGTH);
+		if($content === false)
+		{
+
+			$result['error'] = true;
+			$result['error_message'] = 'Can not read from the Password database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+
+			return $result;
+
+		}
+
+		$result['error'] = false;
+		$result['db_password'] = substr($content, self::SECURE_LENGTH);
+
+		return $result;
 
 	}
 

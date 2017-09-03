@@ -54,9 +54,18 @@ class Content
 			return $field_is_added;
 		}
 
-		DB::updateContent($db_content);
+		$result = DB::updateContent($db_content);
 
-		Utils::redirect('cms/');
+		if($result['error'] === false)
+		{
+			Utils::redirect('cms/');
+		}
+		else
+		{
+			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
+
+			return $result;
+		}
 
 	}
 
@@ -207,9 +216,18 @@ class Content
 		self::moveFieldFromTo($ref_new_parent, $new_position, $old_position);
 
 
-		DB::updateContent($db_content);
+		$result = DB::updateContent($db_content);
 
-		Utils::redirect('cms/');
+		if($result['error'] === false)
+		{
+			Utils::redirect('cms/');
+		}
+		else
+		{
+			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
+
+			return $result;
+		}
 
 	}
 
@@ -250,9 +268,17 @@ class Content
 
 			$db_content = $field_is_deleted['db_content'];
 
-			DB::updateContent($db_content);
+			$updated = DB::updateContent($db_content);
 
-			$result['success'] = true;
+			if($updated['error'] === false)
+			{
+				$result['success'] = true;
+			}
+			else
+			{
+				$result = $updated;
+				$result['success'] = false;
+			}
 
 		}
 		else
@@ -268,9 +294,13 @@ class Content
 			exit($result);
 
 		}
-		else
+		elseif($result['success'] === true)
 		{
 			Utils::redirect('cms/');
+		}
+		else
+		{
+			return $result;
 		}
 
 	}
@@ -351,9 +381,17 @@ class Content
 			self::moveFieldFromTo($ref_field_parent, $field_position, $new_field_position);
 
 
-			DB::updateContent($db_content);
+			$updated = DB::updateContent($db_content);
 
-			$result['success'] = true;
+			if($updated['error'] === false)
+			{
+				$result['success'] = true;
+			}
+			else
+			{
+				$result = $updated;
+				$result['success'] = false;
+			}
 
 		}
 		else
@@ -368,9 +406,13 @@ class Content
 
 			exit($result);
 		}
-		else
+		elseif($result['success'] === true)
 		{
 			Utils::redirect('cms/');
+		}
+		else
+		{
+			return $result;
 		}
 
 	}
@@ -395,7 +437,17 @@ class Content
 				$ref_field['open'] = false;
 			}
 
-			$result['success'] = true;
+			$updated = DB::updateContent($db_content);
+
+			if($updated['error'] === false)
+			{
+				$result['success'] = true;
+			}
+			else
+			{
+				$result = $updated;
+				$result['success'] = false;
+			}
 
 		}
 		else
@@ -403,7 +455,6 @@ class Content
 			$result['success'] = false;
 		}
 
-		DB::updateContent($db_content);
 
 		$result = json_encode($result);
 
@@ -411,9 +462,13 @@ class Content
 		{
 			exit($result);
 		}
-		else
+		elseif($result['success'] === true)
 		{
 			Utils::redirect('cms/');
+		}
+		else
+		{
+			$result;
 		}
 
 	}

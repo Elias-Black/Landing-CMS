@@ -36,7 +36,20 @@ class DB
 	public static function getPrivateContent($safe_replace = false)
 	{
 
+		$result = array();
+
+
 		$content = file_get_contents( Utils::getPath(self::PRIVATE_DB_PATH) );
+
+		if($content === false)
+		{
+
+			$result['error'] = true;
+			$result['error_message'] = 'Can not read from the Private database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+
+			return $result;
+
+		}
 
 		$content = unserialize( substr($content, self::SECURE_LENGTH) );
 
@@ -45,7 +58,10 @@ class DB
 			$content = array();
 		}
 
-		return $safe_replace ? Utils::replaceQuotesInArray($content) : $content;
+		$result['error'] = false;
+		$result['db_content'] = $safe_replace ? Utils::replaceQuotesInArray($content) : $content;
+
+		return $result;
 
 	}
 

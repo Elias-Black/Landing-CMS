@@ -31,9 +31,16 @@ class Content
 	public static function getMainForm()
 	{
 
+		$db_content = DB::getPrivateContent(true);
+
+		if($db_content['error'] === true)
+		{
+			return $db_content;
+		}
+
 		return Utils::render(
 			'forms/main.php',
-			 array( 'fields' => DB::getPrivateContent(true) )
+			 array( 'fields' => $db_content['db_content'] )
 		);
 
 	}
@@ -42,6 +49,17 @@ class Content
 	{
 
 		$db_content = DB::getPrivateContent();
+
+		if($db_content['error'] === false)
+		{
+			$db_content = $db_content['db_content'];
+		}
+		else
+		{
+			$db_content['sent_data'] = Utils::replaceQuotesInArray($_POST);
+
+			return $db_content;
+		}
 
 		$field_is_added = self::addNewField($db_content);
 
@@ -84,6 +102,15 @@ class Content
 		$name_arr = self::getNameArray($field_name);
 
 		$db_content = DB::getPrivateContent(true);
+
+		if($db_content['error'] === false)
+		{
+			$db_content = $db_content['db_content'];
+		}
+		else
+		{
+			Utils::redirect('cms/');
+		}
 
 		$field_data = self::getField($db_content, $field_name);
 
@@ -132,6 +159,17 @@ class Content
 
 
 		$db_content = DB::getPrivateContent();
+
+		if($db_content['error'] === false)
+		{
+			$db_content = $db_content['db_content'];
+		}
+		else
+		{
+			$db_content['sent_data'] = Utils::replaceQuotesInArray($_POST);
+
+			return $db_content;
+		}
 
 		$new_field_data = self::getNewFieldData();
 
@@ -236,6 +274,15 @@ class Content
 
 		$db_content = DB::getPrivateContent();
 
+		if($db_content['error'] === false)
+		{
+			$db_content = $db_content['db_content'];
+		}
+		else
+		{
+			Utils::redirect('cms/');
+		}
+
 		foreach ($_POST as $name => $value)
 		{
 
@@ -261,7 +308,17 @@ class Content
 
 		$db_content = DB::getPrivateContent();
 
-		$field_is_deleted = self::deleteField($db_content, $field_name);
+		if($db_content['error'] === false)
+		{
+			$db_content = $db_content['db_content'];
+
+			$field_is_deleted = self::deleteField($db_content, $field_name);
+		}
+		else
+		{
+			$result = $db_content;
+		}
+
 
 		if( !isset($field_is_deleted['error']) && isset($field_is_deleted['db_content']) )
 		{
@@ -315,6 +372,15 @@ class Content
 
 		$fields = DB::getPrivateContent(true);
 
+		if($fields['error'] === false)
+		{
+			$fields = $fields['db_content'];
+		}
+		else
+		{
+			Utils::redirect('cms/');
+		}
+
 		if( isset($_GET['name']) && $remove_yourself )
 		{
 
@@ -357,6 +423,15 @@ class Content
 		$name_arr = self::getNameArray($name);
 
 		$db_content = DB::getPrivateContent();
+
+		if($db_content['error'] === false)
+		{
+			$db_content = $db_content['db_content'];
+		}
+		else
+		{
+			$result = $db_content;
+		}
 
 		$field = self::getField($db_content, $name);
 
@@ -422,6 +497,15 @@ class Content
 		$result = array();
 
 		$db_content = DB::getPrivateContent();
+
+		if($db_content['error'] === false)
+		{
+			$db_content = $db_content['db_content'];
+		}
+		else
+		{
+			$result = $db_content;
+		}
 
 		$ref_field = &self::getField($db_content, $name);
 

@@ -45,5 +45,11 @@ if( !empty($_POST) )
 // Render form of Fields edit
 $content = Content::getMainForm();
 
+if( isset($content['error']) && $content['error'] === true)
+{
+	$message = $content;
+	$content = '';
+}
+
 // Printing page
 echo Utils::renderIndex($content, $message);

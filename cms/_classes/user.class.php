@@ -214,7 +214,7 @@ class User
 		{
 			$pwd_updated = self::updatePassword();
 
-			if( $pwd_updated === true )
+			if( $pwd_updated['error'] === false )
 			{
 				Utils::redirect('cms/');
 			}

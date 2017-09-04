@@ -101,6 +101,13 @@ $upload = array(
 <!-- MAIN begin -->
 	<div class="container">
 		<div class="row">
+
+			<div class="alert alert-warning" role="alert">
+				<h4 class="alert-heading">Attention!</h4>
+				<p>Permissions on the folders should allow PHP to create, view and edit files inside them.</p>
+				<p>Also, permissions on the files themselves should allow viewing and editing them for PHP.</p>
+			</div>
+
 			<h2>Database permissions</h2>
 
 			<p>You need to set 777 permissions for this folder:</p>

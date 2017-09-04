@@ -99,17 +99,26 @@
 <!-- MAIN begin -->
 	<div class="container">
 		<div class="row">
-			<p id="js_error_message" class="alert alert-danger<?=isset($vars['error_message'])?'':' hidden';?>">
+			<div
+			 id="js_error_message"
+			 class="alert alert-danger<?=isset($vars['error_message'])?'':' hidden';?>"
+			 role="alert">
 				<?=Utils::pr($vars['error_message']);?>
-			</p>
+			</div>
 
-			<p id="js_success_message" class="alert alert-success<?=isset($vars['success_message'])?'':' hidden';?>">
+			<div
+			 id="js_success_message"
+			 class="alert alert-success<?=isset($vars['success_message'])?'':' hidden';?>"
+			 role="alert">
 				<?=Utils::pr($vars['success_message']);?>
-			</p>
+			</div>
 
-			<p id="js_info_message" class="alert alert-warning<?=isset($vars['info_message'])?'':' hidden';?>">
+			<div
+			 id="js_info_message"
+			 class="alert alert-warning<?=isset($vars['info_message'])?'':' hidden';?>"
+			 role="alert">
 				<?=Utils::pr($vars['info_message']);?>
-			</p>
+			</div>
 
 			<?=$vars['content'];?>
 		</div>

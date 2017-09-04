@@ -38,9 +38,11 @@ class DB
 
 		$result = array();
 
-		$content = file_get_contents( Utils::getPath(self::PRIVATE_DB_PATH) );
+		$private_db_path = Utils::getPath(self::PRIVATE_DB_PATH);
 
-		if($content === false)
+		$content = file_get_contents($private_db_path);
+
+		if( $content === false && file_exists($private_db_path) )
 		{
 
 			$result['error'] = true;
@@ -105,9 +107,11 @@ class DB
 
 		$result = array();
 
-		$content = file_get_contents( Utils::getPath(self::PASSWORD_DB_PATH) );
+		$password_db_path = Utils::getPath(self::PASSWORD_DB_PATH);
 
-		if($content === false)
+		$content = file_get_contents($password_db_path);
+
+		if( $content === false && file_exists($password_db_path) )
 		{
 
 			$result['error'] = true;

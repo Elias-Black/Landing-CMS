@@ -15,6 +15,12 @@
 
 $public_db_path = 'cms/_db/public.php';
 
+$controller_file_nesting = 1;
+
+$root_path = realpath( dirname(__FILE__) . str_repeat('/..', $controller_file_nesting) ) . '/';
+
+$public_db_path = $root_path . $public_db_path;
+
 $public_db_content = file_get_contents($public_db_path);
 
 

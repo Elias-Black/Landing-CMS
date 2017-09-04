@@ -19,14 +19,10 @@ For using the CMS you should copy all files from this repository to root directo
 For checking configs you can use helper: open `https://your_site.com/install.php`
 ![Installation helper](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/installation.png "Installation helper")
 
-You should set 666 permissions for DB files:
-- cms/_db/password.php
-- cms/_db/private.php
-- cms/_db/public.php
-
-You should set 777 permissions for upload directories:
+You should set 777 permissions for upload and DB directories:
 - web/_cms/uploads/tinymce/source/
 - web/_cms/uploads/tinymce/thumbs/
+- cms/_db/
 
 If helper show that all is done you should going to Admin panel: `https://your_site.com/cms/`
 

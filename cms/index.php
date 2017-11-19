@@ -43,7 +43,7 @@ if( !empty($_POST) )
 	$message = Content::updateContent();
 
 // Render form of Fields edit
-$content = Content::getMainForm();
+$content = Content::getMainForm($message);
 
 if( isset($content['error']) && $content['error'] === true)
 {

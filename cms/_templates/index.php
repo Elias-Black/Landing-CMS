@@ -121,7 +121,7 @@
 				<?=Utils::pr($vars['info_message']);?>
 			</div>
 
-			<?=$vars['content'];?>
+			<?=Utils::pr($vars['content']);?>
 		</div>
 	</div>
 <!-- MAIN end -->

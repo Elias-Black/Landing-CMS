@@ -28,7 +28,7 @@ class Content
 
 	/* PUBLIC API */
 
-	public static function getMainForm()
+	public static function getMainForm( $data = array() )
 	{
 
 		$db_content = DB::getPrivateContent(true);
@@ -38,9 +38,11 @@ class Content
 			return $db_content;
 		}
 
+		$data['fields'] = $db_content['db_content'];
+
 		return Utils::render(
 			'forms/main.php',
-			 array( 'fields' => $db_content['db_content'] )
+			 $data
 		);
 
 	}
@@ -293,12 +295,15 @@ class Content
 				if( Utils::pr($ref_field['required']) == 'on' && $value == '' && $ref_field['type'] != 'fields_group' )
 				{
 					$updated['error'] = true;
+					$updated['invalid_fields'][$name] = 'It\' a required field.';
 					$updated['error_message'] = 'Field &laquo;'.$ref_field['title'].'&raquo; is required for filling.';
 				}
 
 				$ref_field['output'] = $value;
 
 			}
+
+			unset($ref_field);
 
 		}
 

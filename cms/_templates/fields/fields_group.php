@@ -8,9 +8,10 @@
 		$field['name'] = Content::getNameAsString($field['parents']);
 	?>
 
-	<?php if( $field['type'] == 'fields_group' ): ?>
+	<div class="form-group<?=Utils::pr($vars['invalid_fields'][$field['name']]) ? ' has-error' : '';?>">
 
-		<div class="form-group">
+		<?php if( $field['type'] == 'fields_group' ): ?>
+
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="pull-right panel-controls">
@@ -66,6 +67,7 @@
 					<?php
 						$info['parents'] = $field['parents'];
 						$info['fields'] = $field['output'];
+						$info['invalid_fields'] = Utils::pr( $vars['invalid_fields'], array() );
 
 						echo Utils::render(
 							"fields/{$field['type']}.php",
@@ -76,11 +78,9 @@
 				</div>
 			</div>
 			<p class="help-block"><?=$field['description'];?></p>
-		</div>
 
-	<?php else: ?>
+		<?php else: ?>
 
-		<div class="form-group">
 			<div class="pull-right panel-controls">
 				<a
 				 class="field-controll js_move_field_up"
@@ -123,7 +123,9 @@
 				echo Utils::render("fields/{$field['type']}.php", $field);
 			?>
 			<p class="help-block"><?=$field['description'];?></p>
-		</div>
-	<?php endif; ?>
+
+		<?php endif; ?>
+
+	</div>
 
 <?php endforeach; ?>

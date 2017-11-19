@@ -5,7 +5,7 @@ A simple CMS for Landing Pages.
 
 ### Hello guys!
 I wrote this CMS for myself and want to share it for everyone.
-Landing CMS is a simple tool for management landing pages. It don't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.2 and early!
+Landing CMS is a simple tool for management landing pages. It doesn't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.2 or newer (7 and 7.1 supports)!
 
 *For the rapid development of the project, you can make a donation!*
 
@@ -148,7 +148,7 @@ v 0.0.5:
 - Fix Color Picker and File Uploader for IE9;
 - Add Security Key to Responsive File Manager;
 - Add JS-less accessebility for File Uploader;
-- Fix Ghost Bug for Color Picker (sometimes just do not work);
+- Fix Ghost Bug for Color Picker (sometimes just does not work);
 - Add supporting RGB/RGBA/HEX to Color Picker;
 - Set Transliteration to Responsive File Manager;
 
@@ -164,7 +164,7 @@ v 2.0
 ***
 
 ### Thanks
-- [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSIWYG;
+- [TinyMCE](https://github.com/tinymce/tinymce "TinyMCE project on GitHub.") for the WYSIWYG editor;
 - [Responsive File Manager](http://www.responsivefilemanager.com/ "Responsive File Manager site.") for TinyMCE external filemanager;
 - [Tovic / color-picker](https://github.com/tovic/color-picker "A simple color picker plugin written in pure JavaScript, for modern browsers.") for the Color Picker;
 - [Forsigner / magic-check](https://github.com/forsigner/magic-check "Beautify Radio and Checkbox with pure CSS.") for beautiful Checkboxes;

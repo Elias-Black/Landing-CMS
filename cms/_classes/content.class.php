@@ -269,6 +269,8 @@ class Content
 	public static function updateContent()
 	{
 
+		$updated = array();
+
 		$db_content = DB::getPrivateContent();
 
 		if($db_content['error'] === false)
@@ -287,12 +289,24 @@ class Content
 
 			if( isset($ref_field) )
 			{
+
+				if( Utils::pr($ref_field['required']) == 'on' && $value == '' && $ref_field['type'] != 'fields_group' )
+				{
+					$updated['error'] = true;
+					$updated['error_message'] = 'Field &laquo;'.$ref_field['title'].'&raquo; is required for filling.';
+				}
+
 				$ref_field['output'] = $value;
+
 			}
 
 		}
 
-		$updated = DB::updateContent($db_content);
+
+		if( empty($updated) )
+		{
+			$updated = DB::updateContent($db_content);
+		}
 
 		return $updated;
 
@@ -610,6 +624,7 @@ class Content
 			'type'			=> $new_field_data['type']['value'],
 			'title'			=> $new_field_data['title']['value'],
 			'description'	=> $new_field_data['description']['value'],
+			'required'		=> $new_field_data['required']['value'],
 			'open'			=> true,
 			'output'		=> $new_field_data['default_output']['value'],
 		);
@@ -745,6 +760,9 @@ class Content
 
 		$data['description']['required']	= false;
 		$data['description']['value']		= Utils::pr($_POST['description']);
+
+		$data['required']['required']		= true;
+		$data['required']['value']			= Utils::pr($_POST['required']);
 
 		$data['default_output']['required']	= false;
 		$data['default_output']['value']	= $data['type']['value'] == 'fields_group' ? array() : '';

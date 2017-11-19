@@ -117,6 +117,32 @@
 		<div class="help-block">The description of the new Field in admin panel.</div>
 	</div>
 
+	<div class="form-group<?=Utils::pr($vars['invalid_fields']['required']) ? ' has-error' : '';?>">
+		<input
+		 name="required"
+		 type="hidden"
+		 value="off"
+		 />
+
+		<input
+		 id="required"
+		 class="magic-checkbox"
+		 name="required"
+		 type="checkbox"
+		 title="Check this box if the Field is required for filling."
+		 onchange="confirmLeave('on');"
+		 <?=Utils::pr($vars['sent_data']['required']) == 'on' ? 'checked' : '';?>
+		 />
+
+		<label
+		 for="required"
+		 title="Check this box if the Field is required for filling."
+		>
+			Required Field
+		</label>
+		<p class="help-block">Does not work for Fields Groups.</p>
+	</div>
+
 	<div class="buttons">
 		<?php echo Utils::render(
 			'elements/button_blue.php',

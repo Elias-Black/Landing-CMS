@@ -1,7 +1,7 @@
 <?php
 
 // Connecting the public controller
-require_once('web/index.php');
+require_once('assets/controller.php');
 
 // Connecting a module
 require_once('modules/rand_num.php');

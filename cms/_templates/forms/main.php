@@ -63,5 +63,5 @@
 </form>
 
 <a href="#" class="scroll-to-top" title="Scroll to Top.">
-	<img src="<?=Utils::getLink('web/_cms/img/icon-up-black.png');?>" alt="Scroll to Top">
+	<img src="<?=Utils::getLink('assets/_cms/img/icon-up-black.png');?>" alt="Scroll to Top">
 </a>

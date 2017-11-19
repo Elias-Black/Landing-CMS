@@ -15,9 +15,9 @@
 		toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor	| print preview code fontselect",
 		image_advtab: true ,
 
-		external_filemanager_path: "<?=Utils::getLink('cms/_tinymce/filemanager/');?>",
+		external_filemanager_path: "<?=Utils::getLink('assets/vendor/responsive_filemanager_9.12.1/filemanager/');?>",
 		filemanager_title: "Responsive Filemanager",
-		external_plugins: { "filemanager" : "<?=Utils::getLink('cms/_tinymce/filemanager/plugin.min.js');?>"},
+		external_plugins: { "filemanager" : "<?=Utils::getLink('assets/vendor/responsive_filemanager_9.12.1/filemanager/plugin.min.js');?>"},
 		setup: function(ed) {
 			ed.on('change', function(ed) {
 				confirmLeave('on');

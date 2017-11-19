@@ -35,7 +35,7 @@
 	 width="100%"
 	 height="550"
 	 frameborder="0"
-	 data-src="_tinymce/filemanager/dialog.php?type=2&field_id=<?=$vars['name'];?>&relative_url=1&lang=en_EN">
+	 data-src="<?=Utils::getLink('assets/vendor/responsive_filemanager_9.12.1/filemanager/dialog.php?type=2&field_id='.$vars['name'].'&relative_url=1&lang=en_EN');?>">
 	</iframe>
 </div>
 

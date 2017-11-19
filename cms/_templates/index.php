@@ -7,16 +7,17 @@
 	<meta charset="utf-8">
 	<meta name='HandheldFriendly' content='True'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/main.css');?>">
-	<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/magic-check.min.css');?>">
-	<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/bootstrap.min.css');?>">
-	<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/color-picker.min.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/main.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/magic-check.min.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('assets/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/color-picker.min.css');?>">
 	<script type="text/javascript">
 		var root_path = '<?=Utils::getLink();?>';
 	</script>
-	<script src="<?=Utils::getLink('web/_cms/js/color-picker.min.js');?>"></script>
-	<script src="<?=Utils::getLink('web/_cms/js/main.js');?>"></script>
-	<script src="<?=Utils::getLink('cms/_tinymce/js/tinymce/tinymce.min.js');?>"></script>
+	<script src="<?=Utils::getLink('assets/_cms/js/color-picker.min.js');?>"></script>
+	<script src="<?=Utils::getLink('assets/_cms/js/main.js');?>"></script>
+	<script src="<?=Utils::getLink('assets/vendor/tinymce_4.7.2/js/tinymce/tinymce.min.js');?>"></script>
+	<script src="<?=Utils::getLink('assets/vendor/responsive_filemanager_9.12.1/tinymce/plugins/responsivefilemanager/plugin.min.js');?>"></script>
 	<meta name='copyright' content='Landing CMS'>
 	<meta name="description" content="Free CMS for Landing">
 	<meta name="keywords" content="CMS, Landing, Free">
@@ -24,7 +25,7 @@
 	<meta name="generator" content="Landing CMS 0.0.4" />
 
 	<noscript>
-		<link rel="stylesheet" href="<?=Utils::getLink('web/_cms/css/no_js.css');?>">
+		<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/no_js.css');?>">
 	</noscript>
 </head>
 <body>

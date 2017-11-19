@@ -20,8 +20,8 @@ For checking configs you can use helper: open `https://your_site.com/install.php
 ![Installation helper](https://github.com/Elias-Black/Landing-CMS/blob/gh-pages/screenshots/installation.png "Installation helper")
 
 You should set 777 permissions for upload and DB directories:
-- web/_cms/uploads/tinymce/source/
-- web/_cms/uploads/tinymce/thumbs/
+- assets/_cms/uploads/tinymce/source/
+- assets/_cms/uploads/tinymce/thumbs/
 - cms/_db/
 
 If helper show that all is done you should going to Admin panel: `https://your_site.com/cms/`
@@ -58,7 +58,7 @@ Then, when you want to use your Fields in your files you need to connect Control
 <?php
 
 // Connecting the public controller
-require_once('web/index.php');
+require_once('assets/controller.php');
 
 ?>
 
@@ -122,7 +122,7 @@ If you need use any modules you can creat these in `modules` directory. For usin
 <?php
 
 // Connecting the public controller
-require_once('web/index.php');
+require_once('assets/controller.php');
 
 // Connecting a module
 require_once('modules/rand_num.php');

@@ -14,8 +14,8 @@ $db = array(
 );
 
 $upload = array(
-	'web/_cms/uploads/tinymce/source',
-	'web/_cms/uploads/tinymce/thumbs',
+	'assets/_cms/uploads/tinymce/source',
+	'assets/_cms/uploads/tinymce/thumbs',
 );
 
 ?>
@@ -27,9 +27,9 @@ $upload = array(
 	<meta charset="utf-8">
 	<meta name='HandheldFriendly' content='True'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="web/_cms/css/main.css">
-	<link rel="stylesheet" href="web/_cms/css/bootstrap.min.css">
-	<script src="web/_cms/js/main.js"></script>
+	<link rel="stylesheet" href="assets/_cms/css/main.css">
+	<link rel="stylesheet" href="assets/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<script src="assets/_cms/js/main.js"></script>
 	<meta name='copyright' content='Landing CMS'>
 	<meta name="description" content="Free CMS for Landing">
 	<meta name="keywords" content="CMS, Landing, Free">
@@ -37,7 +37,7 @@ $upload = array(
 	<meta name="generator" content="Landing CMS 0.0.4" />
 
 	<noscript>
-		<link rel="stylesheet" href="web/_cms/css/no_js.css">
+		<link rel="stylesheet" href="assets/_cms/css/no_js.css">
 	</noscript>
 </head>
 <body>

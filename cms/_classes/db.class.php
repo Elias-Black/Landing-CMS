@@ -40,9 +40,17 @@ class DB
 
 		$private_db_path = Utils::getPath(self::PRIVATE_DB_PATH);
 
-		$content = file_get_contents($private_db_path);
+		try
+		{
+			$content = file_get_contents($private_db_path);
 
-		if( $content === false && file_exists($private_db_path) )
+			if( $content === false && file_exists($private_db_path) )
+			{
+				throw new Exception();
+			}
+
+		}
+		catch(Exception $e)
 		{
 
 			$result['error'] = true;
@@ -71,29 +79,22 @@ class DB
 
 		$result = array();
 
+
 		$private_updated = self::updatePrivateContent($content);
 
 		if($private_updated['error'] === true)
 		{
-
-			$result['error'] = true;
-			$result['error_message'] = 'Can not be written to the Private database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
-
-			return $result;
-
+			return $private_updated;
 		}
+
 
 		$public_updated = self::updatePublicContent($content);
 
 		if($public_updated['error'] === true)
 		{
-
-			$result['error'] = true;
-			$result['error_message'] = 'Can not be written to the Public database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
-
-			return $result;
-
+			return $public_updated;
 		}
+
 
 		$result['error'] = false;
 		$result['success_message'] = 'Saved successfully.';
@@ -109,9 +110,17 @@ class DB
 
 		$password_db_path = Utils::getPath(self::PASSWORD_DB_PATH);
 
-		$content = file_get_contents($password_db_path);
+		try
+		{
+			$content = file_get_contents($password_db_path);
 
-		if( $content === false && file_exists($password_db_path) )
+			if( $content === false && file_exists($password_db_path) )
+			{
+				throw new Exception();
+			}
+
+		}
+		catch(Exception $e)
 		{
 
 			$result['error'] = true;
@@ -136,12 +145,22 @@ class DB
 
 		$content = self::SECURE_TEXT . $password;
 
-		$updated = file_put_contents( Utils::getPath(self::PASSWORD_DB_PATH), $content );
-
-		if($updated === false)
+		try
 		{
+			$updated = file_put_contents( Utils::getPath(self::PASSWORD_DB_PATH), $content );
+
+			if($updated === false)
+			{
+				throw new Exception();
+			}
+
+		}
+		catch(Exception $e)
+		{
+
 			$result['error'] = true;
 			$result['error_message'] = 'Can not be written to the Password database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+
 		}
 
 		return $result;
@@ -160,16 +179,25 @@ class DB
 
 		$content = self::SECURE_TEXT . serialize($content);
 
-		$updated = file_put_contents( Utils::getPath(self::PRIVATE_DB_PATH), $content );
-
-		if($updated === false)
+		try
 		{
+			$updated = file_put_contents( Utils::getPath(self::PRIVATE_DB_PATH), $content );
+
+			if($updated === false)
+			{
+				throw new Exception();
+			}
+
+		}
+		catch(Exception $e)
+		{
+
 			$result['error'] = true;
-			$result['error_message'] = 'Can not be written to the database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+			$result['error_message'] = 'Can not be written to the Private database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+
 		}
 
 		return $result;
-
 
 	}
 
@@ -181,16 +209,25 @@ class DB
 
 		$content = self::getFieldsOutput($content);
 
-		$updated = file_put_contents( Utils::getPath(self::PUBLIC_DB_PATH), serialize($content) );
-
-		if($updated === false)
+		try
 		{
+			$updated = file_put_contents( Utils::getPath(self::PUBLIC_DB_PATH), serialize($content) );
+
+			if($updated === false)
+			{
+				throw new Exception();
+			}
+
+		}
+		catch(Exception $e)
+		{
+
 			$result['error'] = true;
-			$result['error_message'] = 'Can not be written to the database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+			$result['error_message'] = 'Can not be written to the Public database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+
 		}
 
 		return $result;
-
 
 	}
 

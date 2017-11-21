@@ -40,7 +40,7 @@ class Utils
 
 	}
 
-	public static function render($template, $vars)
+	public static function render( $template, $vars = array() )
 	{
 
 		$template = self::getPath(self::TEMPLATE_FOLDER) . $template;

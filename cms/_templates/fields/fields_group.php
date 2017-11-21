@@ -126,7 +126,10 @@
 					$field['required_str'] = '<span title="This is a required Field.">&nbsp;*</span>';
 				}
 
-				echo Utils::render("fields/{$field['type']}.php", $field);
+				echo Utils::render(
+					 "fields/{$field['type']}.php",
+					  $field
+				);
 			?>
 			<p class="help-block"><?=$field['description'];?></p>
 

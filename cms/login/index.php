@@ -27,10 +27,7 @@ if( defined('IS_LOGIN') )
 	Utils::redirect('cms/');
 
 // Render login form
-$content = Utils::render(
-	'forms/login.php',
-	 array()
-);
+$content = Utils::render('forms/login.php');
 
 // Printing page
 echo Utils::renderIndex($content, $message);

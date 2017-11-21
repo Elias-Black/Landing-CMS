@@ -297,6 +297,7 @@ h2 {
 }
 
 
+
 /* Custom styles */
 
 .unstyle-link {
@@ -305,4 +306,71 @@ h2 {
 
 .unstyle-link:hover {
 	color: inherit;
+}
+
+
+
+/* Magic-Check fixes */
+
+@-webkit-keyframes hover-color {
+
+	from {
+		border-color: #c0c0c0;
+	}
+	to {
+		border-color: #3e97eb;
+	}
+
+}
+
+.magic-radio,
+.magic-checkbox {
+	display: inline!important;
+	cursor: pointer;
+	opacity: 0;
+	width: 20px;
+	height: 20px;
+}
+
+.magic-radio:focus,
+.magic-radio:focus + label:before,
+.magic-checkbox:focus,
+.magic-checkbox:focus + label:before {
+	outline: 1px solid #66afe9;
+	outline: -webkit-focus-ring-color auto 5px;
+	-moz-outline-radius: 5px;
+}
+
+.magic-radio + label:hover:before,
+.magic-checkbox + label:hover:before {
+	-webkit-animation-duration: 0.4s;
+	-moz-animation-duration: 0.4s;
+	-o-animation-duration: 0.4s;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	-webkit-animation-name: hover-color;
+	-moz-animation-name: hover-color;
+	-o-animation-name: hover-color;
+}
+
+.magic-radio[disabled] + label:hover:before,
+.magic-checkbox[disabled] + label:hover:before {
+	-webkit-animation-name: none;
+	-moz-animation-name: none;
+	-o-animation-name: none;
+}
+
+.magic-radio:checked + label:before,
+.magic-checkbox:checked + label:before {
+	-webkit-animation-name: none;
+	-moz-animation-name: none;
+	-o-animation-name: none;
+}
+
+.magic-checkbox + label:after {
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
 }

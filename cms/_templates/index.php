@@ -8,7 +8,7 @@
 	<meta name='HandheldFriendly' content='True'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/main.css');?>">
-	<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/magic-check.min.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('assets/vendor/magic-check_1.0.3/css/magic-check.min.css');?>">
 	<link rel="stylesheet" href="<?=Utils::getLink('assets/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css');?>">
 	<link rel="stylesheet" href="<?=Utils::getLink('assets/vendor/color-picker_1.3.5/color-picker.min.css');?>">
 	<script type="text/javascript">

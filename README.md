@@ -1,7 +1,7 @@
 # Landing CMS
 A simple CMS for Landing Pages.
 
-**v0.0.4** Be careful! While that is an alpha version.
+**v0.0.5** Be careful! While that is an alpha version.
 
 ### Hello guys!
 I wrote this CMS for myself and want to share it for everyone.
@@ -143,8 +143,7 @@ That so... In my opinion this functionality enough for all landing pages. If you
 ***
 
 ### To do
-v 0.0.5:
-- Update vendor dependency injections;
+v 0.0.6:
 - Fix Color Picker and File Uploader for IE9;
 - Add Security Key to Responsive File Manager;
 - Add JS-less accessebility for File Uploader;

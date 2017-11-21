@@ -9,7 +9,7 @@
  * @author     Ilia Chernykh <landingcms@yahoo.com>
  * @copyright  2017, Landing CMS (https://github.com/Elias-Black/Landing-CMS)
  * @license    https://opensource.org/licenses/LGPL-2.1  LGPL-2.1
- * @version    Release: 0.0.4
+ * @version    Release: 0.0.5
  * @link       https://github.com/Elias-Black/Landing-CMS
  */
 

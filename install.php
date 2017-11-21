@@ -34,7 +34,7 @@ $upload = array(
 	<meta name="description" content="Free CMS for Landing">
 	<meta name="keywords" content="CMS, Landing, Free">
 	<meta name="author" content="Ilia Chernykh">
-	<meta name="generator" content="Landing CMS 0.0.4" />
+	<meta name="generator" content="Landing CMS 0.0.5" />
 
 	<noscript>
 		<link rel="stylesheet" href="assets/_cms/css/no_js.css">
@@ -164,7 +164,7 @@ $upload = array(
 	<div class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container">
 			<div class="col-sm-12 text-center navbar-text">
-				2017 &copy; <a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" title="Go to the site about Landing CMS." class="unstyle-link">Landing CMS</a>
+				2017 &copy; <a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" title="Go to the site about Landing CMS." class="unstyle-link">Landing CMS <small>v0.0.5</small></a>
 			</div>
 		</div>
 	</div>

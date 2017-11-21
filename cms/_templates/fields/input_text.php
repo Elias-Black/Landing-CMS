@@ -1,6 +1,6 @@
 <?php defined('CORE') OR die('403'); ?>
 
-<label for="<?=$vars['name'];?>"><?=$vars['title'];?></label>
+<label for="<?=$vars['name'];?>"><?=$vars['title'];?><?=$vars['required_str'];?></label>
 
 <input
  id="<?=$vars['name'];?>"

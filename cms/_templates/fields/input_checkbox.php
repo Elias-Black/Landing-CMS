@@ -20,5 +20,5 @@
  for="<?=$vars['name'];?>"
  title="Select a value for &laquo;<?=$vars['title'];?>&raquo; Field."
 >
-	<?=$vars['title'];?>
+	<?=$vars['title'];?><?=$vars['required_str'];?>
 </label>

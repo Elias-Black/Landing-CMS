@@ -28,7 +28,7 @@
 </script>
 <!-- /TinyMCE -->
 
-<label for="<?=$vars['name'];?>"><?=$vars['title'];?></label>
+<label for="<?=$vars['name'];?>"><?=$vars['title'];?><?=$vars['required_str'];?></label>
 
 <noscript>
 	<p>Your browser doesn't support JavaScript, so you do not see the visual editor here. But you can still use <a href="https://developer.mozilla.org/en/docs/Web/HTML" target="_blank">HTML</a> to manually edit the content in this Field.</p>

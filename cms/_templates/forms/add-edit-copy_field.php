@@ -5,7 +5,7 @@
 	<h2><?=Utils::pr($vars['page_header']);?></h2>
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['parent']) ? ' has-error' : '';?>">
-		<label for="parent">Parent</label>
+		<label for="parent">Parent<span title="This is a required field.">&nbsp;*</span></label>
 		<select
 		 id="parent"
 		 class="form-control"
@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['type']) ? ' has-error' : '';?>">
-		<label for="type">Type</label>
+		<label for="type">Type<span title="This is a required field.">&nbsp;*</span></label>
 		<select
 		 id="type"
 		 class="form-control"
@@ -71,7 +71,7 @@
 	</div>
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['alias']) ? ' has-error' : '';?>">
-		<label for="alias">Alias</label>
+		<label for="alias">Alias<span title="This is a required field.">&nbsp;*</span></label>
 		<input
 		 id="alias"
 		 class="form-control"
@@ -87,7 +87,7 @@
 	</div>
 
 	<div class="form-group<?=Utils::pr($vars['invalid_fields']['title']) ? ' has-error' : '';?>">
-		<label for="title">Title</label>
+		<label for="title">Title<span title="This is a required field.">&nbsp;*</span></label>
 		<input
 		 id="title"
 		 class="form-control"
@@ -138,7 +138,7 @@
 		 for="required"
 		 title="Check this box if the Field is required for filling."
 		>
-			Required Field
+			Required Field<span title="This is a required field.">&nbsp;*</span>
 		</label>
 		<p class="help-block">Does not work for Fields Groups.</p>
 	</div>

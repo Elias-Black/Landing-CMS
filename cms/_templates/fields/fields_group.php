@@ -120,6 +120,12 @@
 					$field['output'] = Utils::replaceQuotesInStr($_POST[$field['name']]);
 				}
 
+				$field['required_str'] = '';
+				if( Utils::pr($field['required']) == 'on' )
+				{
+					$field['required_str'] = '<span title="This is a required Field.">&nbsp;*</span>';
+				}
+
 				echo Utils::render("fields/{$field['type']}.php", $field);
 			?>
 			<p class="help-block"><?=$field['description'];?></p>

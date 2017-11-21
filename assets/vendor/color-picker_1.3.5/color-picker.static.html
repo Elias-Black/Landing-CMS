@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Color Picker</title>
+    <link href="color-picker.min.css" rel="stylesheet">
+    <style>
+    .color-picker.static {
+      display:inline-block;
+      position:static;
+    }
+    .color-picker.static .color-picker-control {
+      -webkit-box-shadow:none;
+      -moz-box-shadow:none;
+      box-shadow:none;
+    }
+    </style>
+  </head>
+  <body>
+    <p><input type="text"></p>
+    <p></p>
+    <p>Simple <em>hack</em> to make a static color picker panel.</p>
+    <script src="color-picker.min.js"></script>
+    <script>
+
+    var picker = new CP(document.querySelector('input'), false);
+
+    picker.on("change", function(color) {
+        this.target.value = '#' + color;
+    });
+
+    // ...
+    picker.fit = function() { // do nothing ...
+        this.picker.style.left = this.picker.style.top = "";
+    };
+
+    // add a `static` class to the color picker panel
+    picker.picker.classList.add('static');
+
+    // show the color picker panel in the second `<p>` element
+    picker.enter(document.querySelectorAll('p')[1]);
+
+    </script>
+  </body>
+</html>

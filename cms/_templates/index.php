@@ -10,11 +10,11 @@
 	<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/main.css');?>">
 	<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/magic-check.min.css');?>">
 	<link rel="stylesheet" href="<?=Utils::getLink('assets/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css');?>">
-	<link rel="stylesheet" href="<?=Utils::getLink('assets/_cms/css/color-picker.min.css');?>">
+	<link rel="stylesheet" href="<?=Utils::getLink('assets/vendor/color-picker_1.3.5/color-picker.min.css');?>">
 	<script type="text/javascript">
 		var root_path = '<?=Utils::getLink();?>';
 	</script>
-	<script src="<?=Utils::getLink('assets/_cms/js/color-picker.min.js');?>"></script>
+	<script src="<?=Utils::getLink('assets/vendor/color-picker_1.3.5/color-picker.min.js');?>"></script>
 	<script src="<?=Utils::getLink('assets/_cms/js/main.js');?>"></script>
 	<script src="<?=Utils::getLink('assets/vendor/tinymce_4.7.2/js/tinymce/tinymce.min.js');?>"></script>
 	<script src="<?=Utils::getLink('assets/vendor/responsive_filemanager_9.12.1/tinymce/plugins/responsivefilemanager/plugin.min.js');?>"></script>

@@ -83,6 +83,7 @@ class User
 	{
 
 		$result = array();
+		$sent_data = Utils::replaceQuotesInArray($_POST);
 
 		$pwd_is_valid = self::validateNewPassword();
 
@@ -100,6 +101,7 @@ class User
 
 				$result['error'] = false;
 				$result['success_message'] = 'Password successfully saved.';
+				$sent_data = array();
 
 			}
 			else
@@ -112,6 +114,9 @@ class User
 		{
 			$result = $pwd_is_valid;
 		}
+
+		$result['sent_data'] = $sent_data;
+
 
 		return $result;
 

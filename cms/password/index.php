@@ -20,13 +20,13 @@ defined('CORE') OR die('403');
 
 // Catching form submit
 if( !empty($_POST) )
-	$message = User::updatePassword();
+	$data = User::updatePassword();
 
 // Render form of changing password
 $content = Utils::render(
 	'forms/password.php',
-	 array()
+	 $data
 );
 
 // Printing page
-echo Utils::renderIndex($content, $message);
+echo Utils::renderIndex($content, $data);

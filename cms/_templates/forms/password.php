@@ -13,6 +13,7 @@
 		 type="password"
 		 title="Enter new password here."
 		 placeholder="New password"
+		 value="<?=Utils::pr($vars['sent_data']['pwd1']);?>"
 		 autofocus
 		 required
 		 />
@@ -28,6 +29,7 @@
 		 type="password"
 		 title="Enter new password here again."
 		 placeholder="New password again"
+		 value="<?=Utils::pr($vars['sent_data']['pwd2']);?>"
 		 required
 		 />
 		<div class="help-block">Please enter the new password again here.</div>

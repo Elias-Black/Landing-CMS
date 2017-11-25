@@ -296,7 +296,7 @@ class Content
 				{
 					$updated['error'] = true;
 					$updated['invalid_fields'][$name] = 'It\' a required field.';
-					$updated['error_message'] = 'Field &laquo;'.$ref_field['title'].'&raquo; is required for filling.';
+					$updated['error_message'] = 'Field &laquo;'.Utils::replaceQuotesInStr($ref_field['title']).'&raquo; is required for filling.';
 				}
 
 				$ref_field['output'] = $value;

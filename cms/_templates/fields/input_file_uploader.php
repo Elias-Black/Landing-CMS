@@ -3,6 +3,9 @@
 <label for="<?=$vars['name'];?>"><?=$vars['title'];?><?=$vars['required_str'];?></label>
 
 <div class="input-group">
+	<?php if( Utils::pr($vars['output']) ): ?>
+		<span class="input-group-addon"><a href="<?=$vars['output'];?>" target="_blank">Open file</a></span>
+	<?php endif; ?>
 	<input
 	 id="<?=$vars['name'];?>"
 	 class="form-control"

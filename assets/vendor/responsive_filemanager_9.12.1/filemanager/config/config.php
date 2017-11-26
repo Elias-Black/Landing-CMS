@@ -214,7 +214,7 @@ $config = array(
 	//Show or not language selection feature in filemanager
 	'show_language_selection'				=> true,
 	//active or deactive the transliteration (mean convert all strange characters in A..Za..z0..9 characters)
-	'transliteration'						=> false,
+	'transliteration'						=> true,
 	//convert all spaces on files name and folders name with $replace_with variable
 	'convert_spaces'						=> false,
 	//convert all spaces on files name and folders name this value

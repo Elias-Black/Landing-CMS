@@ -149,7 +149,6 @@ v 0.0.6:
 - Add JS-less accessebility for File Uploader;
 - Fix Ghost Bug for Color Picker (sometimes just does not work);
 - Add supporting RGB/RGBA/HEX to Color Picker;
-- Set Transliteration to Responsive File Manager;
 
 v 1.0:
 - Add Admin icon to frontend;

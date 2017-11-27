@@ -23,7 +23,7 @@ class DB
 {
 
 	const SECURE_TEXT = '<?php die; ?>';
-	const SECURE_LENGTH = 13;
+	const SECURITY_LENGTH = 13;
 
 	const PASSWORD_DB_PATH = 'cms/_db/password.php';
 	const PRIVATE_DB_PATH = 'cms/_db/private.php';
@@ -67,7 +67,7 @@ class DB
 
 		}
 
-		$content = unserialize( substr($content, self::SECURE_LENGTH) );
+		$content = unserialize( substr($content, self::SECURITY_LENGTH) );
 
 		if(!$content)
 		{
@@ -146,7 +146,7 @@ class DB
 		}
 
 		$result['error'] = false;
-		$result['db_password'] = substr($content, self::SECURE_LENGTH);
+		$result['db_password'] = substr($content, self::SECURITY_LENGTH);
 
 
 		return $result;
@@ -241,6 +241,7 @@ class DB
 		$result['error'] = false;
 
 		$content = self::getFieldsOutput($content);
+		$content = self::SECURE_TEXT . serialize($content);
 
 		$public_db_path = Utils::getPath(self::PUBLIC_DB_PATH);
 
@@ -252,7 +253,7 @@ class DB
 				throw new Exception();
 			}
 
-			$updated = file_put_contents($public_db_path, serialize($content) );
+			$updated = file_put_contents($public_db_path, $content);
 
 			if($updated === false)
 			{

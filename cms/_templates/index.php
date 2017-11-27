@@ -14,8 +14,8 @@
 	<script type="text/javascript">
 		var root_path = '<?=Utils::getLink();?>';
 	</script>
-	<script src="<?=Utils::getLink('assets/vendor/color-picker_1.3.5/color-picker.min.js');?>"></script>
 	<script src="<?=Utils::getLink('assets/_cms/js/main.js');?>"></script>
+	<script src="<?=Utils::getLink('assets/vendor/color-picker_1.3.5/color-picker.min.js');?>"></script>
 	<script src="<?=Utils::getLink('assets/vendor/tinymce_4.7.2/js/tinymce/tinymce.min.js');?>"></script>
 	<script src="<?=Utils::getLink('assets/vendor/responsive_filemanager_9.12.1/tinymce/plugins/responsivefilemanager/plugin.min.js');?>"></script>
 	<meta name='copyright' content='Landing CMS'>

@@ -18,9 +18,14 @@ require_once('../_classes/index.php');
 
 defined('CORE') OR die('403');
 
+$data = array();
+
+
 // Catching form submit
 if( !empty($_POST) )
+{
 	$data = User::updatePassword();
+}
 
 // Render form of changing password
 $content = Utils::render(

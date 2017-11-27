@@ -20,9 +20,12 @@ defined('CORE') OR die('403');
 
 $data = array();
 
+
 // Catching form submit
 if( !empty($_POST) )
+{
 	$data = Content::addNewFieldAction();
+}
 
 $data['page_header'] = 'Adding a new Field';
 $data['save_btn_text'] = 'Save and add the new Field.';

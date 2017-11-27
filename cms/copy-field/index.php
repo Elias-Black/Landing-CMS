@@ -23,9 +23,13 @@ $data = array();
 
 // Catching form submit
 if( !empty($_POST) )
+{
 	$data = Content::editOrCopyFieldAction('copy');
+}
 else
+{
 	$data = Content::copyField();
+}
 
 $data['page_header'] = 'Copying a Field';
 $data['save_btn_text'] = 'Save and add the copied Field.';

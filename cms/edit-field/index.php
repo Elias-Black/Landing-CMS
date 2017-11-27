@@ -20,11 +20,16 @@ defined('CORE') OR die('403');
 
 $data = array();
 
+
 // Catching form submit
 if( !empty($_POST) )
+{
 	$data = Content::editOrCopyFieldAction('edit');
+}
 else
+{
 	$data = Content::editField();
+}
 
 $data['page_header'] = 'Field editing';
 $data['save_btn_text'] = 'Save changes of the Field.';

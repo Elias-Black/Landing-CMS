@@ -122,16 +122,25 @@ class DB
 		try
 		{
 
-			if( is_readable($password_db_path) !== TRUE )
+			if( file_exists($password_db_path) )
 			{
-				throw new Exception();
+
+				if( is_readable($password_db_path) !== TRUE )
+				{
+					throw new Exception();
+				}
+
+				$content = file_get_contents($password_db_path);
+
+				if($content === false)
+				{
+					throw new Exception();
+				}
+
 			}
-
-			$content = file_get_contents($password_db_path);
-
-			if($content === false)
+			else
 			{
-				throw new Exception();
+				$content = '';
 			}
 
 		}

@@ -44,16 +44,25 @@ class DB
 		try
 		{
 
-			if( is_readable($private_db_path) !== TRUE )
+			if( file_exists($private_db_path) )
 			{
-				throw new Exception();
+
+				if( is_readable($private_db_path) !== TRUE )
+				{
+					throw new Exception();
+				}
+
+				$content = file_get_contents($private_db_path);
+
+				if($content === FALSE)
+				{
+					throw new Exception();
+				}
+
 			}
-
-			$content = file_get_contents($private_db_path);
-
-			if($content === FALSE)
+			else
 			{
-				throw new Exception();
+				$content = '';
 			}
 
 		}
@@ -175,7 +184,7 @@ class DB
 		try
 		{
 
-			if( is_writable($password_db_path) !== TRUE )
+			if( is_writable($password_db_path) !== TRUE && file_exists($password_db_path) )
 			{
 				throw new Exception();
 			}
@@ -218,7 +227,7 @@ class DB
 		try
 		{
 
-			if( is_writable($private_db_path) !== TRUE )
+			if( is_writable($private_db_path) !== TRUE && file_exists($private_db_path) )
 			{
 				throw new Exception();
 			}
@@ -257,7 +266,7 @@ class DB
 		try
 		{
 
-			if( is_writable($public_db_path) !== TRUE )
+			if( is_writable($public_db_path) !== TRUE && file_exists($public_db_path) )
 			{
 				throw new Exception();
 			}

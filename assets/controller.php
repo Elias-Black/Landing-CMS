@@ -28,7 +28,8 @@ $root_path = realpath( dirname(__FILE__) . str_repeat('/..', $controller_file_ne
 
 $public_db_path = $root_path . $public_db_path;
 
-$public_db_content = FALSE;
+
+$public_db_content = array();
 
 if( is_readable($public_db_path) === TRUE )
 {
@@ -39,4 +40,4 @@ if( is_readable($public_db_path) === TRUE )
 }
 
 
-$get = $public_db_content === FALSE ? array() : $public_db_content;
+$get = $public_db_content;

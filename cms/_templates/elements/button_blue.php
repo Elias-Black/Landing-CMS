@@ -3,6 +3,7 @@
 <button
  class="btn btn-primary"
  type="submit"
- title="<?=$vars['title'];?>">
+ title="<?=$vars['title'];?>"
+ accesskey="s">
 	<?=$vars['text'];?>
 </button>

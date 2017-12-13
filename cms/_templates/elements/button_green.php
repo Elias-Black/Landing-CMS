@@ -4,6 +4,7 @@
  href="<?=$vars['url'];?>"
  class="btn btn-success"
  type="submit"
- title="<?=$vars['title'];?>">
+ title="<?=$vars['title'];?>"
+ accesskey="n">
 	<?=$vars['text'];?>
 </a>

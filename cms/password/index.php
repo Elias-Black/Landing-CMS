@@ -18,7 +18,7 @@ require_once('../_classes/index.php');
 
 defined('CORE') OR die('403');
 
-$data = array();
+$data = isset($message) ? $message : array();
 
 
 // Catching form submit

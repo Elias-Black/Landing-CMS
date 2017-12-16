@@ -31,9 +31,9 @@ else
 	$data = Content::copyField();
 }
 
-$data['page_header'] = 'Copying a Field';
-$data['save_btn_text'] = 'Save and add the copied Field.';
-$data['cancel_btn_text'] = 'Cancel Copying the Field.';
+$data['page_header']		= Utils::getMessage('copy_c:page_header');
+$data['save_btn_text']		= Utils::getMessage('copy_c:save_btn');
+$data['cancel_btn_text']	= Utils::getMessage('copy_c:cancel_btn');
 
 // Render form of adding new field
 $content = Utils::render(

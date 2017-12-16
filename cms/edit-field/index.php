@@ -31,9 +31,9 @@ else
 	$data = Content::editField();
 }
 
-$data['page_header'] = 'Field editing';
-$data['save_btn_text'] = 'Save changes of the Field.';
-$data['cancel_btn_text'] = 'Cancel changes of the Field.';
+$data['page_header']		= Utils::getMessage('edit_c:page_header');
+$data['save_btn_text']		= Utils::getMessage('edit_c:save_btn');
+$data['cancel_btn_text']	= Utils::getMessage('edit_c:cancel_btn');
 
 $data['rm_yourself_from_parents'] = true;
 

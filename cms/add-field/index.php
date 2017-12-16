@@ -27,9 +27,9 @@ if( !empty($_POST) )
 	$data = Content::addNewFieldAction();
 }
 
-$data['page_header'] = 'Adding a new Field';
-$data['save_btn_text'] = 'Save and add the new Field.';
-$data['cancel_btn_text'] = 'Cancel adding the new Field.';
+$data['page_header']		= Utils::getMessage('add_c:page_header');
+$data['save_btn_text']		= Utils::getMessage('add_c:save_btn');
+$data['cancel_btn_text']	= Utils::getMessage('add_c:cancel_btn');
 
 // Render form of adding new field
 $content = Utils::render(

@@ -152,7 +152,6 @@ v 0.0.6:
 
 v 1.0:
 - Add Admin icon to frontend;
-- Add dictionary array with all texts;
 - Add Plugins support
 - Add Drag'n'Drop for Groups and Fields sorting;
 

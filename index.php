@@ -21,7 +21,7 @@ require_once('modules/rand_num.php');
 		<meta name="description" content="Free CMS for Landing">
 		<meta name="keywords" content="CMS, Landing, Free">
 		<meta name="author" content="Ilia Chernykh">
-		<meta name="generator" content="Landing CMS 0.0.5" />
+		<meta name="generator" content="Landing CMS 0.0.6" />
 
 		<style>
 
@@ -88,7 +88,7 @@ require_once('modules/rand_num.php');
 					Create <i>String</i> Field with 'title' Alias.
 				<?php endif; ?>
 				<p><a href="/cms" target="_blank" title="Go to the Admin area." class="link">Go to CMS</a></p>
-				<p><a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" title="Go to the site about Landing CMS." class="link unline">Landing CMS v0.0.5</a></p>
+				<p><a href="https://github.com/Elias-Black/Landing-CMS" target="_blank" title="Go to the site about Landing CMS." class="link unline">Landing CMS v0.0.6</a></p>
 			</div>
 		</div>
 		<div id="main">

@@ -1,7 +1,7 @@
 # Landing CMS
 A simple CMS for Landing Pages.
 
-**v0.0.5** Be careful! While that is an alpha version.
+**v0.0.6** Be careful! While that is an alpha version.
 
 ### Hello guys!
 I wrote this CMS for myself and want to share it for everyone.

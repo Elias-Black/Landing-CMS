@@ -25,13 +25,17 @@ error_reporting(E_ALL);
 
 define('CORE', true);
 
-require_once("utils.class.php");
 
-require_once("db.class.php");
+require_once('utils.class.php');
 
-require_once("content.class.php");
+Utils::loadMessages('main');
 
-require_once("user.class.php");
+
+require_once('db.class.php');
+
+require_once('content.class.php');
+
+require_once('user.class.php');
 
 
 

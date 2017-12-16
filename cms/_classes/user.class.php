@@ -75,7 +75,7 @@ class User
 			Utils::redirect('cms/login/');
 
 		if( $entered_pwd && $entered_pwd != $db_pwd )
-			return array('error_message' => 'Invalid password.');
+			return array('error_message' => Utils::getMessage('user:invalid_password'));
 
 	}
 
@@ -100,7 +100,7 @@ class User
 				self::setLoginCookie();
 
 				$result['error'] = false;
-				$result['success_message'] = 'Password successfully saved.';
+				$result['success_message'] = Utils::getMessage('user:saved_successfully');
 				$sent_data = array();
 
 			}
@@ -199,7 +199,7 @@ class User
 		if( !isset($_POST['pwd1']) || !isset($_POST['pwd2']) )
 		{
 			$result['error'] = true;
-			$result['error_message'] = 'Invalid data.';
+			$result['error_message'] = Utils::getMessage('user:invalid_data');
 
 			return $result;
 		}
@@ -207,7 +207,7 @@ class User
 		if( empty($_POST['pwd1']) || empty($_POST['pwd1']) )
 		{
 			$result['error'] = true;
-			$result['error_message'] = 'All fields are required.';
+			$result['error_message'] = Utils::getMessage('user:all_fields_required');
 
 			return $result;
 		}
@@ -215,7 +215,7 @@ class User
 		if( $_POST['pwd1'] !== $_POST['pwd2'] )
 		{
 			$result['error'] = true;
-			$result['error_message'] = 'Password and Confirm Password doesn\'t match.';
+			$result['error_message'] = Utils::getMessage('user:passwords_not_match');
 
 			return $result;
 		}
@@ -274,7 +274,7 @@ class User
 		else
 		{
 			$result['error'] = true;
-			$result['error_message'] = 'Create password.';
+			$result['error_message'] = Utils::getMessage('user:create_password');
 		}
 
 		return $result;

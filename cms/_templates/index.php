@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="<?=Utils::getLink('assets/vendor/color-picker_1.3.5/color-picker.min.css');?>">
 	<script type="text/javascript">
 		var root_path = '<?=Utils::getLink();?>';
+		var leave_prevention_message = '<?=Utils::getMessage('template:leave_prevention');?>';
 	</script>
 	<script src="<?=Utils::getLink('assets/_cms/js/main.js');?>"></script>
 	<script src="<?=Utils::getLink('assets/vendor/color-picker_1.3.5/color-picker.min.js');?>"></script>

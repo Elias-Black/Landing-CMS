@@ -26,6 +26,7 @@ class Utils
 
 	const TEMPLATE_FOLDER = 'cms/_templates/';
 	const CURRENT_FILE_NESTING = 2;
+	const LANGUAGE = 'en';
 
 
 
@@ -123,6 +124,52 @@ class Utils
 	public static function getPath($path)
 	{
 		return self::getRootPath().$path;
+	}
+
+	public static function loadMessages($file_names)
+	{
+
+		global $MESSAGE;
+
+		$names = array();
+
+
+		if( is_string($file_names) )
+		{
+			$names[] = $file_names;
+		}
+
+		if( is_array($file_names) )
+		{
+			$names = $file_names;
+		}
+
+
+		foreach ($names as $name)
+		{
+
+			$full_path = self::getPath('cms/_lang/'.self::LANGUAGE.'/'.$name.'.php');
+
+			if( is_readable($full_path) )
+			{
+				require_once($full_path);
+			}
+
+		}
+
+	}
+
+	public static function getMessage($alias)
+	{
+
+		global $MESSAGE;
+
+		$args = func_get_args();
+		array_shift($args);
+		$args = self::replaceQuotesInArray($args);
+
+		return isset($MESSAGE[$alias]) ? vsprintf($MESSAGE[$alias], $args) : '';
+
 	}
 
 }

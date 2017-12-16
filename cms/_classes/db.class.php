@@ -70,7 +70,10 @@ class DB
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'Can not read from the Private database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+			$result['error_message'] = Utils::getMessage(
+				'db:not_readable_private_db',
+				 Utils::getLink('install.php')
+			);
 
 			return $result;
 
@@ -114,7 +117,7 @@ class DB
 
 
 		$result['error'] = false;
-		$result['success_message'] = 'Saved successfully.';
+		$result['success_message'] = Utils::getMessage('db:saved_successfully');
 
 		return $result;
 
@@ -157,7 +160,10 @@ class DB
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'Can not read from the Password database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+			$result['error_message'] = Utils::getMessage(
+				'db:not_readable_password_db',
+				 Utils::getLink('install.php')
+			);
 
 			return $result;
 
@@ -201,7 +207,10 @@ class DB
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'Can not be written to the Password database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+			$result['error_message'] = Utils::getMessage(
+				'db:not_writable_password_db',
+				 Utils::getLink('install.php')
+			);
 
 		}
 
@@ -244,7 +253,10 @@ class DB
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'Can not be written to the Private database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+			$result['error_message'] = Utils::getMessage(
+				'db:not_writable_private_db',
+				 Utils::getLink('install.php')
+			);
 
 		}
 
@@ -283,7 +295,10 @@ class DB
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'Can not be written to the Public database. Check permissions on <a href="'.Utils::getLink('install.php').'" target="_blank">this</a> helper.';
+			$result['error_message'] = Utils::getMessage(
+				'db:not_writable_public_db',
+				 Utils::getLink('install.php')
+			);
 
 		}
 

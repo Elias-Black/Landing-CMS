@@ -88,7 +88,9 @@ function confirmLeave(change)
 	{
 
 		if(form_state == true)
-			return 'Do you want to leave this page with unsaved Fields?';
+		{
+			return leave_prevention_message;
+		}
 
 	}
 

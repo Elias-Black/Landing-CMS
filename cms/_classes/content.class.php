@@ -140,8 +140,7 @@ class Content
 
 		$result = self::editField();
 
-		$result['info_message'] = 'To continue copying the Field, specify another Parent or Alias, in order not to create a duplicate.';
-
+		$result['info_message'] = Utils::getMessage('content:copying_info');
 		return $result;
 
 	}
@@ -295,8 +294,8 @@ class Content
 				if( Utils::pr($ref_field['required']) == 'on' && $value == '' && $ref_field['type'] != 'fields_group' )
 				{
 					$updated['error'] = true;
-					$updated['invalid_fields'][$name] = 'It\' a required field.';
-					$updated['error_message'] = 'Field &laquo;'.Utils::replaceQuotesInStr($ref_field['title']).'&raquo; is required for filling.';
+					$updated['error_message'] = Utils::getMessage( 'content:required_field', $ref_field['title'] );
+					$updated['invalid_fields'][$name] = Utils::getMessage('content:required_field_tip');
 				}
 
 				$ref_field['output'] = $value;
@@ -789,8 +788,8 @@ class Content
 			{
 
 				$result['error'] = true;
-				$result['error_message'] = 'Parent, Type, Alias and Title are required fields.';
-				$result['invalid_fields'][$name] = 'It\' a required field.';
+				$result['error_message'] = Utils::getMessage('content:required_fields');
+				$result['invalid_fields'][$name] = Utils::getMessage('content:required_field_tip');
 				$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 			}
@@ -815,8 +814,8 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'Alias can\'t have this word. <a href="http://php.net/manual/en/reserved.variables.php" target="_blank">Here</a> are the majority forbidden words.';
-			$result['invalid_fields']['alias'] = 'Alias have forbidden word.';
+			$result['error_message'] = Utils::getMessage('content:reserved_alias');
+			$result['invalid_fields']['alias'] = Utils::getMessage('content:forbidden_alias');
 			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
@@ -835,8 +834,8 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'Alias can\'t have this word.';
-			$result['invalid_fields']['alias'] = 'Alias have forbidden word.';
+			$result['error_message'] = Utils::getMessage('content:alias_has_separator');
+			$result['invalid_fields']['alias'] = Utils::getMessage('content:forbidden_alias');
 			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
@@ -856,8 +855,8 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'Invalid Alias. Alias names follow the same <a href="http://php.net/manual/en/language.variables.basics.php" target="_blank">rules</a> as variable names in PHP.';
-			$result['invalid_fields']['alias'] = 'Invalid Alias.';
+			$result['error_message'] = Utils::getMessage('content:invalid_alias_string');
+			$result['invalid_fields']['alias'] = Utils::getMessage('content:invalid_alias');
 			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
@@ -909,8 +908,8 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'This Parent is absent.';
-			$result['invalid_fields']['parent'] = 'Invalid Parent.';
+			$result['error_message'] = Utils::getMessage('content:parent_is_absent');
+			$result['invalid_fields']['parent'] = Utils::getMessage('content:invalid_parent');
 			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}
@@ -929,8 +928,8 @@ class Content
 		{
 
 			$result['error'] = true;
-			$result['error_message'] = 'The Parent already have a child with this Alias.';
-			$result['invalid_fields']['alias'] = 'The Parent already have a child with this Alias.';
+			$result['error_message'] = Utils::getMessage('content:parent_already_has_the_child');
+			$result['invalid_fields']['alias'] = Utils::getMessage('content:invalid_parent');
 			$result['sent_data'] = Utils::replaceQuotesInArray($_POST);
 
 		}

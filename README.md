@@ -142,6 +142,22 @@ That so... In my opinion this functionality enough for all landing pages. If you
  don't think so you can fork my project or suggest me some features ;)
 ***
 
+### Hotkeys
+To speed up work with the CMS, you can use the following hotkeys:
+- `special-key` + `s` - save;
+- `special-key` + `n` - new Field;
+- `special-key` + `z` - cancel;
+
+You can find out the special keys for your browser [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey "accesskey - HTML: HyperText Markup Language | MDN").
+
+### Languages
+You can translate the CMS to any languages. How to do this:
+- Go to `cms/_lang`;
+- Create a directory with language name like `en`;
+- Into the new directory create the `main.php` file;
+- Fill the `main.php` file by analogy with `cms/_lang/en/main.php`;
+- Update the `cms/_classes/utils.class.php` file's constant `LANGUAGE` with the name of the language directory;
+
 ### To do
 v 0.0.6:
 - Fix Color Picker and File Uploader for IE9;

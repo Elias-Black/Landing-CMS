@@ -35,7 +35,7 @@ if( is_readable($public_db_path) === TRUE )
 {
 
 	$public_db_content = file_get_contents($public_db_path);
-	$public_db_content = unserialize( substr($public_db_content, $security_length) );
+	$public_db_content = unserialize( base64_decode( substr($public_db_content, $security_length) ) );
 
 }
 

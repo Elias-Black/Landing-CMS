@@ -79,7 +79,11 @@ class DB
 
 		}
 
-		$content = unserialize( substr($content, self::SECURITY_LENGTH) );
+		$content = substr($content, self::SECURITY_LENGTH);
+
+		$content = base64_decode($content);
+
+		$content = unserialize($content);
 
 		if(!$content)
 		{
@@ -229,7 +233,7 @@ class DB
 		$result = array();
 		$result['error'] = false;
 
-		$content = self::SECURE_TEXT . serialize($content);
+		$content = self::SECURE_TEXT . base64_encode( serialize($content) );
 
 		$private_db_path = Utils::getPath(self::PRIVATE_DB_PATH);
 
@@ -271,7 +275,7 @@ class DB
 		$result['error'] = false;
 
 		$content = self::getFieldsOutput($content);
-		$content = self::SECURE_TEXT . serialize($content);
+		$content = self::SECURE_TEXT . base64_encode( serialize($content) );
 
 		$public_db_path = Utils::getPath(self::PUBLIC_DB_PATH);
 

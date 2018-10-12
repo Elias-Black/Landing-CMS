@@ -5,7 +5,7 @@ A simple CMS for Landing Pages.
 
 ### Hello guys!
 I wrote this CMS for myself and want to share it for everyone.
-Landing CMS is a simple tool for management landing pages. It doesn't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.2 or newer (7 and 7.1 supports)!
+Landing CMS is a simple tool for management landing pages. It doesn't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.2 or newer (7 and 7.3 supports)!
 
 *For the rapid development of the project, you can make a donation!*
 

@@ -1,3 +1,5 @@
+**No Longer Maintained**
+
 # Landing CMS
 A simple CMS for Landing Pages.
 
@@ -6,8 +8,6 @@ A simple CMS for Landing Pages.
 ### Hello guys!
 I wrote this CMS for myself and want to share it for everyone.
 Landing CMS is a simple tool for management landing pages. It doesn't use any databases. All data stores in a plain text files. You need only web-server with PHP 5.2 or newer (7 and 7.3 supports)!
-
-*For the rapid development of the project, you can make a donation!*
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QGKZW29YXRDCL)
 
@@ -159,7 +159,7 @@ You can translate the CMS to any languages. How to do this:
 - Update the `cms/_classes/utils.class.php` file's constant `LANGUAGE` with the name of the language directory;
 
 ### To do
-v 0.0.6:
+v 0.0.7:
 - Fix Color Picker and File Uploader for IE9;
 - Add Security Key to Responsive File Manager;
 - Add JS-less accessebility for File Uploader;
